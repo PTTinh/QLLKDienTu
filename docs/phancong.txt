@@ -1,0 +1,118 @@
+Người 1: Module Quản lý Sản phẩm & Danh mục (3 form) (Toàn)
+Form Quản lý Danh mục (CRUD DanhMuc)
+
+Thêm/sửa/xóa danh mục
+
+Hiển thị danh sách danh mục
+
+Form Quản lý Sản phẩm (CRUD SanPham)
+
+Thêm/sửa/xóa sản phẩm
+
+Tìm kiếm, lọc sản phẩm theo danh mục
+
+Upload hình ảnh sản phẩm
+
+Form Nhập hàng/Quản lý tồn kho
+
+Nhập hàng từ nhà cung cấp
+
+Cảnh báo tồn kho (tối thiểu/tối đa)
+
+Thống kê tồn kho
+
+Người 2: Module Quản lý Khách hàng & Bán hàng (3 form) (Dững)
+Form Quản lý Khách hàng (CRUD KhachHang)
+
+Thêm/sửa/xóa khách hàng
+
+Phân loại khách hàng (Thường/VIP/Sỉ)
+
+Xem lịch sử mua hàng
+
+Form Tạo hóa đơn bán hàng
+
+Chọn sản phẩm, số lượng
+
+Tính toán tự động: tổng tiền, giảm giá, VAT
+
+Lưu hóa đơn và cập nhật tồn kho
+
+Form Quản lý Hóa đơn
+
+Xem danh sách hóa đơn
+
+Tìm kiếm hóa đơn theo ngày, khách hàng
+
+In hóa đơn (crystal report/rdlc)
+
+Người 3: Module Quản lý Nhà cung cấp & Người dùng (3 form) (Hân)
+Form Quản lý Nhà cung cấp (CRUD NhaCungCap)
+
+Thêm/sửa/xóa nhà cung cấp
+
+Xem danh sách sản phẩm theo NCC
+
+Form Quản lý Người dùng (CRUD NguoiDung)
+
+Thêm/sửa/xóa người dùng
+
+Phân quyền theo vai trò (Quản trị/Quản lý/Nhân viên)
+
+Form Đăng nhập & Phân quyền
+
+Xác thực đăng nhập
+
+Hiển thị menu theo quyền
+
+Đổi mật khẩu
+
+Người 4: Module Báo cáo & Thống kê (3 form) (Khanh)
+Form Báo cáo doanh thu
+
+Thống kê doanh thu theo ngày/tuần/tháng
+
+Biểu đồ doanh thu
+
+Xuất Excel/PDF
+
+Form Báo cáo sản phẩm bán chạy
+
+Top 10 sản phẩm bán chạy
+
+Thống kê theo danh mục
+
+Xuất báo cáo
+
+Form Dashboard tổng quan
+
+Tổng quan doanh thu, đơn hàng, khách hàng
+
+Cảnh báo tồn kho thấp
+
+Biểu đồ trực quan
+
+Người 5: Module Tìm kiếm & Hỗ trợ (3 form) (Tính)
+Form Tìm kiếm nâng cao
+
+Tìm kiếm sản phẩm theo nhiều tiêu chí
+
+Tìm kiếm khách hàng, hóa đơn
+
+Auto-suggest khi nhập
+
+Form Cấu hình hệ thống
+
+Cài đặt thông số (VAT, cảnh báo tồn kho)
+
+Sao lưu/Phục hồi dữ liệu
+
+Cấu hình kết nối database
+
+Form Trợ giúp & Hướng dẫn
+
+Hướng dẫn sử dụng phần mềm
+
+Thông tin về nhóm
+
+Kiểm tra cập nhật
