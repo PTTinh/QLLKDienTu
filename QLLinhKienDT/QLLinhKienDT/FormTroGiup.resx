@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="timerRefresh.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
+  <data name="txtThongTin.Text" xml:space="preserve">
+    <value>Phần mềm Quản lý Linh kiện Điện tử
+
+Phiên bản: 1.0
+Ngày tạo: 2026
+
+Tính năng chính:
+- Quản lý sản phẩm và danh mục
+- Quản lý khách hàng
+- Bán hàng và tạo hóa đơn
+- Báo cáo doanh thu
+- Tìm kiếm nâng cao
+- Cấu hình hệ thống
+
+Hỗ trợ kỹ thuật:
+Email: support@qllienkien.com
+Điện thoại: 1900-xxxx</value>
+  </data>
 </root>

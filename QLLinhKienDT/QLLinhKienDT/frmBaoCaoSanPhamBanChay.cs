@@ -18,6 +18,7 @@ namespace QLLinhKienDT
         public frmBaoCaoSanPhamBanChay()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void frmBaoCaoSanPhamBanChay_Load(object sender, EventArgs e)

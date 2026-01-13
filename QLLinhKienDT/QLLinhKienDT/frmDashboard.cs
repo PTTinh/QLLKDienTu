@@ -17,6 +17,7 @@ namespace QLLinhKienDT
         public frmDashboard()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void frmDashboard_Load(object sender, EventArgs e)

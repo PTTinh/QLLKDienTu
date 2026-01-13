@@ -51,6 +51,9 @@
             // 
             // dgvTopProducts
             // 
+            this.dgvTopProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTopProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTopProducts.Location = new System.Drawing.Point(30, 90);
             this.dgvTopProducts.Name = "dgvTopProducts";
@@ -61,6 +64,7 @@
             // 
             // btnTopProducts
             // 
+            this.btnTopProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnTopProducts.Location = new System.Drawing.Point(30, 430);
             this.btnTopProducts.Name = "btnTopProducts";
             this.btnTopProducts.Size = new System.Drawing.Size(140, 45);
@@ -71,6 +75,7 @@
             // 
             // btnByCategory
             // 
+            this.btnByCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnByCategory.Location = new System.Drawing.Point(180, 430);
             this.btnByCategory.Name = "btnByCategory";
             this.btnByCategory.Size = new System.Drawing.Size(140, 45);
@@ -81,6 +86,7 @@
             // 
             // btnExportReport
             // 
+            this.btnExportReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportReport.Location = new System.Drawing.Point(330, 430);
             this.btnExportReport.Name = "btnExportReport";
             this.btnExportReport.Size = new System.Drawing.Size(140, 45);
@@ -91,6 +97,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClose.Location = new System.Drawing.Point(480, 430);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(140, 45);
@@ -110,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1050, 490);
             this.Controls.Add(this.pnlChart);
             this.Controls.Add(this.btnClose);
@@ -119,6 +126,8 @@
             this.Controls.Add(this.btnTopProducts);
             this.Controls.Add(this.dgvTopProducts);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
             this.Name = "frmBaoCaoSanPhamBanChay";
             this.Text = "Báo cáo sản phẩm bán chạy";
             this.Load += new System.EventHandler(this.frmBaoCaoSanPhamBanChay_Load);

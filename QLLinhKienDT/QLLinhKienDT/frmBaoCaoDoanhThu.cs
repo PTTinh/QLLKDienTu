@@ -19,6 +19,7 @@ namespace QLLinhKienDT
         public frmBaoCaoDoanhThu()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void frmBaoCaoDoanhThu_Load(object sender, EventArgs e)
