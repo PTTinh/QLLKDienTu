@@ -10,7 +10,7 @@ namespace QLLinhKienDT.Utils
 {
     public static class DataAccess
     {
-        private static string ConnectionString => @"Data Source=DESKTOP-EBPD2D3\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;Integrated Security=True";
+        private static string ConnectionString => @"Data Source=TINH\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;Integrated Security=True";
 
         private static void EnsureConnectionString()
         {
@@ -20,6 +20,9 @@ namespace QLLinhKienDT.Utils
 
         public static DataTable ExecuteQuery(string sql, params SqlParameter[] parameters)
         {
+            if (string.IsNullOrWhiteSpace(sql))
+                throw new ArgumentException("SQL command cannot be null or empty", nameof(sql));
+            
             EnsureConnectionString();
             var dt = new DataTable();
             try
@@ -27,7 +30,10 @@ namespace QLLinhKienDT.Utils
                 using (var conn = new SqlConnection(ConnectionString))
                 using (var cmd = new SqlCommand(sql, conn))
                 {
-                    if (parameters != null && parameters.Length > 0) cmd.Parameters.AddRange(parameters);
+                    cmd.CommandType = CommandType.Text;
+                    if (parameters != null && parameters.Length > 0) 
+                        cmd.Parameters.AddRange(parameters);
+                    
                     using (var da = new SqlDataAdapter(cmd))
                     {
                         da.Fill(dt);
@@ -43,13 +49,18 @@ namespace QLLinhKienDT.Utils
 
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
+            if (string.IsNullOrWhiteSpace(sql))
+                throw new ArgumentException("SQL command cannot be null or empty", nameof(sql));
+            
             EnsureConnectionString();
             try
             {
                 using (var conn = new SqlConnection(ConnectionString))
                 using (var cmd = new SqlCommand(sql, conn))
                 {
-                    if (parameters != null && parameters.Length > 0) cmd.Parameters.AddRange(parameters);
+                    cmd.CommandType = CommandType.Text;
+                    if (parameters != null && parameters.Length > 0) 
+                        cmd.Parameters.AddRange(parameters);
                     conn.Open();
                     return cmd.ExecuteNonQuery();
                 }
@@ -62,13 +73,18 @@ namespace QLLinhKienDT.Utils
 
         public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
         {
+            if (string.IsNullOrWhiteSpace(sql))
+                throw new ArgumentException("SQL command cannot be null or empty", nameof(sql));
+            
             EnsureConnectionString();
             try
             {
                 using (var conn = new SqlConnection(ConnectionString))
                 using (var cmd = new SqlCommand(sql, conn))
                 {
-                    if (parameters != null && parameters.Length > 0) cmd.Parameters.AddRange(parameters);
+                    cmd.CommandType = CommandType.Text;
+                    if (parameters != null && parameters.Length > 0) 
+                        cmd.Parameters.AddRange(parameters);
                     conn.Open();
                     return cmd.ExecuteScalar();
                 }
@@ -87,26 +103,35 @@ namespace QLLinhKienDT.Utils
         public static DataTable GetRevenueByPeriod(string period, DateTime startDate, DateTime endDate)
         {
             string sql = "";
-            if (period.ToLower() == "day")
+            
+            // Validate period parameter
+            if (string.IsNullOrWhiteSpace(period))
+                period = "day"; // Default to day
+            
+            period = period.ToLower().Trim();
+            
+            if (period == "day")
                 sql = @"SELECT CAST(NgayBan AS DATE) as Ngay, SUM(ThanhTien) as DoanhThu, COUNT(DISTINCT MaHoaDon) as SoHoaDon
                         FROM HoaDon 
                         WHERE NgayBan >= @StartDate AND NgayBan <= @EndDate
                         GROUP BY CAST(NgayBan AS DATE)
                         ORDER BY Ngay";
-            else if (period.ToLower() == "week")
+            else if (period == "week")
                 sql = @"SELECT DATEPART(WEEK, NgayBan) as Tuan, YEAR(NgayBan) as Nam, 
                                SUM(ThanhTien) as DoanhThu, COUNT(DISTINCT MaHoaDon) as SoHoaDon
                         FROM HoaDon 
                         WHERE NgayBan >= @StartDate AND NgayBan <= @EndDate
                         GROUP BY DATEPART(WEEK, NgayBan), YEAR(NgayBan)
                         ORDER BY Nam, Tuan";
-            else if (period.ToLower() == "month")
+            else if (period == "month")
                 sql = @"SELECT MONTH(NgayBan) as Thang, YEAR(NgayBan) as Nam, 
                                SUM(ThanhTien) as DoanhThu, COUNT(DISTINCT MaHoaDon) as SoHoaDon
                         FROM HoaDon 
                         WHERE NgayBan >= @StartDate AND NgayBan <= @EndDate
                         GROUP BY MONTH(NgayBan), YEAR(NgayBan)
                         ORDER BY Nam, Thang";
+            else
+                throw new ArgumentException($"Invalid period: {period}. Must be 'day', 'week', or 'month'");
 
             return ExecuteQuery(sql, 
                 new SqlParameter("@StartDate", startDate),
