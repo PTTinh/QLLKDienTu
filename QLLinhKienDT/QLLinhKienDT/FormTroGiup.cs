@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using QLLinhKienDT.Utils;
 
 namespace QLLinhKienDT
 {
@@ -16,6 +17,7 @@ namespace QLLinhKienDT
         public FormTroGiup()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void FormTroGiup_Load(object sender, EventArgs e)

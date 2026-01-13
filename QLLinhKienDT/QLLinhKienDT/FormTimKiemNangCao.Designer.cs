@@ -141,6 +141,7 @@ namespace QLLinhKienDT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.dgvKetQua);
             this.Controls.Add(this.btnXoaTimKiem);
@@ -151,6 +152,8 @@ namespace QLLinhKienDT
             this.Controls.Add(this.lblLoai);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.lblTimKiem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
             this.Name = "FormTimKiemNangCao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm kiếm nâng cao";

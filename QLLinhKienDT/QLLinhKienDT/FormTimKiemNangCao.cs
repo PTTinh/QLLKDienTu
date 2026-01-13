@@ -17,6 +17,7 @@ namespace QLLinhKienDT
         public FormTimKiemNangCao()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void FormTimKiemNangCao_Load(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace QLLinhKienDT
         public FormCauHinhHeThong()
         {
             InitializeComponent();
+            FormTheme.ApplyTheme(this);
         }
 
         private void FormCauHinhHeThong_Load(object sender, EventArgs e)

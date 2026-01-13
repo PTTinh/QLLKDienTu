@@ -16,7 +16,7 @@ namespace QLLinhKienDT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTimKiemNangCao());
+            Application.Run(new frmBaoCaoSanPhamBanChay());
         }
     }
 }
