@@ -11,13 +11,14 @@ namespace QLLinhKienDT.Utils
     public static class DataAccess
     {
         private static string ConnectionString => @"Data Source=TINH\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;Integrated Security=True";
-
+        // Kiểm tra chuỗi kết nối
         private static void EnsureConnectionString()
         {
             if (string.IsNullOrWhiteSpace(ConnectionString))
-                throw new InvalidOperationException("Connection string 'QLLinhKienConnection' is not configured in App.config.");
+                throw new InvalidOperationException("Chuỗi kết nối cơ sở dữ liệu không được cấu hình.");
         }
 
+        // Thực thi truy vấn và trả về DataTable
         public static DataTable ExecuteQuery(string sql, params SqlParameter[] parameters)
         {
             EnsureConnectionString();
@@ -37,10 +38,10 @@ namespace QLLinhKienDT.Utils
             }
             catch (Exception ex)
             {
-                throw new Exception($"Database query failed: {ex.Message}", ex);
+                throw new Exception($"Truy vấn cơ sở dữ liệu thất bại: {ex.Message}", ex);
             }
         }
-
+        // Thực thi câu lệnh không trả về dữ liệu
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
             EnsureConnectionString();
@@ -56,10 +57,11 @@ namespace QLLinhKienDT.Utils
             }
             catch (Exception ex)
             {
-                throw new Exception($"Database non-query failed: {ex.Message}", ex);
+                throw new Exception($"Thực thi non-query cơ sở dữ liệu thất bại: {ex.Message}", ex);
             }
         }
 
+        // Thực thi truy vấn trả về một giá trị duy nhất
         public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
         {
             EnsureConnectionString();
@@ -75,7 +77,7 @@ namespace QLLinhKienDT.Utils
             }
             catch (Exception ex)
             {
-                throw new Exception($"Database scalar query failed: {ex.Message}", ex);
+                throw new Exception($"Truy vấn scalar cơ sở dữ liệu thất bại: {ex.Message}", ex);
             }
         }
     }
