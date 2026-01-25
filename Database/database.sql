@@ -82,14 +82,6 @@ CREATE TABLE NguoiDung (
     TrangThai BIT DEFAULT 1 -- 1: Hoạt động, 0: Khóa
 );
 
--- Bảng cấu hình hệ thống
-CREATE TABLE HeThongCauHinh (
-    MaCauHinh INT PRIMARY KEY IDENTITY(1,1),
-    TenCauHinh VARCHAR(100) NOT NULL,
-    GiaTri NVARCHAR(500),
-    MoTa NVARCHAR(500),
-    NgayCapNhat DATETIME DEFAULT GETDATE()
-);
 -- Thêm danh mục
 INSERT INTO DanhMuc (TenDanhMuc, MoTa, NgayTao) VALUES
 (N'CPU - Bộ vi xử lý', N'Các loại CPU Intel, AMD cho desktop và laptop', '2024-01-01'),
@@ -301,12 +293,4 @@ INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SoLuong, DonGia, GiamGia, ThanhT
 (16, 6, 2, 1249000, 100000, 2398000),
 (16, 9, 1, 2999000, 0, 2999000),
 (16, 14, 1, 9990000, 200000, 9790000);
-Go
--- Chèn dữ liệu cấu hình mặc định
-INSERT INTO HeThongCauHinh (TenCauHinh, GiaTri, MoTa) VALUES
-('VAT', '10', 'Tỷ lệ VAT mặc định (%)'),
-('TonToiThieu', '5', 'Mức cảnh báo tồn kho tối thiểu'),
-('TonToiDa', '100', 'Mức cảnh báo tồn kho tối đa'),
-('DuongDanSaoLuu', 'C:\Backup', 'Đường dẫn thư mục sao lưu dữ liệu'),
-('ThoiGianSaoLuuTuDong', '1', 'Thời gian sao lưu tự động hàng ngày (giờ)');
 

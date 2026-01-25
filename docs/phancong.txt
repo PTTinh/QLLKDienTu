@@ -1,114 +1,61 @@
-Người 1: Module Quản lý Sản phẩm & Danh mục (3 form) (Toàn)
-Form Quản lý Danh mục (CRUD DanhMuc)
+Phân công chi tiết (Tổng cộng khoảng 18-20 Form)
+Người 1: Quản trị hệ thống & Nhân viên (Admin)
+Chịu trách nhiệm về bảng: NguoiDung
 
-    Thêm/sửa/xóa danh mục
+Form Đăng nhập (Login): Xử lý kiểm tra tài khoản/mật khẩu.
 
-    Hiển thị danh sách danh mục
+Form Đổi mật khẩu/Thông tin cá nhân: Cho người đang đăng nhập tự sửa thông tin mình.
 
-Form Quản lý Sản phẩm (CRUD SanPham)
+Form Quản lý Nhân viên (CRUD): Danh sách nhân viên, thêm, sửa, khóa tài khoản.
 
-    Thêm/sửa/xóa sản phẩm
+Form Cấu hình kết nối (Option): Form cài đặt chuỗi kết nối Database (để khi mang sang máy khác không phải sửa code).
 
-    Tìm kiếm, lọc sản phẩm theo danh mục
+Người 2: Quản lý Kho hàng hóa (Catalog)
+Chịu trách nhiệm về bảng: SanPham, DanhMuc, NhaCungCap
 
-    Upload hình ảnh sản phẩm
+Form Danh sách Sản phẩm: Hiện lưới sản phẩm, tìm kiếm, lọc theo danh mục (chỉ xem và tìm kiếm).
 
-Form Nhập hàng/Quản lý tồn kho
+Form Cập nhật Sản phẩm: Form chi tiết để Thêm mới hoặc Sửa thông tin sản phẩm (tách riêng cho đỡ rối).
 
-    Nhập hàng từ nhà cung cấp
+Form Quản lý Danh mục & Nhà cung cấp: Quản lý 2 bảng phụ này chung 1 form hoặc 2 form nhỏ.
 
-    Cảnh báo tồn kho (tối thiểu/tối đa)
+Form Cảnh báo hàng tồn: Chỉ hiện danh sách các món có SoLuongTon <= TonToiThieu (Query từ bảng SanPham).
 
-    Thống kê tồn kho
+Người 3: Nghiệp vụ Bán hàng (POS - Key Member)
+Chịu trách nhiệm về bảng: HoaDon, ChiTietHoaDon Đây là phần khó nhất, ít form nhưng logic nặng.
 
-Người 2: Module Quản lý Khách hàng & Bán hàng (3 form) (Dững)
-Form Quản lý Khách hàng (CRUD KhachHang)
+Form Bán hàng chính (POS):
 
-    Thêm/sửa/xóa khách hàng
+Chọn khách hàng.
 
-    Phân loại khách hàng (Thường/VIP/Sỉ)
+Chọn sản phẩm (kèm số lượng).
 
-    Xem lịch sử mua hàng
+Tính tổng tiền, chiết khấu.
 
-Form Tạo hóa đơn bán hàng
+Lưu vào CSDL (Insert bảng HoaDon & ChiTietHoaDon).
 
-    Chọn sản phẩm, số lượng
+Form Tìm kiếm Sản phẩm nhanh: Popup nhỏ để tra cứu giá/mã sản phẩm khi đang bán hàng.
 
-    Tính toán tự động: tổng tiền, giảm giá, VAT
+Form In Hóa đơn: Thiết kế giao diện trang in (Report viewer) để in phiếu cho khách.
 
-    Lưu hóa đơn và cập nhật tồn kho
+Người 4: Quản lý Lịch sử & Khách hàng
+Chịu trách nhiệm về bảng: KhachHang, HoaDon (phần xem lại)
 
-Form Quản lý Hóa đơn
+Form Quản lý Khách hàng: Thêm, sửa, xóa, tìm kiếm khách hàng.
 
-    Xem danh sách hóa đơn
+Form Lịch sử Giao dịch: Danh sách tất cả hóa đơn đã bán (Sort theo ngày mới nhất).
 
-    Tìm kiếm hóa đơn theo ngày, khách hàng
+Form Chi tiết Hóa đơn: Khi bấm vào 1 dòng ở form trên, hiện ra chi tiết hóa đơn đó (mua món gì, giá bao nhiêu).
 
-    In hóa đơn (crystal report/rdlc)
+Form Tra cứu công nợ/Chi tiêu: Xem tổng tiền khách hàng VIP đã mua (Query tổng hợp từ bảng KhachHang).
 
-Người 3: Module Quản lý Nhà cung cấp & Người dùng (3 form) (Hân)
-Form Quản lý Nhà cung cấp (CRUD NhaCungCap)
+Người 5: Thống kê & Báo cáo (Analytics)
+Chịu trách nhiệm: Tổng hợp dữ liệu từ tất cả các bảng (Chỉ Select, không Insert/Update)
 
-    Thêm/sửa/xóa nhà cung cấp
+Form Thống kê Doanh thu: Chọn Từ ngày - Đến ngày -> Hiện tổng tiền bán được.
 
-    Xem danh sách sản phẩm theo NCC
+Form Top Sản phẩm bán chạy: Biểu đồ hoặc danh sách các món bán nhiều nhất (Count từ ChiTietHoaDon).
 
-Form Quản lý Người dùng (CRUD NguoiDung)
+Form Nhật ký hoạt động (hoặc Thống kê theo nhân viên): Xem nhân viên nào bán được bao nhiêu đơn.
 
-    Thêm/sửa/xóa người dùng
-
-    Phân quyền theo vai trò (Quản trị/Quản lý/Nhân viên)
-
-Form Đăng nhập & Phân quyền
-
-    Xác thực đăng nhập
-
-    Hiển thị menu theo quyền
-
-    Đổi mật khẩu
-
-Người 4: Module Báo cáo & Thống kê (3 form) (Khanh)
-Form Báo cáo doanh thu
-
-    Thống kê doanh thu theo ngày/tuần/tháng
-
-    Biểu đồ doanh thu
-
-    Xuất Excel/PDF
-
-Form Báo cáo sản phẩm bán chạy
-
-    Top 10 sản phẩm bán chạy
-
-    Thống kê theo danh mục
-
-    Xuất báo cáo
-
-Form Dashboard tổng quan
-
-    Tổng quan doanh thu, đơn hàng, khách hàng
-
-    Cảnh báo tồn kho thấp
-
-    Biểu đồ trực quan
-
-Người 5: Module Tìm kiếm & Hỗ trợ (3 form) (Tính)
-Form Tìm kiếm nâng cao
-
-    Tìm kiếm sản phẩm theo nhiều tiêu chí
-
-    Tìm kiếm khách hàng, hóa đơn
-
-    Auto-suggest khi nhập
-
-Form Cấu hình hệ thống
-
-    Cài đặt thông số (VAT, cảnh báo tồn kho)
-
-Form Trợ giúp & Hướng dẫn
-
-    Hướng dẫn sử dụng phần mềm
-
-    Thông tin về nhóm
-
-    Kiểm tra cập nhật
+Dashboard (Trang chủ): Màn hình chính hiện các ô số to: Tổng khách, Tổng hàng, Doanh thu hôm nay.
