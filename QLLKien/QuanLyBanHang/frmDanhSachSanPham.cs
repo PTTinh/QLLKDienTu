@@ -36,10 +36,10 @@ namespace QuanLyBanHang
                           FROM SanPham sp
                           LEFT JOIN DanhMuc dm ON sp.MaDanhMuc = dm.MaDanhMuc
                           LEFT JOIN NhaCungCap ncc ON sp.MaNCC = ncc.MaNCC ";
-            
+
             if (!string.IsNullOrEmpty(where))
                 sql += " WHERE " + where;
-            
+
             sql += " ORDER BY sp.MaSanPham DESC";
 
             tblSanPham = Functions.GetDataToTable(sql);
@@ -62,6 +62,19 @@ namespace QuanLyBanHang
             dgvSanPham.EditMode = DataGridViewEditMode.EditProgrammatically;
 
             lblTongSP.Text = $"Tổng số sản phẩm: {tblSanPham.Rows.Count}";
+            btnXoa.Enabled = tblSanPham.Rows.Count > 0;
+        }
+
+        private int? GetSelectedSanPhamId()
+        {
+            if (dgvSanPham.CurrentRow == null)
+                return null;
+
+            object value = dgvSanPham.CurrentRow.Cells["MaSanPham"].Value;
+            if (value == null || value == DBNull.Value)
+                return null;
+
+            return Convert.ToInt32(value);
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -101,6 +114,35 @@ namespace QuanLyBanHang
             LoadData();
         }
 
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            int? maSP = GetSelectedSanPhamId();
+            if (!maSP.HasValue)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string tenSP = dgvSanPham.CurrentRow?.Cells["TenSanPham"].Value?.ToString();
+            string checkSql = $"SELECT TOP 1 1 FROM ChiTietHoaDon WHERE MaSanPham = {maSP.Value}";
+
+            if (Functions.CheckKey(checkSql))
+            {
+                MessageBox.Show("Không thể xóa sản phẩm đã phát sinh hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show($"Bạn có chắc chắn muốn xóa sản phẩm \"{tenSP}\"?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string sql = $"DELETE FROM SanPham WHERE MaSanPham = {maSP.Value}";
+                if (Functions.RunSQL(sql))
+                {
+                    LoadData();
+                    MessageBox.Show("Xóa sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
         private void dgvSanPham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -110,6 +152,11 @@ namespace QuanLyBanHang
                 frm.ShowDialog();
                 LoadData();
             }
+        }
+
+        private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnXoa.Enabled = e.RowIndex >= 0 && dgvSanPham.CurrentRow != null;
         }
     }
 }
