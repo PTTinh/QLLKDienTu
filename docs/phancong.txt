@@ -1,5 +1,5 @@
 Phân công chi tiết (Tổng cộng khoảng 18-20 Form)
-Người 1: Quản trị hệ thống & Nhân viên (Admin)
+Người 1: Quản trị hệ thống & Nhân viên (Admin) hân
 Chịu trách nhiệm về bảng: NguoiDung
 
 Form Đăng nhập (Login): Xử lý kiểm tra tài khoản/mật khẩu.
@@ -10,7 +10,7 @@ Form Quản lý Nhân viên (CRUD): Danh sách nhân viên, thêm, sửa, khóa 
 
 Form Cấu hình kết nối (Option): Form cài đặt chuỗi kết nối Database (để khi mang sang máy khác không phải sửa code).
 
-Người 2: Quản lý Kho hàng hóa (Catalog)
+Người 2: Quản lý Kho hàng hóa (Catalog) dưng
 Chịu trách nhiệm về bảng: SanPham, DanhMuc, NhaCungCap
 
 Form Danh sách Sản phẩm: Hiện lưới sản phẩm, tìm kiếm, lọc theo danh mục (chỉ xem và tìm kiếm).
@@ -21,7 +21,7 @@ Form Quản lý Danh mục & Nhà cung cấp: Quản lý 2 bảng phụ này chu
 
 Form Cảnh báo hàng tồn: Chỉ hiện danh sách các món có SoLuongTon <= TonToiThieu (Query từ bảng SanPham).
 
-Người 3: Nghiệp vụ Bán hàng (POS - Key Member)
+Người 3: Nghiệp vụ Bán hàng (POS - Key Member) khanh
 Chịu trách nhiệm về bảng: HoaDon, ChiTietHoaDon Đây là phần khó nhất, ít form nhưng logic nặng.
 
 Form Bán hàng chính (POS):
@@ -38,7 +38,7 @@ Form Tìm kiếm Sản phẩm nhanh: Popup nhỏ để tra cứu giá/mã sản 
 
 Form In Hóa đơn: Thiết kế giao diện trang in (Report viewer) để in phiếu cho khách.
 
-Người 4: Quản lý Lịch sử & Khách hàng
+Người 4: Quản lý Lịch sử & Khách hàng toàn
 Chịu trách nhiệm về bảng: KhachHang, HoaDon (phần xem lại)
 
 Form Quản lý Khách hàng: Thêm, sửa, xóa, tìm kiếm khách hàng.
@@ -49,7 +49,7 @@ Form Chi tiết Hóa đơn: Khi bấm vào 1 dòng ở form trên, hiện ra chi
 
 Form Tra cứu công nợ/Chi tiêu: Xem tổng tiền khách hàng VIP đã mua (Query tổng hợp từ bảng KhachHang).
 
-Người 5: Thống kê & Báo cáo (Analytics)
+Người 5: Thống kê & Báo cáo (Analytics) tinh
 Chịu trách nhiệm: Tổng hợp dữ liệu từ tất cả các bảng (Chỉ Select, không Insert/Update)
 
 Form Thống kê Doanh thu: Chọn Từ ngày - Đến ngày -> Hiện tổng tiền bán được.
