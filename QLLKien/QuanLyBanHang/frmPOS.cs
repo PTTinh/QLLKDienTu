@@ -98,7 +98,7 @@ namespace QuanLyBanHang
                 object selectedValue = cboKhachHang.SelectedValue;
                 if (selectedValue is DataRowView)
                     return; // Skip if it's a DataRowView during initialization
-                    
+
                 int maKH = Convert.ToInt32(selectedValue);
                 string sql = $"SELECT HoTen, SoDienThoai, DiaChi FROM KhachHang WHERE MaKhachHang = {maKH}";
                 DataTable dt = Functions.GetDataToTable(sql);
@@ -119,14 +119,15 @@ namespace QuanLyBanHang
                 object selectedValue = cboSanPham.SelectedValue;
                 if (selectedValue is DataRowView)
                     return; // Skip if it's a DataRowView during initialization
-                    
+
                 int maSP = Convert.ToInt32(selectedValue);
                 string sql = $"SELECT GiaBan, SoLuongTon FROM SanPham WHERE MaSanPham = {maSP}";
                 DataTable dt = Functions.GetDataToTable(sql);
                 if (dt.Rows.Count > 0)
                 {
-                    txtGiaBan.Text = dt.Rows[0]["GiaBan"].ToString();
+                    txtGiaBan.Text = Convert.ToDecimal(dt.Rows[0]["GiaBan"]).ToString("N0");
                     txtSoLuongTon.Text = dt.Rows[0]["SoLuongTon"].ToString();
+                    nudSoLuong.Value = 1;
                 }
             }
         }
@@ -155,7 +156,7 @@ namespace QuanLyBanHang
                 MessageBox.Show("Vui lòng chọn sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             int maSP = Convert.ToInt32(selectedValue);
             string tenSP = cboSanPham.Text;
             decimal giaBan = Convert.ToDecimal(txtGiaBan.Text);
@@ -190,7 +191,13 @@ namespace QuanLyBanHang
 
         private void btnXoaKhoiGio_Click(object sender, EventArgs e)
         {
-            if (dgvGioHang.CurrentRow != null)
+            if (dgvGioHang.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("Bạn có chắc muốn xóa sản phẩm này khỏi giỏ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 dgvGioHang.Rows.Remove(dgvGioHang.CurrentRow);
                 TinhTongTien();
@@ -242,13 +249,13 @@ namespace QuanLyBanHang
                     MessageBox.Show("Vui lòng chọn khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+
                 int maKH = Convert.ToInt32(selectedValue);
                 string sqlHD = $@"INSERT INTO HoaDon (SoHoaDon, MaKhachHang, MaNhanVien, TongTien, GiamGia, ThueVAT, ThanhTien, PhuongThucThanhToan, TrangThai)
                                  VALUES (N'{txtSoHoaDon.Text}', {maKH}, {Functions.currentUserId}, 
-                                 {tongTien}, {giamGia}, {thueVAT}, {thanhTien}, N'{cboPhuongThuc.Text}', N'Hoàn thành');
+                                 {tongTien}, {giamGia}, {thueVAT * tongTien / 100}, {thanhTien}, N'{cboPhuongThuc.Text}', N'Hoàn thành');
                                  SELECT SCOPE_IDENTITY()";
-                
+
                 DataTable dtHD = Functions.GetDataToTable(sqlHD);
                 int maHD = Convert.ToInt32(dtHD.Rows[0][0]);
 
@@ -265,11 +272,12 @@ namespace QuanLyBanHang
                     Functions.RunSQL(sqlUpdateTon);
                 }
 
-                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                MessageBox.Show("Thanh toán thành công! Số hóa đơn: " + txtSoHoaDon.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 if (MessageBox.Show("Bạn có muốn in hóa đơn?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // TODO: Mở form in hóa đơn
+                    frmInHoaDon frmIn = new frmInHoaDon(maHD);
+                    frmIn.ShowDialog();
                 }
 
                 ResetHoaDon();
@@ -287,6 +295,43 @@ namespace QuanLyBanHang
             {
                 ResetHoaDon();
             }
+        }
+
+        // Tìm kiếm sản phẩm nhanh
+        private void txtTimSanPham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                e.Handled = true;
+                TimKiemSanPhamNhanh();
+            }
+        }
+
+        private void TimKiemSanPhamNhanh()
+        {
+            // Mở form tìm kiếm nhanh
+            frmTimSanPhamNhanh frmTim = new frmTimSanPhamNhanh();
+            if (frmTim.ShowDialog() == DialogResult.OK)
+            {
+                // Nếu chọn được sản phẩm
+                cboSanPham.SelectedValue = frmTim.SelectedMaSanPham;
+                txtGiaBan.Text = frmTim.SelectedGiaBan.ToString("N0");
+                txtSoLuongTon.Text = frmTim.SelectedSoLuongTon.ToString();
+                nudSoLuong.Value = 1;
+                nudSoLuong.Focus();
+            }
+        }
+
+        // Xuất Excel
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            if (tblGioHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng trống! Không có gì để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ExcelExporter.ExportGioHangToExcel(tblGioHang, cboKhachHang.Text, txtSoHoaDon.Text, tongTien, giamGia, thanhTien);
         }
     }
 }
