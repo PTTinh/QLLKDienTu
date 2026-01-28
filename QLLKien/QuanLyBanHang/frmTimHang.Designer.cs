@@ -71,7 +71,6 @@ namespace QuanLyBanHang
             this.btnDong.TabIndex = 5;
             this.btnDong.Text = "&Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnTimlai
             // 
@@ -147,7 +146,6 @@ namespace QuanLyBanHang
             this.txtDonGiaBan.Name = "txtDonGiaBan";
             this.txtDonGiaBan.Size = new System.Drawing.Size(297, 22);
             this.txtDonGiaBan.TabIndex = 54;
-            this.txtDonGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaBan_KeyPress);
             // 
             // label3
             // 
@@ -166,7 +164,6 @@ namespace QuanLyBanHang
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(297, 22);
             this.txtSoLuong.TabIndex = 52;
-            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // label2
             // 

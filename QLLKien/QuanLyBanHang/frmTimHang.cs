@@ -25,6 +25,7 @@ namespace QuanLyBanHang
         {
             ResetValues();
             dgvTKHang.DataSource = null;
+            LoadAllProducts(); // Load tất cả sản phẩm khi mở form
         }
 
         //Phương thức ResetValues
@@ -34,6 +35,18 @@ namespace QuanLyBanHang
                 if (Ctl is TextBox)
                     Ctl.Text = "";
             txtMaHang.Focus();
+        }
+
+        // Load all products
+        private void LoadAllProducts()
+        {
+            string sql = "SELECT MaSanPham AS MaHang, TenSanPham AS TenHang, MaDanhMuc, SoLuongTon AS SoLuong, GiaNhap AS DonGiaNhap, GiaBan AS DonGiaBan, MoTa AS GhiChu FROM SanPham WHERE TrangThai = 1 ORDER BY TenSanPham";
+            tblHang = Functions.GetDataToTable(sql);
+            if (tblHang.Rows.Count > 0)
+            {
+                dgvTKHang.DataSource = tblHang;
+                LoadDataGridView();
+            }
         }
 
         //Phương thức btnTimKiem_Click
@@ -47,7 +60,7 @@ namespace QuanLyBanHang
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "SELECT MaSanPham AS MaHang, TenSanPham AS TenHang, MaDanhMuc, SoLuongTon AS SoLuong, GiaNhap AS DonGiaNhap, GiaBan AS DonGiaBan, MoTa AS GhiChu FROM SanPham WHERE 1=1";
+            sql = "SELECT MaSanPham AS MaHang, TenSanPham AS TenHang, MaDanhMuc, SoLuongTon AS SoLuong, GiaNhap AS DonGiaNhap, GiaBan AS DonGiaBan, MoTa AS GhiChu FROM SanPham WHERE TrangThai = 1";
             if (txtMaHang.Text != "")
                 sql = sql + " AND MaSoSanPham Like N'%" + txtMaHang.Text + "%'";
             if (txtTenHang.Text != "")
@@ -55,18 +68,23 @@ namespace QuanLyBanHang
             if (txtMaChatLieu.Text != "")
                 sql = sql + " AND MaDanhMuc Like N'%" + txtMaChatLieu.Text + "%'";
             if (txtSoLuong.Text != "")
-                sql = sql + " AND SoLuongTon >=" + txtSoLuong.Text;
+                sql = sql + " AND SoLuongTon >= " + txtSoLuong.Text;
             if (txtDonGiaBan.Text != "")
-                sql = sql + " AND GiaBan <=" + txtDonGiaBan.Text;
+                sql = sql + " AND GiaBan <= " + txtDonGiaBan.Text;
+            
+            sql = sql + " ORDER BY TenSanPham";
+            
             tblHang = Functions.GetDataToTable(sql);
             if (tblHang.Rows.Count == 0)
             {
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
+            {
                 MessageBox.Show("Có " + tblHang.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dgvTKHang.DataSource = tblHang;
-            LoadDataGridView();
+                dgvTKHang.DataSource = tblHang;
+                LoadDataGridView();
+            }
         }
 
         //Phương thức LoadDataGridView
@@ -86,18 +104,36 @@ namespace QuanLyBanHang
             dgvTKHang.Columns[4].Width = 100;
             dgvTKHang.Columns[5].Width = 100;
             dgvTKHang.Columns[6].Width = 100;
-            dgvTKHang.Columns[7].Width = 150;
             dgvTKHang.AllowUserToAddRows = false;
             dgvTKHang.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvTKHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         //phương thức tìm lại
         private void btnTimlai_Click(object sender, EventArgs e)
         {
             ResetValues();
-            dgvTKHang.DataSource = null;
+            LoadAllProducts();
         }
 
+        // Double click để xem chi tiết sản phẩm
+        private void dgvTKHang_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvTKHang.CurrentRow != null)
+            {
+                int rowIndex = dgvTKHang.CurrentRow.Index;
+                if (rowIndex >= 0 && rowIndex < tblHang.Rows.Count)
+                {
+                    DataRow row = tblHang.Rows[rowIndex];
+                    string tenSP = row["TenHang"].ToString();
+                    string giaBan = row["DonGiaBan"].ToString();
+                    string soLuong = row["SoLuong"].ToString();
+                    
+                    MessageBox.Show($"Tên sản phẩm: {tenSP}\nGiá bán: {giaBan}\nTồn kho: {soLuong}", 
+                        "Chi tiết sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         //Phương thức txtSoLuong_KeyPress
         private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
