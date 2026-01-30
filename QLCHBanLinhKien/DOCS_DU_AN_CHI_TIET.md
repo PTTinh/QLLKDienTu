@@ -438,7 +438,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ## 4. PHAN CONG KIEM TRA - 5 NGUOI
 
-### NGUOI 1: DANG NHAP & HE THONG (5 Forms)
+### NGUOI 1: DANG NHAP & HE THONG (5 Forms) (Hân)
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|
@@ -457,7 +457,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ---
 
-### NGUOI 2: BAN HANG & HOA DON (5 Forms)
+### NGUOI 2: BAN HANG & HOA DON (5 Forms) Khanh
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|
@@ -477,7 +477,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ---
 
-### NGUOI 3: QUAN LY DANH MUC (5 Forms)
+### NGUOI 3: QUAN LY DANH MUC (5 Forms) Toàn
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|
@@ -496,7 +496,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ---
 
-### NGUOI 4: KHACH HANG & NGUOI DUNG (5 Forms)
+### NGUOI 4: KHACH HANG & NGUOI DUNG (5 Forms) Dững
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|
@@ -516,7 +516,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ---
 
-### NGUOI 5: BAO CAO & KHO HANG (5 Forms)
+### NGUOI 5: BAO CAO & KHO HANG (5 Forms) Tính
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|
