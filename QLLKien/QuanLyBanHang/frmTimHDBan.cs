@@ -92,7 +92,7 @@ namespace QuanLyBanHang
         }
         //phương thức tìm lại
         private void btnTimlai_Click(object sender, EventArgs e)
-        {
+        {   
             ResetValues();
             dgvTKHoaDon.DataSource = null;
         }

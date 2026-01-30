@@ -26,11 +26,33 @@ namespace QuanLyBanHang.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\QuanLyBanHang.mdf;Integrat" +
-            "ed Security=True;Connect Timeout=30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOAN-NGUYEN\\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;User ID=sa;" +
+            "Password=123456;TrustServerCertificate=True;")]
         public string QuanLyBanHangConnectionString {
             get {
                 return ((string)(this["QuanLyBanHangConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOAN-NGUYEN\\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;User ID=sa;" +
+            "Password=123456;TrustServerCertificate=True;")]
+        public string QLCHLinhKienDienTuConnectionString {
+            get {
+                return ((string)(this["QLCHLinhKienDienTuConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOAN-NGUYEN\\SQLEXPRESS;Initial Catalog=QLCHLinhKienDienTu;Integrated " +
+            "Security=True;Encrypt=True;TrustServerCertificate=True")]
+        public string QLCHLinhKienDienTuConnectionString1 {
+            get {
+                return ((string)(this["QLCHLinhKienDienTuConnectionString1"]));
             }
         }
     }

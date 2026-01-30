@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using QuanLyBanHang.Class;
-
 namespace QuanLyBanHang
 {
     public partial class frmInHoaDon : Form

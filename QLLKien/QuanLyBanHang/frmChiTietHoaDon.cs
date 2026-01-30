@@ -121,5 +121,7 @@ namespace QuanLyBanHang
         {
             this.Close();
         }
+
+      
     }
 }
