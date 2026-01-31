@@ -17,17 +17,18 @@ namespace QLCHBanLinhKien
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTimKhachHang));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelFilter = new System.Windows.Forms.Panel();
             this.lblTimKiem = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.lblLoaiKH = new System.Windows.Forms.Label();
             this.cmbLoaiKH = new System.Windows.Forms.ComboBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.lblSoKetQua = new System.Windows.Forms.Label();
             this.btnDong = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.panelBottom.SuspendLayout();
@@ -65,16 +66,16 @@ namespace QLCHBanLinhKien
             this.lblTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTimKiem.Location = new System.Drawing.Point(15, 18);
             this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(67, 19);
+            this.lblTimKiem.Size = new System.Drawing.Size(83, 23);
             this.lblTimKiem.TabIndex = 0;
             this.lblTimKiem.Text = "Tìm kiếm:";
             // 
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTimKiem.Location = new System.Drawing.Point(90, 15);
+            this.txtTimKiem.Location = new System.Drawing.Point(104, 16);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(250, 25);
+            this.txtTimKiem.Size = new System.Drawing.Size(250, 30);
             this.txtTimKiem.TabIndex = 1;
             this.txtTimKiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
@@ -82,9 +83,9 @@ namespace QLCHBanLinhKien
             // 
             this.lblLoaiKH.AutoSize = true;
             this.lblLoaiKH.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblLoaiKH.Location = new System.Drawing.Point(370, 18);
+            this.lblLoaiKH.Location = new System.Drawing.Point(376, 18);
             this.lblLoaiKH.Name = "lblLoaiKH";
-            this.lblLoaiKH.Size = new System.Drawing.Size(59, 19);
+            this.lblLoaiKH.Size = new System.Drawing.Size(72, 23);
             this.lblLoaiKH.TabIndex = 2;
             this.lblLoaiKH.Text = "Loại KH:";
             // 
@@ -94,28 +95,13 @@ namespace QLCHBanLinhKien
             this.cmbLoaiKH.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbLoaiKH.Items.AddRange(new object[] {
             "-- Tất cả --",
-            "Thường",
+            "Thuờng",
             "VIP",
-            "Doanh nghiệp"});
-            this.cmbLoaiKH.Location = new System.Drawing.Point(435, 15);
+            "Sỉ"});
+            this.cmbLoaiKH.Location = new System.Drawing.Point(467, 15);
             this.cmbLoaiKH.Name = "cmbLoaiKH";
-            this.cmbLoaiKH.Size = new System.Drawing.Size(150, 25);
+            this.cmbLoaiKH.Size = new System.Drawing.Size(163, 31);
             this.cmbLoaiKH.TabIndex = 3;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.btnTimKiem.FlatAppearance.BorderSize = 0;
-            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(610, 13);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 30);
-            this.btnTimKiem.TabIndex = 4;
-            this.btnTimKiem.Text = "Tìm";
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // dgvKhachHang
             // 
@@ -148,7 +134,7 @@ namespace QLCHBanLinhKien
             this.lblSoKetQua.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSoKetQua.Location = new System.Drawing.Point(15, 20);
             this.lblSoKetQua.Name = "lblSoKetQua";
-            this.lblSoKetQua.Size = new System.Drawing.Size(0, 19);
+            this.lblSoKetQua.Size = new System.Drawing.Size(0, 23);
             this.lblSoKetQua.TabIndex = 0;
             // 
             // btnDong
@@ -166,9 +152,26 @@ namespace QLCHBanLinhKien
             this.btnDong.UseVisualStyleBackColor = false;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.Green;
+            this.btnTimKiem.FlatAppearance.BorderSize = 0;
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.Image = global::QLCHBanLinhKien.Properties.Resources.Search_find;
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(673, 15);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(109, 31);
+            this.btnTimKiem.TabIndex = 4;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // frmTimKhachHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 500);
@@ -177,6 +180,7 @@ namespace QLCHBanLinhKien
             this.Controls.Add(this.panelFilter);
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTimKhachHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tìm kiếm khách hàng";

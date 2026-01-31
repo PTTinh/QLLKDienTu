@@ -17,6 +17,7 @@ namespace QLCHBanLinhKien
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLichSuMuaHang));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelFilter = new System.Windows.Forms.Panel();
             this.lblKhachHang = new System.Windows.Forms.Label();
@@ -72,7 +73,7 @@ namespace QLCHBanLinhKien
             this.lblKhachHang.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblKhachHang.Location = new System.Drawing.Point(20, 18);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(79, 19);
+            this.lblKhachHang.Size = new System.Drawing.Size(105, 23);
             this.lblKhachHang.TabIndex = 0;
             this.lblKhachHang.Text = "Khách hàng:";
             // 
@@ -80,9 +81,9 @@ namespace QLCHBanLinhKien
             // 
             this.cmbKhachHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhachHang.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbKhachHang.Location = new System.Drawing.Point(110, 15);
+            this.cmbKhachHang.Location = new System.Drawing.Point(140, 16);
             this.cmbKhachHang.Name = "cmbKhachHang";
-            this.cmbKhachHang.Size = new System.Drawing.Size(200, 25);
+            this.cmbKhachHang.Size = new System.Drawing.Size(174, 31);
             this.cmbKhachHang.TabIndex = 1;
             // 
             // lblTuNgay
@@ -91,7 +92,7 @@ namespace QLCHBanLinhKien
             this.lblTuNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTuNgay.Location = new System.Drawing.Point(330, 18);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(60, 19);
+            this.lblTuNgay.Size = new System.Drawing.Size(75, 23);
             this.lblTuNgay.TabIndex = 2;
             this.lblTuNgay.Text = "Từ ngày:";
             // 
@@ -99,18 +100,18 @@ namespace QLCHBanLinhKien
             // 
             this.dtpTuNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTuNgay.Location = new System.Drawing.Point(395, 15);
+            this.dtpTuNgay.Location = new System.Drawing.Point(411, 15);
             this.dtpTuNgay.Name = "dtpTuNgay";
-            this.dtpTuNgay.Size = new System.Drawing.Size(110, 25);
+            this.dtpTuNgay.Size = new System.Drawing.Size(110, 30);
             this.dtpTuNgay.TabIndex = 3;
             // 
             // lblDenNgay
             // 
             this.lblDenNgay.AutoSize = true;
             this.lblDenNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDenNgay.Location = new System.Drawing.Point(520, 18);
+            this.lblDenNgay.Location = new System.Drawing.Point(544, 18);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(68, 19);
+            this.lblDenNgay.Size = new System.Drawing.Size(87, 23);
             this.lblDenNgay.TabIndex = 4;
             this.lblDenNgay.Text = "Đến ngày:";
             // 
@@ -118,9 +119,9 @@ namespace QLCHBanLinhKien
             // 
             this.dtpDenNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDenNgay.Location = new System.Drawing.Point(595, 15);
+            this.dtpDenNgay.Location = new System.Drawing.Point(637, 15);
             this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(110, 25);
+            this.dtpDenNgay.Size = new System.Drawing.Size(110, 30);
             this.dtpDenNgay.TabIndex = 5;
             // 
             // btnTimKiem
@@ -130,9 +131,11 @@ namespace QLCHBanLinhKien
             this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(730, 12);
+            this.btnTimKiem.Image = global::QLCHBanLinhKien.Properties.Resources.Search_find;
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(771, 15);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(100, 32);
+            this.btnTimKiem.Size = new System.Drawing.Size(117, 33);
             this.btnTimKiem.TabIndex = 6;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
@@ -173,7 +176,7 @@ namespace QLCHBanLinhKien
             this.lblTongHoaDonLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTongHoaDonLabel.Location = new System.Drawing.Point(20, 18);
             this.lblTongHoaDonLabel.Name = "lblTongHoaDonLabel";
-            this.lblTongHoaDonLabel.Size = new System.Drawing.Size(111, 20);
+            this.lblTongHoaDonLabel.Size = new System.Drawing.Size(143, 25);
             this.lblTongHoaDonLabel.TabIndex = 0;
             this.lblTongHoaDonLabel.Text = "Tổng hóa đơn:";
             // 
@@ -184,7 +187,7 @@ namespace QLCHBanLinhKien
             this.lblTongHoaDon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTongHoaDon.Location = new System.Drawing.Point(135, 18);
             this.lblTongHoaDon.Name = "lblTongHoaDon";
-            this.lblTongHoaDon.Size = new System.Drawing.Size(18, 20);
+            this.lblTongHoaDon.Size = new System.Drawing.Size(23, 25);
             this.lblTongHoaDon.TabIndex = 1;
             this.lblTongHoaDon.Text = "0";
             // 
@@ -194,7 +197,7 @@ namespace QLCHBanLinhKien
             this.lblTongTienLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTongTienLabel.Location = new System.Drawing.Point(250, 18);
             this.lblTongTienLabel.Name = "lblTongTienLabel";
-            this.lblTongTienLabel.Size = new System.Drawing.Size(81, 20);
+            this.lblTongTienLabel.Size = new System.Drawing.Size(103, 25);
             this.lblTongTienLabel.TabIndex = 2;
             this.lblTongTienLabel.Text = "Tổng tiền:";
             // 
@@ -203,9 +206,9 @@ namespace QLCHBanLinhKien
             this.lblTongTien.AutoSize = true;
             this.lblTongTien.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTongTien.ForeColor = System.Drawing.Color.Red;
-            this.lblTongTien.Location = new System.Drawing.Point(340, 17);
+            this.lblTongTien.Location = new System.Drawing.Point(359, 14);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(56, 21);
+            this.lblTongTien.Size = new System.Drawing.Size(74, 28);
             this.lblTongTien.TabIndex = 3;
             this.lblTongTien.Text = "0 VNĐ";
             // 
@@ -226,7 +229,7 @@ namespace QLCHBanLinhKien
             // 
             // frmLichSuMuaHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(900, 560);
@@ -235,6 +238,7 @@ namespace QLCHBanLinhKien
             this.Controls.Add(this.panelFilter);
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLichSuMuaHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lịch sử mua hàng";
@@ -245,6 +249,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

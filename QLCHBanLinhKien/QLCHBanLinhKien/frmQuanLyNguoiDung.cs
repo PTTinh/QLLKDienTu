@@ -263,5 +263,10 @@ namespace QLCHBanLinhKien
             dgvNguoiDung.DataSource = dt;
             lblTong.Text = "Tim thay: " + dt.Rows.Count + " nguoi dung";
         }
+
+        private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
