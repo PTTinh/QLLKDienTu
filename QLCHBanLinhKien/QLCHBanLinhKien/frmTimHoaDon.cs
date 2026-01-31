@@ -127,11 +127,6 @@ namespace QLCHBanLinhKien
             frm.ShowDialog();
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
-        {
-            ExcelExporter.ExportDataGridViewToExcel(dgvHoaDon, "DANH SACH HOA DON", "DanhSachHoaDon");
-        }
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtMaHD.Clear();
