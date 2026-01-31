@@ -47,7 +47,7 @@ namespace QLCHBanLinhKien
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(850, 50);
+            this.lblTitle.Size = new System.Drawing.Size(847, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "TOP KHÁCH HÀNG MUA NHIỀU";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,7 +159,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 490);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(850, 60);
+            this.panelBottom.Size = new System.Drawing.Size(847, 60);
             this.panelBottom.TabIndex = 3;
             // 
             // lblTongHoaDonLabel
@@ -239,7 +239,7 @@ namespace QLCHBanLinhKien
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 550);
+            this.ClientSize = new System.Drawing.Size(847, 550);
             this.Controls.Add(this.dgvTopKhachHang);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelFilter);

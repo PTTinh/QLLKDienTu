@@ -8,6 +8,8 @@ namespace QLCHBanLinhKien
 {
     public partial class frmCanhBaoHangTon : Form
     {
+        private DataTable dtHangTon;
+
         public frmCanhBaoHangTon()
         {
             InitializeComponent();
@@ -36,10 +38,10 @@ namespace QLCHBanLinhKien
                 cmd.Parameters.AddWithValue("@MucCanhBao", (int)nudMucCanhBao.Value);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                dtHangTon = new DataTable();
+                da.Fill(dtHangTon);
 
-                dgvHangTon.DataSource = dt;
+                dgvHangTon.DataSource = dtHangTon;
 
                 // Format columns
                 if (dgvHangTon.Columns["MaSP"] != null)
@@ -79,7 +81,7 @@ namespace QLCHBanLinhKien
                     }
                 }
 
-                lblTongSP.Text = "Tong san pham can nhap: " + dt.Rows.Count.ToString();
+                lblTongSP.Text = "Tong san pham can nhap: " + dtHangTon.Rows.Count.ToString();
             }
             catch (Exception ex)
             {
@@ -96,9 +98,15 @@ namespace QLCHBanLinhKien
             LoadData();
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void btnReport_Click(object sender, EventArgs e)
         {
-            ExcelExporter.ExportDataGridViewToExcel(dgvHangTon, "CANH BAO HANG TON KHO", "CanhBaoHangTon");
+            if (dtHangTon == null || dtHangTon.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất báo cáo!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmReportViewer.ShowCanhBaoHangTon(dtHangTon, (int)nudMucCanhBao.Value);
         }
 
         private void btnDong_Click(object sender, EventArgs e)
