@@ -27,7 +27,8 @@ namespace QLCHBanLinhKien
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.cboNhanVien = new System.Windows.Forms.ComboBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnDong = new System.Windows.Forms.Button();
             this.panelSummary = new System.Windows.Forms.Panel();
             this.lblTongDoanhThu = new System.Windows.Forms.Label();
             this.lblTongHoaDon = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@ namespace QLCHBanLinhKien
             this.lblThongKe = new System.Windows.Forms.Label();
             this.dgvChiTiet = new System.Windows.Forms.DataGridView();
             this.lblChiTiet = new System.Windows.Forms.Label();
-            this.btnDong = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.panelFilter.SuspendLayout();
             this.panelSummary.SuspendLayout();
@@ -81,7 +81,7 @@ namespace QLCHBanLinhKien
             this.panelFilter.Controls.Add(this.lblNhanVien);
             this.panelFilter.Controls.Add(this.cboNhanVien);
             this.panelFilter.Controls.Add(this.btnTimKiem);
-            this.panelFilter.Controls.Add(this.btnXuatExcel);
+            this.panelFilter.Controls.Add(this.btnReport);
             this.panelFilter.Controls.Add(this.btnDong);
             this.panelFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFilter.Location = new System.Drawing.Point(0, 50);
@@ -95,7 +95,7 @@ namespace QLCHBanLinhKien
             this.lblTuNgay.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblTuNgay.Location = new System.Drawing.Point(10, 15);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(55, 17);
+            this.lblTuNgay.Size = new System.Drawing.Size(58, 17);
             this.lblTuNgay.TabIndex = 0;
             this.lblTuNgay.Text = "Từ ngày:";
             // 
@@ -114,7 +114,7 @@ namespace QLCHBanLinhKien
             this.lblDenNgay.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblDenNgay.Location = new System.Drawing.Point(190, 15);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(63, 17);
+            this.lblDenNgay.Size = new System.Drawing.Size(66, 17);
             this.lblDenNgay.TabIndex = 2;
             this.lblDenNgay.Text = "Đến ngày:";
             // 
@@ -133,7 +133,7 @@ namespace QLCHBanLinhKien
             this.lblNhanVien.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNhanVien.Location = new System.Drawing.Point(380, 15);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(68, 17);
+            this.lblNhanVien.Size = new System.Drawing.Size(69, 17);
             this.lblNhanVien.TabIndex = 4;
             this.lblNhanVien.Text = "Nhân viên:";
             // 
@@ -161,20 +161,35 @@ namespace QLCHBanLinhKien
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // btnXuatExcel
+            // btnReport
             // 
-            this.btnXuatExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(0)))));
-            this.btnXuatExcel.FlatAppearance.BorderSize = 0;
-            this.btnXuatExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(750, 10);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(90, 28);
-            this.btnXuatExcel.TabIndex = 7;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = false;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(0)))));
+            this.btnReport.FlatAppearance.BorderSize = 0;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Location = new System.Drawing.Point(750, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(90, 28);
+            this.btnReport.TabIndex = 7;
+            this.btnReport.Text = "Báo Cáo";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // btnDong
+            // 
+            this.btnDong.BackColor = System.Drawing.Color.Gray;
+            this.btnDong.FlatAppearance.BorderSize = 0;
+            this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDong.ForeColor = System.Drawing.Color.White;
+            this.btnDong.Location = new System.Drawing.Point(850, 10);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(90, 28);
+            this.btnDong.TabIndex = 8;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // panelSummary
             // 
@@ -206,7 +221,7 @@ namespace QLCHBanLinhKien
             this.lblTongHoaDon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(150)))));
             this.lblTongHoaDon.Location = new System.Drawing.Point(350, 10);
             this.lblTongHoaDon.Name = "lblTongHoaDon";
-            this.lblTongHoaDon.Size = new System.Drawing.Size(116, 19);
+            this.lblTongHoaDon.Size = new System.Drawing.Size(118, 19);
             this.lblTongHoaDon.TabIndex = 1;
             this.lblTongHoaDon.Text = "Tổng hóa đơn: 0";
             // 
@@ -217,7 +232,7 @@ namespace QLCHBanLinhKien
             this.lblSoNhanVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblSoNhanVien.Location = new System.Drawing.Point(600, 10);
             this.lblSoNhanVien.Name = "lblSoNhanVien";
-            this.lblSoNhanVien.Size = new System.Drawing.Size(107, 19);
+            this.lblSoNhanVien.Size = new System.Drawing.Size(110, 19);
             this.lblSoNhanVien.TabIndex = 2;
             this.lblSoNhanVien.Text = "Số nhân viên: 0";
             // 
@@ -300,21 +315,6 @@ namespace QLCHBanLinhKien
             this.lblChiTiet.Text = "Chi tiết hóa đơn của nhân viên";
             this.lblChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnDong
-            // 
-            this.btnDong.BackColor = System.Drawing.Color.Gray;
-            this.btnDong.FlatAppearance.BorderSize = 0;
-            this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDong.ForeColor = System.Drawing.Color.White;
-            this.btnDong.Location = new System.Drawing.Point(850, 10);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(90, 28);
-            this.btnDong.TabIndex = 8;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = false;
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
             // frmThongKeNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -342,6 +342,7 @@ namespace QLCHBanLinhKien
             ((System.ComponentModel.ISupportInitialize)(this.dgvThongKe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -356,7 +357,7 @@ namespace QLCHBanLinhKien
         private System.Windows.Forms.Label lblNhanVien;
         private System.Windows.Forms.ComboBox cboNhanVien;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Panel panelSummary;
         private System.Windows.Forms.Label lblTongDoanhThu;
         private System.Windows.Forms.Label lblTongHoaDon;

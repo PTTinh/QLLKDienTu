@@ -9,6 +9,8 @@ namespace QLCHBanLinhKien
 {
     public partial class frmThongKeNhanVien : Form
     {
+        private DataTable dtThongKe;
+
         public frmThongKeNhanVien()
         {
             InitializeComponent();
@@ -54,8 +56,8 @@ namespace QLCHBanLinhKien
 
                 // Thống kê doanh số theo nhân viên
                 string query = @"SELECT n.MaNguoiDung, n.HoTen, n.TenDangNhap, n.VaiTro,
-                                 COUNT(DISTINCT h.MaHoaDon) AS SoHoaDon,
-                                 ISNULL(SUM(h.ThanhTien), 0) AS TongDoanhThu,
+                                 COUNT(DISTINCT h.MaHoaDon) AS SoHoaDon, 
+                                 ISNULL(SUM(h.ThanhTien), 0) AS TongDoanhThu, 
                                  ISNULL(AVG(h.ThanhTien), 0) AS TrungBinhHoaDon,
                                  MAX(h.NgayBan) AS LanBanCuoi
                                  FROM NguoiDung n
@@ -77,6 +79,7 @@ namespace QLCHBanLinhKien
 
                 DataTable dt = Functions.GetDataTable(query, parameters);
                 dgvThongKe.DataSource = dt;
+                dtThongKe = dt;
 
                 // Định dạng cột
                 dgvThongKe.Columns["MaNguoiDung"].HeaderText = "Mã NV";
@@ -189,72 +192,31 @@ namespace QLCHBanLinhKien
             }
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void btnReport_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dgvThongKe.Rows.Count == 0)
+                if (dtThongKe == null || dtThongKe.Rows.Count == 0)
                 {
-                    MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Không có dữ liệu để xuất báo cáo!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Excel Files|*.xlsx";
-                sfd.FileName = "ThongKeNhanVien_" + DateTime.Now.ToString("yyyyMMdd");
-
-                if (sfd.ShowDialog() == DialogResult.OK)
+                // Tính tổng
+                decimal tongDoanhThu = 0;
+                int tongHoaDon = 0;
+                foreach (DataRow row in dtThongKe.Rows)
                 {
-                    DataTable dt = (DataTable)dgvThongKe.DataSource;
-                    ExportToExcel(dt, sfd.FileName);
-                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tongDoanhThu += Convert.ToDecimal(row["TongDoanhThu"]);
+                    tongHoaDon += Convert.ToInt32(row["SoHoaDon"]);
                 }
+
+                frmReportViewer.ShowThongKeNhanVien(dtThongKe, dtpTuNgay.Value, dtpDenNgay.Value, tongDoanhThu, tongHoaDon);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ExportToExcel(DataTable dt, string filePath)
-        {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add();
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
-
-            // Tiêu đề
-            worksheet.Cells[1, 1] = "THỐNG KÊ DOANH SỐ NHÂN VIÊN";
-            worksheet.Range["A1:H1"].Merge();
-            worksheet.Cells[1, 1].Font.Size = 16;
-            worksheet.Cells[1, 1].Font.Bold = true;
-            worksheet.Cells[1, 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-            worksheet.Cells[2, 1] = string.Format("Từ ngày {0} đến ngày {1}",
-                dtpTuNgay.Value.ToString("dd/MM/yyyy"), dtpDenNgay.Value.ToString("dd/MM/yyyy"));
-            worksheet.Range["A2:H2"].Merge();
-            worksheet.Cells[2, 2].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-            // Header
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                worksheet.Cells[4, i + 1] = dt.Columns[i].ColumnName;
-                worksheet.Cells[4, i + 1].Font.Bold = true;
-                worksheet.Cells[4, i + 1].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
-            }
-
-            // Data
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                for (int j = 0; j < dt.Columns.Count; j++)
-                {
-                    worksheet.Cells[i + 5, j + 1] = dt.Rows[i][j].ToString();
-                }
-            }
-
-            worksheet.Columns.AutoFit();
-            workbook.SaveAs(filePath);
-            workbook.Close();
-            excel.Quit();
         }
 
         private void btnDong_Click(object sender, EventArgs e)
