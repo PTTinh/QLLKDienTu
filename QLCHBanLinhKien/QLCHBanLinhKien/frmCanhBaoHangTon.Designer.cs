@@ -19,7 +19,7 @@ namespace QLCHBanLinhKien
         {
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnDong = new System.Windows.Forms.Button();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.nudMucCanhBao = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -34,7 +34,7 @@ namespace QLCHBanLinhKien
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.Controls.Add(this.btnDong);
-            this.pnlTop.Controls.Add(this.btnXuatExcel);
+            this.pnlTop.Controls.Add(this.btnReport);
             this.pnlTop.Controls.Add(this.btnTimKiem);
             this.pnlTop.Controls.Add(this.nudMucCanhBao);
             this.pnlTop.Controls.Add(this.label1);
@@ -55,17 +55,17 @@ namespace QLCHBanLinhKien
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // btnXuatExcel
+            // btnReport
             // 
-            this.btnXuatExcel.BackColor = System.Drawing.Color.Green;
-            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(340, 12);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(90, 30);
-            this.btnXuatExcel.TabIndex = 3;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = false;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            this.btnReport.BackColor = System.Drawing.Color.Green;
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Location = new System.Drawing.Point(340, 12);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(90, 30);
+            this.btnReport.TabIndex = 3;
+            this.btnReport.Text = "Báo Cáo";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnTimKiem
             // 
@@ -101,7 +101,7 @@ namespace QLCHBanLinhKien
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.Size = new System.Drawing.Size(143, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mức cảnh báo (số lượng <=):";
             // 
@@ -150,6 +150,7 @@ namespace QLCHBanLinhKien
             ((System.ComponentModel.ISupportInitialize)(this.nudMucCanhBao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangTon)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -158,7 +159,7 @@ namespace QLCHBanLinhKien
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudMucCanhBao;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.DataGridView dgvHangTon;
         private System.Windows.Forms.Label lblTongSP;

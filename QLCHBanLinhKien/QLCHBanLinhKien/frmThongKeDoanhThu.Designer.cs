@@ -19,7 +19,7 @@ namespace QLCHBanLinhKien
         {
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnDong = new System.Windows.Forms.Button();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.btnNamNay = new System.Windows.Forms.Button();
             this.btnThangNay = new System.Windows.Forms.Button();
             this.btnHomNay = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@ namespace QLCHBanLinhKien
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.Controls.Add(this.btnDong);
-            this.pnlTop.Controls.Add(this.btnXuatExcel);
+            this.pnlTop.Controls.Add(this.btnReport);
             this.pnlTop.Controls.Add(this.btnNamNay);
             this.pnlTop.Controls.Add(this.btnThangNay);
             this.pnlTop.Controls.Add(this.btnHomNay);
@@ -73,17 +73,17 @@ namespace QLCHBanLinhKien
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // btnXuatExcel
+            // btnReport
             // 
-            this.btnXuatExcel.BackColor = System.Drawing.Color.Green;
-            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(720, 15);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(90, 30);
-            this.btnXuatExcel.TabIndex = 8;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = false;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            this.btnReport.BackColor = System.Drawing.Color.Green;
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Location = new System.Drawing.Point(720, 15);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(90, 30);
+            this.btnReport.TabIndex = 8;
+            this.btnReport.Text = "Báo Cáo";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnNamNay
             // 
@@ -195,7 +195,7 @@ namespace QLCHBanLinhKien
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label8.Location = new System.Drawing.Point(700, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 15);
+            this.label8.Size = new System.Drawing.Size(81, 15);
             this.label8.TabIndex = 6;
             this.label8.Text = "THÀNH TIỀN:";
             // 
@@ -216,7 +216,7 @@ namespace QLCHBanLinhKien
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label6.Location = new System.Drawing.Point(480, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 15);
+            this.label6.Size = new System.Drawing.Size(99, 15);
             this.label6.TabIndex = 4;
             this.label6.Text = "TỔNG GIẢM GIÁ:";
             // 
@@ -237,7 +237,7 @@ namespace QLCHBanLinhKien
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label4.Location = new System.Drawing.Point(250, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 15);
+            this.label4.Size = new System.Drawing.Size(118, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "TỔNG DOANH THU:";
             // 
@@ -257,7 +257,7 @@ namespace QLCHBanLinhKien
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label3.Location = new System.Drawing.Point(30, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 15);
+            this.label3.Size = new System.Drawing.Size(85, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "SỐ HÓA ĐƠN:";
             // 
@@ -294,6 +294,7 @@ namespace QLCHBanLinhKien
             this.pnlSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -307,7 +308,7 @@ namespace QLCHBanLinhKien
         private System.Windows.Forms.Button btnHomNay;
         private System.Windows.Forms.Button btnThangNay;
         private System.Windows.Forms.Button btnNamNay;
-        private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.Panel pnlSummary;
         private System.Windows.Forms.Label lblSoHoaDon;

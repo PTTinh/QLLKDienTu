@@ -46,7 +46,7 @@ namespace QLCHBanLinhKien
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(850, 50);
+            this.lblTitle.Size = new System.Drawing.Size(847, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "TOP KHÁCH HÀNG MUA NHIỀU";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,7 +64,7 @@ namespace QLCHBanLinhKien
             this.panelFilter.Location = new System.Drawing.Point(0, 50);
             this.panelFilter.Name = "panelFilter";
             this.panelFilter.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.panelFilter.Size = new System.Drawing.Size(850, 60);
+            this.panelFilter.Size = new System.Drawing.Size(847, 60);
             this.panelFilter.TabIndex = 1;
             // 
             // lblTop
@@ -73,7 +73,7 @@ namespace QLCHBanLinhKien
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTop.Location = new System.Drawing.Point(20, 18);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(33, 19);
+            this.lblTop.Size = new System.Drawing.Size(34, 19);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "Top:";
             // 
@@ -81,12 +81,19 @@ namespace QLCHBanLinhKien
             // 
             this.numTop.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.numTop.Location = new System.Drawing.Point(60, 15);
-            this.numTop.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
-            this.numTop.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
+            this.numTop.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numTop.Name = "numTop";
             this.numTop.Size = new System.Drawing.Size(60, 25);
             this.numTop.TabIndex = 1;
-            this.numTop.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            this.numTop.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // lblTuNgay
             // 
@@ -94,7 +101,7 @@ namespace QLCHBanLinhKien
             this.lblTuNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTuNgay.Location = new System.Drawing.Point(150, 18);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(60, 19);
+            this.lblTuNgay.Size = new System.Drawing.Size(61, 19);
             this.lblTuNgay.TabIndex = 2;
             this.lblTuNgay.Text = "Từ ngày:";
             // 
@@ -113,7 +120,7 @@ namespace QLCHBanLinhKien
             this.lblDenNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblDenNgay.Location = new System.Drawing.Point(360, 18);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(68, 19);
+            this.lblDenNgay.Size = new System.Drawing.Size(71, 19);
             this.lblDenNgay.TabIndex = 4;
             this.lblDenNgay.Text = "Đến ngày:";
             // 
@@ -133,7 +140,7 @@ namespace QLCHBanLinhKien
             this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(580, 12);
+            this.btnTimKiem.Location = new System.Drawing.Point(730, 15);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(100, 32);
             this.btnTimKiem.TabIndex = 6;
@@ -153,7 +160,7 @@ namespace QLCHBanLinhKien
             this.dgvTopKhachHang.ReadOnly = true;
             this.dgvTopKhachHang.RowHeadersWidth = 30;
             this.dgvTopKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTopKhachHang.Size = new System.Drawing.Size(900, 380);
+            this.dgvTopKhachHang.Size = new System.Drawing.Size(847, 380);
             this.dgvTopKhachHang.TabIndex = 2;
             // 
             // panelBottom
@@ -166,7 +173,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 490);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(850, 60);
+            this.panelBottom.Size = new System.Drawing.Size(847, 60);
             this.panelBottom.TabIndex = 3;
             // 
             // lblTongHoaDonLabel
@@ -175,7 +182,7 @@ namespace QLCHBanLinhKien
             this.lblTongHoaDonLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTongHoaDonLabel.Location = new System.Drawing.Point(20, 18);
             this.lblTongHoaDonLabel.Name = "lblTongHoaDonLabel";
-            this.lblTongHoaDonLabel.Size = new System.Drawing.Size(111, 20);
+            this.lblTongHoaDonLabel.Size = new System.Drawing.Size(110, 20);
             this.lblTongHoaDonLabel.TabIndex = 0;
             this.lblTongHoaDonLabel.Text = "Tổng hóa đơn:";
             // 
@@ -196,7 +203,7 @@ namespace QLCHBanLinhKien
             this.lblTongChiTieuLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTongChiTieuLabel.Location = new System.Drawing.Point(280, 18);
             this.lblTongChiTieuLabel.Name = "lblTongChiTieuLabel";
-            this.lblTongChiTieuLabel.Size = new System.Drawing.Size(108, 20);
+            this.lblTongChiTieuLabel.Size = new System.Drawing.Size(104, 20);
             this.lblTongChiTieuLabel.TabIndex = 2;
             this.lblTongChiTieuLabel.Text = "Tổng chi tiêu:";
             // 
@@ -207,7 +214,7 @@ namespace QLCHBanLinhKien
             this.lblTongChiTieu.ForeColor = System.Drawing.Color.Red;
             this.lblTongChiTieu.Location = new System.Drawing.Point(395, 17);
             this.lblTongChiTieu.Name = "lblTongChiTieu";
-            this.lblTongChiTieu.Size = new System.Drawing.Size(56, 21);
+            this.lblTongChiTieu.Size = new System.Drawing.Size(59, 21);
             this.lblTongChiTieu.TabIndex = 3;
             this.lblTongChiTieu.Text = "0 VNĐ";
             // 
@@ -231,7 +238,7 @@ namespace QLCHBanLinhKien
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 550);
+            this.ClientSize = new System.Drawing.Size(847, 550);
             this.Controls.Add(this.dgvTopKhachHang);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelFilter);
@@ -248,6 +255,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

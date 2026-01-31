@@ -8,6 +8,8 @@ namespace QLCHBanLinhKien
 {
     public partial class frmThongKeDoanhThu : Form
     {
+        private DataTable dtDoanhThu;
+
         public frmThongKeDoanhThu()
         {
             InitializeComponent();
@@ -38,10 +40,10 @@ namespace QLCHBanLinhKien
                 cmd.Parameters.AddWithValue("@DenNgay", dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1));
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                dtDoanhThu = new DataTable();
+                da.Fill(dtDoanhThu);
 
-                dgvDoanhThu.DataSource = dt;
+                dgvDoanhThu.DataSource = dtDoanhThu;
 
                 // Format columns
                 if (dgvDoanhThu.Columns["MaHoaDon"] != null)
@@ -133,20 +135,22 @@ namespace QLCHBanLinhKien
             LoadData();
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void btnReport_Click(object sender, EventArgs e)
         {
-            DataTable dt = dgvDoanhThu.DataSource as DataTable;
-            if (dt != null)
+            if (dtDoanhThu == null || dtDoanhThu.Rows.Count == 0)
             {
-                decimal tongThanhTien = 0;
-                foreach (DataGridViewRow row in dgvDoanhThu.Rows)
-                {
-                    if (row.Cells["ThanhTien"].Value != null)
-                        tongThanhTien += Convert.ToDecimal(row.Cells["ThanhTien"].Value);
-                }
-
-                ExcelExporter.ExportDoanhThuReport(dt, dtpTuNgay.Value, dtpDenNgay.Value, tongThanhTien);
+                MessageBox.Show("Không có dữ liệu để xuất báo cáo!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            decimal tongThanhTien = 0;
+            foreach (DataGridViewRow row in dgvDoanhThu.Rows)
+            {
+                if (row.Cells["ThanhTien"].Value != null)
+                    tongThanhTien += Convert.ToDecimal(row.Cells["ThanhTien"].Value);
+            }
+
+            frmReportViewer.ShowDoanhThu(dtDoanhThu, dtpTuNgay.Value, dtpDenNgay.Value, tongThanhTien);
         }
 
         private void btnDong_Click(object sender, EventArgs e)
