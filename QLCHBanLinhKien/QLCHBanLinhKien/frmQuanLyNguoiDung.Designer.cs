@@ -17,6 +17,7 @@ namespace QLCHBanLinhKien
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyNguoiDung));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
@@ -84,7 +85,7 @@ namespace QLCHBanLinhKien
             this.panelLeft.Location = new System.Drawing.Point(0, 50);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Padding = new System.Windows.Forms.Padding(10);
-            this.panelLeft.Size = new System.Drawing.Size(320, 450);
+            this.panelLeft.Size = new System.Drawing.Size(328, 450);
             this.panelLeft.TabIndex = 1;
             // 
             // groupBox1
@@ -106,7 +107,7 @@ namespace QLCHBanLinhKien
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 380);
+            this.groupBox1.Size = new System.Drawing.Size(308, 357);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin người dùng";
@@ -116,9 +117,9 @@ namespace QLCHBanLinhKien
             this.chkTrangThai.AutoSize = true;
             this.chkTrangThai.Checked = true;
             this.chkTrangThai.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTrangThai.Location = new System.Drawing.Point(100, 310);
+            this.chkTrangThai.Location = new System.Drawing.Point(115, 310);
             this.chkTrangThai.Name = "chkTrangThai";
-            this.chkTrangThai.Size = new System.Drawing.Size(107, 27);
+            this.chkTrangThai.Size = new System.Drawing.Size(114, 27);
             this.chkTrangThai.TabIndex = 12;
             this.chkTrangThai.Text = "Hoạt động";
             this.chkTrangThai.UseVisualStyleBackColor = true;
@@ -127,7 +128,7 @@ namespace QLCHBanLinhKien
             // 
             this.cboVaiTro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVaiTro.FormattingEnabled = true;
-            this.cboVaiTro.Location = new System.Drawing.Point(100, 270);
+            this.cboVaiTro.Location = new System.Drawing.Point(115, 270);
             this.cboVaiTro.Name = "cboVaiTro";
             this.cboVaiTro.Size = new System.Drawing.Size(180, 31);
             this.cboVaiTro.TabIndex = 11;
@@ -137,13 +138,13 @@ namespace QLCHBanLinhKien
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(15, 273);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 23);
+            this.label7.Size = new System.Drawing.Size(64, 23);
             this.label7.TabIndex = 10;
             this.label7.Text = "Vai trò:";
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(100, 230);
+            this.txtSDT.Location = new System.Drawing.Point(115, 230);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(180, 30);
             this.txtSDT.TabIndex = 9;
@@ -153,13 +154,13 @@ namespace QLCHBanLinhKien
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(15, 233);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 23);
+            this.label6.Size = new System.Drawing.Size(43, 23);
             this.label6.TabIndex = 8;
             this.label6.Text = "SDT:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(100, 190);
+            this.txtEmail.Location = new System.Drawing.Point(115, 190);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 30);
             this.txtEmail.TabIndex = 7;
@@ -169,13 +170,13 @@ namespace QLCHBanLinhKien
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(15, 193);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 23);
+            this.label5.Size = new System.Drawing.Size(55, 23);
             this.label5.TabIndex = 6;
             this.label5.Text = "Email:";
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(100, 150);
+            this.txtHoTen.Location = new System.Drawing.Point(115, 150);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(180, 30);
             this.txtHoTen.TabIndex = 5;
@@ -185,13 +186,13 @@ namespace QLCHBanLinhKien
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(15, 153);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 23);
+            this.label4.Size = new System.Drawing.Size(66, 23);
             this.label4.TabIndex = 4;
             this.label4.Text = "Họ tên:";
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(100, 70);
+            this.txtMatKhau.Location = new System.Drawing.Point(115, 70);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(180, 30);
@@ -200,15 +201,15 @@ namespace QLCHBanLinhKien
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 73);
+            this.label3.Location = new System.Drawing.Point(15, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 23);
+            this.label3.Size = new System.Drawing.Size(86, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Mật khẩu:";
             // 
             // txtTenDangNhap
             // 
-            this.txtTenDangNhap.Location = new System.Drawing.Point(100, 30);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(115, 30);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Size = new System.Drawing.Size(180, 30);
             this.txtTenDangNhap.TabIndex = 1;
@@ -218,7 +219,7 @@ namespace QLCHBanLinhKien
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 23);
+            this.label1.Size = new System.Drawing.Size(70, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên ĐN:";
             // 
@@ -229,16 +230,16 @@ namespace QLCHBanLinhKien
             this.panelButtons.Controls.Add(this.btnSua);
             this.panelButtons.Controls.Add(this.btnThem);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(10, 390);
+            this.panelButtons.Location = new System.Drawing.Point(10, 367);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(300, 50);
+            this.panelButtons.Size = new System.Drawing.Size(308, 73);
             this.panelButtons.TabIndex = 1;
             // 
             // btnLamMoi
             // 
             this.btnLamMoi.Location = new System.Drawing.Point(225, 10);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(70, 30);
+            this.btnLamMoi.Size = new System.Drawing.Size(70, 53);
             this.btnLamMoi.TabIndex = 3;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
@@ -250,7 +251,7 @@ namespace QLCHBanLinhKien
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Location = new System.Drawing.Point(150, 10);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(70, 30);
+            this.btnXoa.Size = new System.Drawing.Size(70, 53);
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
@@ -262,7 +263,7 @@ namespace QLCHBanLinhKien
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(77, 10);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(70, 30);
+            this.btnSua.Size = new System.Drawing.Size(70, 53);
             this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
@@ -274,7 +275,7 @@ namespace QLCHBanLinhKien
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.Location = new System.Drawing.Point(4, 10);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(70, 30);
+            this.btnThem.Size = new System.Drawing.Size(70, 53);
             this.btnThem.TabIndex = 0;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
@@ -285,10 +286,10 @@ namespace QLCHBanLinhKien
             this.panelRight.Controls.Add(this.dgvNguoiDung);
             this.panelRight.Controls.Add(this.panelSearch);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(320, 50);
+            this.panelRight.Location = new System.Drawing.Point(328, 50);
             this.panelRight.Name = "panelRight";
             this.panelRight.Padding = new System.Windows.Forms.Padding(10);
-            this.panelRight.Size = new System.Drawing.Size(680, 450);
+            this.panelRight.Size = new System.Drawing.Size(672, 450);
             this.panelRight.TabIndex = 2;
             // 
             // dgvNguoiDung
@@ -304,9 +305,10 @@ namespace QLCHBanLinhKien
             this.dgvNguoiDung.ReadOnly = true;
             this.dgvNguoiDung.RowHeadersWidth = 51;
             this.dgvNguoiDung.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNguoiDung.Size = new System.Drawing.Size(660, 390);
+            this.dgvNguoiDung.Size = new System.Drawing.Size(652, 390);
             this.dgvNguoiDung.TabIndex = 1;
             this.dgvNguoiDung.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellClick);
+            this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             // 
             // panelSearch
             // 
@@ -316,7 +318,7 @@ namespace QLCHBanLinhKien
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(10, 10);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(660, 40);
+            this.panelSearch.Size = new System.Drawing.Size(652, 40);
             this.panelSearch.TabIndex = 0;
             // 
             // lblTong
@@ -332,7 +334,7 @@ namespace QLCHBanLinhKien
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTimKiem.Location = new System.Drawing.Point(100, 5);
+            this.txtTimKiem.Location = new System.Drawing.Point(117, 7);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(300, 30);
             this.txtTimKiem.TabIndex = 1;
@@ -344,7 +346,7 @@ namespace QLCHBanLinhKien
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.Location = new System.Drawing.Point(10, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 23);
+            this.label2.Size = new System.Drawing.Size(83, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tìm kiếm:";
             // 
@@ -356,6 +358,7 @@ namespace QLCHBanLinhKien
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuanLyNguoiDung";
             this.Text = "Quản lý người dùng";
             this.Load += new System.EventHandler(this.frmQuanLyNguoiDung_Load);
@@ -369,6 +372,7 @@ namespace QLCHBanLinhKien
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

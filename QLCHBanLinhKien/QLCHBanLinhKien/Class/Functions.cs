@@ -49,7 +49,7 @@ namespace QLCHBanLinhKien.Class
         }
         public static void Disconnect()
         {
-            if (conn.State == ConnectionState.Open)
+            if (conn != null && conn.State == ConnectionState.Open)
             {
                 conn.Close();// dong ket noi
                 conn.Dispose();// giai phong bo nho
