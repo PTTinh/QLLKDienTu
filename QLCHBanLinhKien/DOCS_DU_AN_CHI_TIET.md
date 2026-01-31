@@ -209,7 +209,7 @@ public static string currentUserRole = "";  // Vai tro (Admin, NhanVien)
 #### Connect() - Ket noi database
 ```csharp
 public static void Connect()
-{
+{ 
     try
     {
         conn = new SqlConnection();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DummyDataSource">
       <ConnectionProperties>
@@ -16,17 +17,50 @@
         <CommandText />
       </Query>
       <Fields>
-        <Field Name="MaHoaDon"><DataField>MaHoaDon</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
-        <Field Name="SoHoaDon"><DataField>SoHoaDon</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="NgayBan"><DataField>NgayBan</DataField><rd:TypeName>System.DateTime</rd:TypeName></Field>
-        <Field Name="TenKhachHang"><DataField>TenKhachHang</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="SoDienThoai"><DataField>SoDienThoai</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="DiaChi"><DataField>DiaChi</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="TenNhanVien"><DataField>TenNhanVien</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="TongTien"><DataField>TongTien</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
-        <Field Name="GiamGia"><DataField>GiamGia</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
-        <Field Name="ThanhTien"><DataField>ThanhTien</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
-        <Field Name="PhuongThucThanhToan"><DataField>PhuongThucThanhToan</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="MaHoaDon">
+          <DataField>MaHoaDon</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SoHoaDon">
+          <DataField>SoHoaDon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NgayBan">
+          <DataField>NgayBan</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TenKhachHang">
+          <DataField>TenKhachHang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SoDienThoai">
+          <DataField>SoDienThoai</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DiaChi">
+          <DataField>DiaChi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TenNhanVien">
+          <DataField>TenNhanVien</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TongTien">
+          <DataField>TongTien</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GiamGia">
+          <DataField>GiamGia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ThanhTien">
+          <DataField>ThanhTien</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PhuongThucThanhToan">
+          <DataField>PhuongThucThanhToan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="ChiTietHoaDonDataSet">
@@ -35,13 +69,1016 @@
         <CommandText />
       </Query>
       <Fields>
-        <Field Name="TenSanPham"><DataField>TenSanPham</DataField><rd:TypeName>System.String</rd:TypeName></Field>
-        <Field Name="SoLuong"><DataField>SoLuong</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
-        <Field Name="DonGia"><DataField>DonGia</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
-        <Field Name="ThanhTien"><DataField>ThanhTien</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="TenSanPham">
+          <DataField>TenSanPham</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SoLuong">
+          <DataField>SoLuong</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DonGia">
+          <DataField>DonGia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ThanhTien">
+          <DataField>ThanhTien</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="txtTenCuaHang">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!TenCuaHang.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#0066cc</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Height>0.8cm</Height>
+            <Width>19cm</Width>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtDiaChiCuaHang">
+            <CanGrow>true</CanGrow>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Dia chi: " &amp; Parameters!DiaChiCuaHang.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.8cm</Top>
+            <Height>0.5cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtDienThoaiCuaHang">
+            <CanGrow>true</CanGrow>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Dien thoai: " &amp; Parameters!DienThoaiCuaHang.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.3cm</Top>
+            <Height>0.5cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style />
+          </Textbox>
+          <Line Name="Line1">
+            <Top>2cm</Top>
+            <Height>0cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Color>#0066cc</Color>
+                <Style>Solid</Style>
+                <Width>2pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="txtTieuDe">
+            <CanGrow>true</CanGrow>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>HOÁ ĐƠN BÁN HÀNG</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>20pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#cc0000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.2cm</Top>
+            <Height>1cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblSoHD">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Số hóa đơn :</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>3.4cm</Top>
+            <Left>0.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtSoHD">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SoHoaDon.Value, "HoaDonDataSet")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#0066cc</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>3.4cm</Top>
+            <Left>3.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblNgay">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ngày bán:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>3.4cm</Top>
+            <Left>12cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtNgayBan">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Format(First(Fields!NgayBan.Value, "HoaDonDataSet"), "dd/MM/yyyy HH:mm")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>3.4cm</Top>
+            <Left>15cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblKhachHang">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Khách hàng:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>4cm</Top>
+            <Left>0.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtKhachHang">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TenKhachHang.Value, "HoaDonDataSet")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>4cm</Top>
+            <Left>3.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblNhanVien">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nhân viên:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>4.6cm</Top>
+            <Left>0.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtNhanVien">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TenNhanVien.Value, "HoaDonDataSet")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>4.6cm</Top>
+            <Left>3.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style />
+          </Textbox>
+          <Tablix Name="TablixChiTiet">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.5cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>9cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.25cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.25cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.7cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="HdrSTT">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>STT</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#0066cc</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="HdrTenSP">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Tên sản phẩm</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#0066cc</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="HdrSL">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>SL</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#0066cc</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="HdrDonGia">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Đơn giá</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#0066cc</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="HdrThanhTien">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Thành tiền</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#0066cc</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DataSTT">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RowNumber(Nothing)</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#cccccc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DataTenSP">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TenSanPham.Value</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#cccccc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DataSL">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SoLuong.Value</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#cccccc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DataDonGia">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Format(Fields!DonGia.Value, "#,##0")</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#cccccc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DataThanhTien">
+                          <CanGrow>true</CanGrow>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Format(Fields!ThanhTien.Value, "#,##0")</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#cccccc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="ChiTietGroup" />
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>ChiTietHoaDonDataSet</DataSetName>
+            <Top>5.4cm</Top>
+            <Height>1.3cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style />
+          </Tablix>
+          <Textbox Name="lblTongTien">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tổng tiền:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.9cm</Top>
+            <Left>12cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtTongTien">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Format(First(Fields!TongTien.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.9cm</Top>
+            <Left>15.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblGiamGia">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Giảm giá:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#008000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.5cm</Top>
+            <Left>12cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtGiamGia">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Format(First(Fields!GiamGia.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <Color>#008000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.5cm</Top>
+            <Left>15.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>17</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblThanhTienFinal">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>THÀNH TIỀN:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>13pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#cc0000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.1cm</Top>
+            <Left>12cm</Left>
+            <Height>0.7cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtThanhTienFinal">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Format(First(Fields!ThanhTien.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>13pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#cc0000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.1cm</Top>
+            <Left>15.5cm</Left>
+            <Height>0.7cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>19</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="lblPhuongThuc">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.8cm</Top>
+            <Left>12cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>20</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtNguoiMua">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Người mua hàng</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>10cm</Top>
+            <Left>1cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6cm</Width>
+            <ZIndex>21</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtKyNguoiMua">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(Ky, ghi ro ho ten)</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <Color>#666666</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>10.6cm</Top>
+            <Left>1cm</Left>
+            <Height>0.5cm</Height>
+            <Width>6cm</Width>
+            <ZIndex>22</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtNguoiBan">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Người bán hàng</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>10cm</Top>
+            <Left>12cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtKyNguoiBan">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(Ky, ghi ro ho ten)</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <Color>#666666</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>10.6cm</Top>
+            <Left>12cm</Left>
+            <Height>0.5cm</Height>
+            <Width>6cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style />
+          </Textbox>
+          <Textbox Name="txtCamOn">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Cam on quy khach da mua hang!</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#0066cc</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>13cm</Top>
+            <Height>0.7cm</Height>
+            <Width>19cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style />
+          </Textbox>
+        </ReportItems>
+        <Height>14cm</Height>
+        <Style />
+      </Body>
+      <Width>19cm</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
   <ReportParameters>
     <ReportParameter Name="TenCuaHang">
       <DataType>String</DataType>
@@ -62,309 +1099,29 @@
       <Prompt>DienThoaiCuaHang</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Body>
-    <ReportItems>
-      <Textbox Name="txtTenCuaHang">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Parameters!TenCuaHang.Value</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>16pt</FontSize><FontWeight>Bold</FontWeight><Color>#0066CC</Color></Style>
-              </TextRun>
-            </TextRuns>
-            <Style><TextAlign>Center</TextAlign></Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0cm</Top>
-        <Left>0cm</Left>
-        <Height>0.8cm</Height>
-        <Width>19cm</Width>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtDiaChiCuaHang">
-        <CanGrow>true</CanGrow>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>="Dia chi: " &amp; Parameters!DiaChiCuaHang.Value</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style>
-              </TextRun>
-            </TextRuns>
-            <Style><TextAlign>Center</TextAlign></Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.8cm</Top>
-        <Left>0cm</Left>
-        <Height>0.5cm</Height>
-        <Width>19cm</Width>
-        <ZIndex>1</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtDienThoaiCuaHang">
-        <CanGrow>true</CanGrow>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>="Dien thoai: " &amp; Parameters!DienThoaiCuaHang.Value</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style>
-              </TextRun>
-            </TextRuns>
-            <Style><TextAlign>Center</TextAlign></Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>1.3cm</Top>
-        <Left>0cm</Left>
-        <Height>0.5cm</Height>
-        <Width>19cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style />
-      </Textbox>
-      <Line Name="Line1">
-        <Top>2cm</Top>
-        <Left>0cm</Left>
-        <Height>0cm</Height>
-        <Width>19cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style><Border><Color>#0066CC</Color><Style>Solid</Style><Width>2pt</Width></Border></Style>
-      </Line>
-      <Textbox Name="txtTieuDe">
-        <CanGrow>true</CanGrow>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>HOA DON BAN HANG</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>20pt</FontSize><FontWeight>Bold</FontWeight><Color>#CC0000</Color></Style>
-              </TextRun>
-            </TextRuns>
-            <Style><TextAlign>Center</TextAlign></Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>2.2cm</Top>
-        <Left>0cm</Left>
-        <Height>1cm</Height>
-        <Width>19cm</Width>
-        <ZIndex>4</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="lblSoHD">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>So hoa don:</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>3.4cm</Top>
-        <Left>0.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3cm</Width>
-        <ZIndex>5</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtSoHD">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!SoHoaDon.Value, "HoaDonDataSet")</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><Color>#0066CC</Color><FontWeight>Bold</FontWeight></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>3.4cm</Top>
-        <Left>3.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>5cm</Width>
-        <ZIndex>6</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="lblNgay">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Ngay ban:</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style>
-              </TextRun>
-            </TextRuns>
-            <Style><TextAlign>Right</TextAlign></Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>3.4cm</Top>
-        <Left>12cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3cm</Width>
-        <ZIndex>7</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtNgayBan">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Format(First(Fields!NgayBan.Value, "HoaDonDataSet"), "dd/MM/yyyy HH:mm")</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>3.4cm</Top>
-        <Left>15cm</Left>
-        <Height>0.6cm</Height>
-        <Width>4cm</Width>
-        <ZIndex>8</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="lblKhachHang">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Khach hang:</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>4cm</Top>
-        <Left>0.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3cm</Width>
-        <ZIndex>9</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtKhachHang">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!TenKhachHang.Value, "HoaDonDataSet")</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>4cm</Top>
-        <Left>3.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>8cm</Width>
-        <ZIndex>10</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="lblNhanVien">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Nhan vien:</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>4.6cm</Top>
-        <Left>0.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3cm</Width>
-        <ZIndex>11</ZIndex>
-        <Style />
-      </Textbox>
-      <Textbox Name="txtNhanVien">
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!TenNhanVien.Value, "HoaDonDataSet")</Value>
-                <Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize></Style>
-              </TextRun>
-            </TextRuns>
-          </Paragraph>
-        </Paragraphs>
-        <Top>4.6cm</Top>
-        <Left>3.5cm</Left>
-        <Height>0.6cm</Height>
-        <Width>8cm</Width>
-        <ZIndex>12</ZIndex>
-        <Style />
-      </Textbox>
-      <Tablix Name="TablixChiTiet">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn><Width>1.5cm</Width></TablixColumn>
-            <TablixColumn><Width>9cm</Width></TablixColumn>
-            <TablixColumn><Width>2cm</Width></TablixColumn>
-            <TablixColumn><Width>3.25cm</Width></TablixColumn>
-            <TablixColumn><Width>3.25cm</Width></TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.7cm</Height>
-              <TablixCells>
-                <TablixCell><CellContents><Textbox Name="HdrSTT"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>STT</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>White</Color><Width>1pt</Width></Border><BackgroundColor>#0066CC</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="HdrTenSP"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>Ten san pham</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>White</Color><Width>1pt</Width></Border><BackgroundColor>#0066CC</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="HdrSL"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>SL</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>White</Color><Width>1pt</Width></Border><BackgroundColor>#0066CC</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="HdrDonGia"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>Don gia</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>White</Color><Width>1pt</Width></Border><BackgroundColor>#0066CC</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="HdrThanhTien"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>Thanh tien</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>White</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>White</Color><Width>1pt</Width></Border><BackgroundColor>#0066CC</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell><CellContents><Textbox Name="DataSTT"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=RowNumber(Nothing)</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>#CCCCCC</Color></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="DataTenSP"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!TenSanPham.Value</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>#CCCCCC</Color></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="DataSL"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!SoLuong.Value</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>#CCCCCC</Color></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="DataDonGia"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(Fields!DonGia.Value, "#,##0")</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>#CCCCCC</Color></Border><VerticalAlign>Middle</VerticalAlign><PaddingRight>4pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
-                <TablixCell><CellContents><Textbox Name="DataThanhTien"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(Fields!ThanhTien.Value, "#,##0")</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Style>Solid</Style><Color>#CCCCCC</Color></Border><VerticalAlign>Middle</VerticalAlign><PaddingRight>4pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy>
-        <TablixRowHierarchy><TablixMembers><TablixMember><KeepWithGroup>After</KeepWithGroup></TablixMember><TablixMember><Group Name="ChiTietGroup" /><TablixMembers><TablixMember /></TablixMembers></TablixMember></TablixMembers></TablixRowHierarchy>
-        <DataSetName>ChiTietHoaDonDataSet</DataSetName>
-        <Top>5.4cm</Top>
-        <Left>0cm</Left>
-        <Height>1.3cm</Height>
-        <Width>19cm</Width>
-        <ZIndex>13</ZIndex>
-      </Tablix>
-      <Textbox Name="lblTongTien"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Tong tien:</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>6.9cm</Top><Left>12cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>14</ZIndex><Style /></Textbox>
-      <Textbox Name="txtTongTien"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(First(Fields!TongTien.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>6.9cm</Top><Left>15.5cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>15</ZIndex><Style /></Textbox>
-      <Textbox Name="lblGiamGia"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Giam gia:</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight><Color>#008000</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>7.5cm</Top><Left>12cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>16</ZIndex><Style /></Textbox>
-      <Textbox Name="txtGiamGia"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(First(Fields!GiamGia.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><Color>#008000</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>7.5cm</Top><Left>15.5cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>17</ZIndex><Style /></Textbox>
-      <Textbox Name="lblThanhTienFinal"><Paragraphs><Paragraph><TextRuns><TextRun><Value>THANH TIEN:</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>13pt</FontSize><FontWeight>Bold</FontWeight><Color>#CC0000</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>8.1cm</Top><Left>12cm</Left><Height>0.7cm</Height><Width>3.5cm</Width><ZIndex>18</ZIndex><Style /></Textbox>
-      <Textbox Name="txtThanhTienFinal"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Format(First(Fields!ThanhTien.Value, "HoaDonDataSet"), "#,##0") &amp; " VND"</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>13pt</FontSize><FontWeight>Bold</FontWeight><Color>#CC0000</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>8.1cm</Top><Left>15.5cm</Left><Height>0.7cm</Height><Width>3.5cm</Width><ZIndex>19</ZIndex><Style /></Textbox>
-      <Textbox Name="lblPhuongThuc"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Thanh toan:</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>8.8cm</Top><Left>12cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>20</ZIndex><Style /></Textbox>
-      <Textbox Name="txtPhuongThuc"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=First(Fields!PhuongThucThanhToan.Value, "HoaDonDataSet")</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>8.8cm</Top><Left>15.5cm</Left><Height>0.6cm</Height><Width>3.5cm</Width><ZIndex>21</ZIndex><Style /></Textbox>
-      <Textbox Name="txtNguoiMua"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Nguoi mua hang</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>10cm</Top><Left>1cm</Left><Height>0.6cm</Height><Width>6cm</Width><ZIndex>22</ZIndex><Style /></Textbox>
-      <Textbox Name="txtKyNguoiMua"><Paragraphs><Paragraph><TextRuns><TextRun><Value>(Ky, ghi ro ho ten)</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize><FontStyle>Italic</FontStyle><Color>#666666</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>10.6cm</Top><Left>1cm</Left><Height>0.5cm</Height><Width>6cm</Width><ZIndex>23</ZIndex><Style /></Textbox>
-      <Textbox Name="txtNguoiBan"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Nguoi ban hang</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>11pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>10cm</Top><Left>12cm</Left><Height>0.6cm</Height><Width>6cm</Width><ZIndex>24</ZIndex><Style /></Textbox>
-      <Textbox Name="txtKyNguoiBan"><Paragraphs><Paragraph><TextRuns><TextRun><Value>(Ky, ghi ro ho ten)</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>10pt</FontSize><FontStyle>Italic</FontStyle><Color>#666666</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>10.6cm</Top><Left>12cm</Left><Height>0.5cm</Height><Width>6cm</Width><ZIndex>25</ZIndex><Style /></Textbox>
-      <Textbox Name="txtCamOn"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Cam on quy khach da mua hang!</Value><Style><FontFamily>Times New Roman</FontFamily><FontSize>12pt</FontSize><FontWeight>Bold</FontWeight><FontStyle>Italic</FontStyle><Color>#0066CC</Color></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>13cm</Top><Left>0cm</Left><Height>0.7cm</Height><Width>19cm</Width><ZIndex>26</ZIndex><Style /></Textbox>
-    </ReportItems>
-    <Height>14cm</Height>
-    <Style />
-  </Body>
-  <Width>19cm</Width>
-  <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>1cm</LeftMargin>
-    <RightMargin>1cm</RightMargin>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
-    <Style />
-  </Page>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>TenCuaHang</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>DiaChiCuaHang</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>DienThoaiCuaHang</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>d1b4e7f5-8c3a-4b9e-a6d2-1f5e8c9b3a7d</rd:ReportID>
 </Report>
