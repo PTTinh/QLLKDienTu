@@ -457,7 +457,7 @@ public static string ChuyenSoSangChuoi(double so)
 
 ---
 
-### NGUOI 2: BAN HANG & HOA DON (5 Forms)
+### NGUOI 2: BAN HANG & HOA DON (5 Forms)(KHANH)
 
 | STT | Form | Chuc nang | Muc do |
 |-----|------|-----------|--------|

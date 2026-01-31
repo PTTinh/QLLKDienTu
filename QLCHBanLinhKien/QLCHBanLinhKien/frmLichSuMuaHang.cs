@@ -85,7 +85,7 @@ namespace QLCHBanLinhKien
             try
             {
                 string query = @"SELECT h.MaHoaDon, h.SoHoaDon, h.NgayBan, 
-                                 ISNULL(k.HoTen, 'Khách lẻ') AS TenKhachHang,
+                                 ISNULL(k.HoTen, N'Khách lẻ') AS TenKhachHang,
                                  h.TongTien, h.GiamGia, h.ThanhTien, 
                                  h.PhuongThucThanhToan, h.TrangThai
                                  FROM HoaDon h

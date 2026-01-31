@@ -26,7 +26,7 @@ namespace QLCHBanLinhKien
             {
                 Functions.Connect();
 
-                string sql = @"SELECT hd.MaHoaDon, hd.NgayBan, kh.HoTen as TenKH, nd.TenDangNhap as NhanVien, 
+                string sql = @"SELECT hd.MaHoaDon, hd.NgayBan, ISNULL(kh.HoTen, N'Khách lẻ') as TenKH, nd.TenDangNhap as NhanVien, 
                                hd.TongTien, hd.GiamGia, hd.ThanhTien
                                FROM HoaDon hd
                                LEFT JOIN KhachHang kh ON hd.MaKhachHang = kh.MaKhachHang

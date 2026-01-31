@@ -171,7 +171,7 @@ namespace QLCHBanLinhKien
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.Location = new System.Drawing.Point(275, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 23);
+            this.label1.Size = new System.Drawing.Size(83, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tìm kiếm:";
             // 
@@ -192,7 +192,7 @@ namespace QLCHBanLinhKien
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.Location = new System.Drawing.Point(10, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 23);
+            this.label2.Size = new System.Drawing.Size(93, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Danh mục:";
             // 
@@ -268,7 +268,7 @@ namespace QLCHBanLinhKien
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label8.Location = new System.Drawing.Point(10, 80);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 28);
+            this.label8.Size = new System.Drawing.Size(151, 28);
             this.label8.TabIndex = 4;
             this.label8.Text = "THANH TOÁN:";
             // 
@@ -299,7 +299,7 @@ namespace QLCHBanLinhKien
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label7.Location = new System.Drawing.Point(310, 43);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 25);
+            this.label7.Size = new System.Drawing.Size(91, 25);
             this.label7.TabIndex = 2;
             this.label7.Text = "Giảm giá:";
             // 
@@ -319,7 +319,7 @@ namespace QLCHBanLinhKien
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label5.Location = new System.Drawing.Point(10, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 25);
+            this.label5.Size = new System.Drawing.Size(96, 25);
             this.label5.TabIndex = 0;
             this.label5.Text = "Tổng tiền:";
             // 
@@ -352,7 +352,7 @@ namespace QLCHBanLinhKien
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label6.Location = new System.Drawing.Point(10, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 23);
+            this.label6.Size = new System.Drawing.Size(73, 23);
             this.label6.TabIndex = 5;
             this.label6.Text = "Ghi chú:";
             // 
@@ -361,7 +361,7 @@ namespace QLCHBanLinhKien
             this.cboKhachHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboKhachHang.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboKhachHang.FormattingEnabled = true;
-            this.cboKhachHang.Location = new System.Drawing.Point(100, 48);
+            this.cboKhachHang.Location = new System.Drawing.Point(121, 50);
             this.cboKhachHang.Name = "cboKhachHang";
             this.cboKhachHang.Size = new System.Drawing.Size(250, 31);
             this.cboKhachHang.TabIndex = 4;
@@ -373,7 +373,7 @@ namespace QLCHBanLinhKien
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label4.Location = new System.Drawing.Point(10, 51);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 23);
+            this.label4.Size = new System.Drawing.Size(105, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Khách hàng:";
             // 
@@ -408,7 +408,7 @@ namespace QLCHBanLinhKien
             this.label3.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.label3.Location = new System.Drawing.Point(10, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 28);
+            this.label3.Size = new System.Drawing.Size(112, 28);
             this.label3.TabIndex = 0;
             this.label3.Text = "GIỎ HÀNG";
             // 
@@ -440,6 +440,7 @@ namespace QLCHBanLinhKien
             this.panelGioHangTop.ResumeLayout(false);
             this.panelGioHangTop.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

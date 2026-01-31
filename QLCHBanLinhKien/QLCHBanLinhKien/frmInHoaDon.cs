@@ -1,18 +1,25 @@
+
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Windows.Forms;
 using QLCHBanLinhKien.Class;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace QLCHBanLinhKien
 {
     public partial class frmInHoaDon : Form
     {
         private int maHoaDon;
-        private DataTable dtHoaDon;
-        private DataTable dtChiTiet;
+        private System.Data.DataTable dtHoaDon;
+        private System.Data.DataTable dtChiTiet;
+
+        // Thông tin cửa hàng
+        private const string TEN_CUA_HANG = "CỬA HÀNG LINH KIỆN ĐIỆN TỬ";
+        private const string DIA_CHI_CUA_HANG = "123 Đường ABC, Quận XYZ, TP. HCM";
+        private const string DIEN_THOAI_CUA_HANG = "0123 456 789";
 
         public frmInHoaDon(int maHoaDon)
         {
@@ -77,94 +84,316 @@ namespace QLCHBanLinhKien
 
             DataRow row = dtHoaDon.Rows[0];
 
-            string html = $@"
-<html>
-<head>
-<style>
-    body {{ font-family: Arial, sans-serif; padding: 20px; }}
-    .header {{ text-align: center; margin-bottom: 20px; }}
-    .company {{ font-size: 18px; font-weight: bold; color: #0066cc; }}
-    .title {{ font-size: 24px; font-weight: bold; margin: 15px 0; }}
-    .info {{ margin-bottom: 15px; }}
-    .info-row {{ margin: 5px 0; }}
-    .label {{ font-weight: bold; display: inline-block; width: 120px; }}
-    table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
-    th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
-    th {{ background-color: #0066cc; color: white; }}
-    .right {{ text-align: right; }}
-    .total {{ font-size: 16px; font-weight: bold; margin-top: 15px; }}
-    .footer {{ margin-top: 30px; text-align: center; font-style: italic; }}
-</style>
-</head>
-<body>
-    <div class='header'>
-        <div class='company'>CỬA HÀNG LINH KIỆN ĐIỆN TỬ</div>
-        <div>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</div>
-        <div>Điện thoại: 0123 456 789</div>
-        <div class='title'>HÓA ĐƠN BÁN HÀNG</div>
-    </div>
+            // Thông tin cửa hàng
+            lblTenCuaHang.Text = TEN_CUA_HANG;
+            lblDiaChiCuaHang.Text = "Địa chỉ: " + DIA_CHI_CUA_HANG;
+            lblDienThoaiCuaHang.Text = "Điện thoại: " + DIEN_THOAI_CUA_HANG;
 
-    <div class='info'>
-        <div class='info-row'><span class='label'>Số hóa đơn:</span> {row["SoHoaDon"]}</div>
-        <div class='info-row'><span class='label'>Ngày bán:</span> {Convert.ToDateTime(row["NgayBan"]).ToString("dd/MM/yyyy HH:mm")}</div>
-        <div class='info-row'><span class='label'>Khách hàng:</span> {(row["TenKhachHang"] == DBNull.Value ? "Khách lẻ" : row["TenKhachHang"])}</div>
-        <div class='info-row'><span class='label'>Số điện thoại:</span> {row["SoDienThoai"]}</div>
-        <div class='info-row'><span class='label'>Nhân viên:</span> {row["TenNhanVien"]}</div>
-    </div>
+            // Thông tin hóa đơn
+            lblSoHoaDon.Text = row["SoHoaDon"]?.ToString() ?? "";
+            lblNgayBan.Text = row["NgayBan"] != DBNull.Value 
+                ? Convert.ToDateTime(row["NgayBan"]).ToString("dd/MM/yyyy HH:mm") : "";
 
-    <table>
-        <tr>
-            <th style='width:40px'>STT</th>
-            <th>Tên sản phẩm</th>
-            <th style='width:60px' class='right'>SL</th>
-            <th style='width:100px' class='right'>Đơn giá</th>
-            <th style='width:80px' class='right'>Giảm</th>
-            <th style='width:120px' class='right'>Thành tiền</th>
-        </tr>";
+            // Thông tin khách hàng
+            lblTenKhachHang.Text = row["TenKhachHang"] != DBNull.Value 
+                ? row["TenKhachHang"].ToString() : "Khách lẻ";
+            lblNhanVien.Text = row["TenNhanVien"]?.ToString() ?? "";
 
-            int stt = 1;
-            foreach (DataRow item in dtChiTiet.Rows)
+            // Hiển thị chi tiết hóa đơn
+            dgvChiTiet.DataSource = null;
+            dgvChiTiet.DataSource = dtChiTiet;
+            FormatDataGridView();
+
+            // Tổng tiền
+            decimal tongTien = row["TongTien"] != DBNull.Value ? Convert.ToDecimal(row["TongTien"]) : 0;
+            decimal giamGia = row["GiamGia"] != DBNull.Value ? Convert.ToDecimal(row["GiamGia"]) : 0;
+            decimal thanhTien = row["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(row["ThanhTien"]) : 0;
+
+            lblTongTien.Text = tongTien.ToString("N0") + " VNĐ";
+            lblGiamGia.Text = giamGia.ToString("N0") + " VNĐ";
+            lblThanhTien.Text = thanhTien.ToString("N0") + " VNĐ";
+
+            // Phương thức thanh toán
+            lblPhuongThuc.Text = row["PhuongThucThanhToan"]?.ToString() ?? "Tiền mặt";
+        }
+
+        private void FormatDataGridView()
+        {
+            if (dgvChiTiet.Columns.Count == 0) return;
+
+            // Ẩn các cột không cần thiết
+            string[] hiddenColumns = { "MaChiTiet", "MaHoaDon", "MaSanPham", "MaSoSanPham", "GiamGia" };
+            foreach (string col in hiddenColumns)
             {
-                html += $@"
-        <tr>
-            <td style='text-align:center'>{stt++}</td>
-            <td>{item["TenSanPham"]}</td>
-            <td class='right'>{item["SoLuong"]}</td>
-            <td class='right'>{Convert.ToDecimal(item["DonGia"]).ToString("N0")}</td>
-            <td class='right'>{Convert.ToDecimal(item["GiamGia"]).ToString("N0")}</td>
-            <td class='right'>{Convert.ToDecimal(item["ThanhTien"]).ToString("N0")}</td>
-        </tr>";
+                if (dgvChiTiet.Columns.Contains(col))
+                    dgvChiTiet.Columns[col].Visible = false;
             }
 
-            html += $@"
-    </table>
-
-    <div class='total'>
-        <div class='info-row'><span class='label'>Tổng tiền:</span> {Convert.ToDecimal(row["TongTien"]).ToString("N0")} VNĐ</div>
-        <div class='info-row'><span class='label'>Giảm giá:</span> {Convert.ToDecimal(row["GiamGia"]).ToString("N0")} VNĐ</div>
-        <div class='info-row'><span class='label'>Thuế VAT:</span> {Convert.ToDecimal(row["ThueVAT"]).ToString("N0")} VNĐ</div>
-        <div class='info-row' style='color:red; font-size:18px;'><span class='label'>THÀNH TIỀN:</span> {Convert.ToDecimal(row["ThanhTien"]).ToString("N0")} VNĐ</div>
-        <div class='info-row'><span class='label'>Thanh toán:</span> {row["PhuongThucThanhToan"]}</div>
-    </div>
-
-    <div class='footer'>
-        <p>Cảm ơn quý khách đã mua hàng!</p>
-        <p>Hẹn gặp lại!</p>
-    </div>
-</body>
-</html>";
-
-            webBrowser.DocumentText = html;
+            // Đặt tên hiển thị
+            if (dgvChiTiet.Columns.Contains("TenSanPham"))
+            {
+                dgvChiTiet.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
+                dgvChiTiet.Columns["TenSanPham"].Width = 250;
+            }
+            if (dgvChiTiet.Columns.Contains("SoLuong"))
+            {
+                dgvChiTiet.Columns["SoLuong"].HeaderText = "SL";
+                dgvChiTiet.Columns["SoLuong"].Width = 60;
+                dgvChiTiet.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            if (dgvChiTiet.Columns.Contains("DonGia"))
+            {
+                dgvChiTiet.Columns["DonGia"].HeaderText = "Đơn giá";
+                dgvChiTiet.Columns["DonGia"].Width = 100;
+                dgvChiTiet.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+                dgvChiTiet.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            if (dgvChiTiet.Columns.Contains("ThanhTien"))
+            {
+                dgvChiTiet.Columns["ThanhTien"].HeaderText = "Thành tiền";
+                dgvChiTiet.Columns["ThanhTien"].Width = 120;
+                dgvChiTiet.Columns["ThanhTien"].DefaultCellStyle.Format = "N0";
+                dgvChiTiet.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
         }
 
-        private void btnIn_Click(object sender, EventArgs e)
+        private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            webBrowser.ShowPrintDialog();
-        }
+            if (dtHoaDon == null || dtHoaDon.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        private void btnXuatPDF_Click(object sender, EventArgs e)
-        {
-            webBrowser.ShowPrintPreviewDialog();
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx|Excel 97-2003 (*.xls)|*.xls";
+            saveDialog.FileName = "HoaDon_" + lblSoHoaDon.Text + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            saveDialog.Title = "Lưu hóa đơn ra Excel";
+
+            if (saveDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Application excelApp = null;
+            Workbook workbook = null;
+            Worksheet worksheet = null;
+
+            try
+            {
+                excelApp = new Application();
+                excelApp.Visible = false;
+                excelApp.DisplayAlerts = false;
+
+                workbook = excelApp.Workbooks.Add(Type.Missing);
+                worksheet = (Worksheet)workbook.ActiveSheet;
+
+                DataRow row = dtHoaDon.Rows[0];
+                int currentRow = 1;
+
+                // ===== HEADER - Thông tin cửa hàng =====
+                worksheet.Cells[currentRow, 1] = TEN_CUA_HANG;
+                Range titleRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                titleRange.Merge();
+                titleRange.Font.Size = 16;
+                titleRange.Font.Bold = true;
+                titleRange.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(0, 102, 204));
+                titleRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow++;
+
+                worksheet.Cells[currentRow, 1] = "Địa chỉ: " + DIA_CHI_CUA_HANG;
+                Range addressRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                addressRange.Merge();
+                addressRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow++;
+
+                worksheet.Cells[currentRow, 1] = "Điện thoại: " + DIEN_THOAI_CUA_HANG;
+                Range phoneRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                phoneRange.Merge();
+                phoneRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow += 2;
+
+                // ===== Tiêu đề HÓA ĐƠN =====
+                worksheet.Cells[currentRow, 1] = "HÓA ĐƠN BÁN HÀNG";
+                Range hdTitleRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                hdTitleRange.Merge();
+                hdTitleRange.Font.Size = 18;
+                hdTitleRange.Font.Bold = true;
+                hdTitleRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow += 2;
+
+                // ===== Thông tin hóa đơn =====
+                worksheet.Cells[currentRow, 1] = "Số hóa đơn:";
+                worksheet.Cells[currentRow, 1].Font.Bold = true;
+                worksheet.Cells[currentRow, 2] = row["SoHoaDon"]?.ToString() ?? "";
+                worksheet.Cells[currentRow, 4] = "Ngày bán:";
+                worksheet.Cells[currentRow, 4].Font.Bold = true;
+                worksheet.Cells[currentRow, 5] = row["NgayBan"] != DBNull.Value 
+                    ? Convert.ToDateTime(row["NgayBan"]).ToString("dd/MM/yyyy HH:mm") : "";
+                currentRow++;
+
+                string tenKH = row["TenKhachHang"] != DBNull.Value ? row["TenKhachHang"].ToString() : "Khách lẻ";
+                worksheet.Cells[currentRow, 1] = "Khách hàng:";
+                worksheet.Cells[currentRow, 1].Font.Bold = true;
+                worksheet.Cells[currentRow, 2] = tenKH;
+                currentRow++;
+
+                worksheet.Cells[currentRow, 1] = "Nhân viên:";
+                worksheet.Cells[currentRow, 1].Font.Bold = true;
+                worksheet.Cells[currentRow, 2] = row["TenNhanVien"]?.ToString() ?? "";
+                currentRow += 2;
+
+                // ===== Bảng chi tiết sản phẩm =====
+                // Header bảng
+                string[] headers = { "STT", "Tên sản phẩm", "SL", "Đơn giá", "Thành tiền" };
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    worksheet.Cells[currentRow, i + 1] = headers[i];
+                }
+                Range headerRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(0, 102, 204));
+                headerRange.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
+                headerRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                headerRange.Borders.LineStyle = XlLineStyle.xlContinuous;
+                currentRow++;
+
+                // Dữ liệu chi tiết
+                int stt = 1;
+                int dataStartRow = currentRow;
+                foreach (DataRow item in dtChiTiet.Rows)
+                {
+                    worksheet.Cells[currentRow, 1] = stt++;
+                    worksheet.Cells[currentRow, 2] = item["TenSanPham"]?.ToString() ?? "";
+                    worksheet.Cells[currentRow, 3] = item["SoLuong"] != DBNull.Value ? Convert.ToInt32(item["SoLuong"]) : 0;
+                    worksheet.Cells[currentRow, 4] = item["DonGia"] != DBNull.Value ? Convert.ToDecimal(item["DonGia"]) : 0;
+                    worksheet.Cells[currentRow, 5] = item["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(item["ThanhTien"]) : 0;
+                    currentRow++;
+                }
+
+                // Format dữ liệu
+                Range dataRange = worksheet.Range[worksheet.Cells[dataStartRow, 1], worksheet.Cells[currentRow - 1, 5]];
+                dataRange.Borders.LineStyle = XlLineStyle.xlContinuous;
+                
+                // Căn giữa STT và SL
+                worksheet.Range[worksheet.Cells[dataStartRow, 1], worksheet.Cells[currentRow - 1, 1]].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                worksheet.Range[worksheet.Cells[dataStartRow, 3], worksheet.Cells[currentRow - 1, 3]].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                
+                // Căn phải và format số cho Đơn giá, Thành tiền
+                Range priceRange = worksheet.Range[worksheet.Cells[dataStartRow, 4], worksheet.Cells[currentRow - 1, 5]];
+                priceRange.NumberFormat = "#,##0";
+                priceRange.HorizontalAlignment = XlHAlign.xlHAlignRight;
+
+                currentRow++;
+
+                // ===== Tổng tiền =====
+                decimal tongTien = row["TongTien"] != DBNull.Value ? Convert.ToDecimal(row["TongTien"]) : 0;
+                decimal giamGia = row["GiamGia"] != DBNull.Value ? Convert.ToDecimal(row["GiamGia"]) : 0;
+                decimal thanhTien = row["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(row["ThanhTien"]) : 0;
+
+                worksheet.Cells[currentRow, 4] = "Tổng tiền:";
+                worksheet.Cells[currentRow, 4].Font.Bold = true;
+                worksheet.Cells[currentRow, 5] = tongTien;
+                worksheet.Cells[currentRow, 5].NumberFormat = "#,##0";
+                currentRow++;
+
+                worksheet.Cells[currentRow, 4] = "Giảm giá:";
+                worksheet.Cells[currentRow, 4].Font.Bold = true;
+                worksheet.Cells[currentRow, 4].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Green);
+                worksheet.Cells[currentRow, 5] = giamGia;
+                worksheet.Cells[currentRow, 5].NumberFormat = "#,##0";
+                worksheet.Cells[currentRow, 5].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Green);
+                currentRow++;
+
+                worksheet.Cells[currentRow, 4] = "THÀNH TIỀN:";
+                worksheet.Cells[currentRow, 4].Font.Bold = true;
+                worksheet.Cells[currentRow, 4].Font.Size = 12;
+                worksheet.Cells[currentRow, 5] = thanhTien;
+                worksheet.Cells[currentRow, 5].NumberFormat = "#,##0";
+                worksheet.Cells[currentRow, 5].Font.Bold = true;
+                worksheet.Cells[currentRow, 5].Font.Size = 12;
+                worksheet.Cells[currentRow, 5].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                currentRow++;
+
+                string phuongThuc = row["PhuongThucThanhToan"]?.ToString() ?? "Tiền mặt";
+                worksheet.Cells[currentRow, 4] = "Thanh toán:";
+                worksheet.Cells[currentRow, 4].Font.Bold = true;
+                worksheet.Cells[currentRow, 5] = phuongThuc;
+                currentRow += 2;
+
+                // ===== Chữ ký =====
+                worksheet.Cells[currentRow, 2] = "Người mua hàng";
+                worksheet.Cells[currentRow, 2].Font.Bold = true;
+                worksheet.Cells[currentRow, 2].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                worksheet.Cells[currentRow, 5] = "Người bán hàng";
+                worksheet.Cells[currentRow, 5].Font.Bold = true;
+                worksheet.Cells[currentRow, 5].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow++;
+
+                worksheet.Cells[currentRow, 2] = "(Ký, ghi rõ họ tên)";
+                worksheet.Cells[currentRow, 2].Font.Italic = true;
+                worksheet.Cells[currentRow, 2].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                worksheet.Cells[currentRow, 5] = "(Ký, ghi rõ họ tên)";
+                worksheet.Cells[currentRow, 5].Font.Italic = true;
+                worksheet.Cells[currentRow, 5].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                currentRow += 4;
+
+                // ===== Footer =====
+                worksheet.Cells[currentRow, 1] = "Cảm ơn quý khách đã mua hàng!";
+                Range footerRange = worksheet.Range[worksheet.Cells[currentRow, 1], worksheet.Cells[currentRow, 5]];
+                footerRange.Merge();
+                footerRange.Font.Bold = true;
+                footerRange.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(0, 102, 204));
+                footerRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+                // Auto fit columns
+                worksheet.Columns[1].ColumnWidth = 10;
+                worksheet.Columns[2].ColumnWidth = 45;
+                worksheet.Columns[3].ColumnWidth = 12;
+                worksheet.Columns[4].ColumnWidth = 18;
+                worksheet.Columns[5].ColumnWidth = 18;
+
+                // Save file
+                if (saveDialog.FileName.EndsWith(".xlsx"))
+                    workbook.SaveAs(saveDialog.FileName, XlFileFormat.xlOpenXMLWorkbook);
+                else
+                    workbook.SaveAs(saveDialog.FileName, XlFileFormat.xlWorkbookNormal);
+
+                MessageBox.Show("Xuất hóa đơn ra Excel thành công!\nFile: " + saveDialog.FileName, 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Hỏi có muốn mở file không
+                if (MessageBox.Show("Bạn có muốn mở file vừa xuất không?", "Xác nhận", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(saveDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cleanup COM objects
+                if (worksheet != null)
+                {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet);
+                    worksheet = null;
+                }
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
+                    workbook = null;
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+                    excelApp = null;
+                }
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
 
         private void btnDong_Click(object sender, EventArgs e)

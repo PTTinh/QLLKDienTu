@@ -28,8 +28,10 @@ namespace QLCHBanLinhKien
             {
                 Functions.Connect();
 
-                string sql = @"SELECT hd.MaHoaDon, hd.SoHoaDon, hd.NgayBan, kh.HoTen as TenKH, kh.SoDienThoai as DienThoai, kh.DiaChi,
-                               nd.TenDangNhap as NhanVien, hd.TongTien, hd.GiamGia, hd.ThanhTien, hd.PhuongThucThanhToan
+                string sql = @"SELECT hd.MaHoaDon, hd.SoHoaDon, hd.NgayBan, 
+                               ISNULL(kh.HoTen, N'Khách lẻ') as TenKH, 
+                               ISNULL(nd.HoTen, N'') as NhanVien, 
+                               hd.TongTien, hd.GiamGia, hd.ThanhTien, hd.PhuongThucThanhToan
                                FROM HoaDon hd
                                LEFT JOIN KhachHang kh ON hd.MaKhachHang = kh.MaKhachHang
                                LEFT JOIN NguoiDung nd ON hd.MaNhanVien = nd.MaNguoiDung
@@ -43,10 +45,11 @@ namespace QLCHBanLinhKien
                 {
                     lblMaHD.Text = reader["SoHoaDon"].ToString();
                     lblNgayBan.Text = Convert.ToDateTime(reader["NgayBan"]).ToString("dd/MM/yyyy HH:mm");
-                    lblKhachHang.Text = reader["TenKH"]?.ToString() ?? "Khach le";
-                    lblDienThoai.Text = reader["DienThoai"]?.ToString() ?? "";
-                    lblDiaChi.Text = reader["DiaChi"]?.ToString() ?? "";
-                    lblNhanVien.Text = reader["NhanVien"]?.ToString() ?? "";
+                    
+                    // Xử lý tên khách hàng
+                    string tenKH = reader["TenKH"].ToString();
+                    lblKhachHang.Text = string.IsNullOrEmpty(tenKH) ? "Khách lẻ" : tenKH;
+                    lblNhanVien.Text = reader["NhanVien"].ToString();
                     lblTongTien.Text = Convert.ToDecimal(reader["TongTien"]).ToString("N0") + " VND";
                     lblGiamGia.Text = Convert.ToDecimal(reader["GiamGia"]).ToString("N0") + " VND";
                     lblThanhTien.Text = Convert.ToDecimal(reader["ThanhTien"]).ToString("N0") + " VND";
@@ -114,7 +117,15 @@ namespace QLCHBanLinhKien
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chuc nang in hoa don dang phat trien!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                frmInHoaDon frm = new frmInHoaDon(_maHD);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi mở form in hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDong_Click(object sender, EventArgs e)
