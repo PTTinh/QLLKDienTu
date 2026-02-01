@@ -1,6 +1,14 @@
 -- Database schema for QLCHLinhKienDienTu
 -- Created: 2026-01-07
-
+USE MASTER;
+IF DB_ID(N'QLCHLinhKienDienTu') IS NULL
+BEGIN
+    CREATE DATABASE QLCHLinhKienDienTu;
+END
+GO
+USE QLCHLinhKienDienTu;
+GO
+-- Table definitions
 CREATE TABLE DanhMuc (
     MaDanhMuc INT PRIMARY KEY IDENTITY(1,1),
     TenDanhMuc NVARCHAR(100) NOT NULL,
@@ -29,7 +37,7 @@ CREATE TABLE SanPham (
     TonToiThieu INT DEFAULT 10,
     TonToiDa INT DEFAULT 100,
     MoTa NVARCHAR(1000),
-    DuongDanAnh VARCHAR(500),
+    DuongDanAnh TEXT, 
     NgayTao DATETIME DEFAULT GETDATE(),
     TrangThai BIT DEFAULT 1 -- 1: Đang kinh doanh, 0: Ngừng kinh doanh
 );
@@ -41,7 +49,7 @@ CREATE TABLE KhachHang (
     SoDienThoai VARCHAR(20),
     Email VARCHAR(100),
     DiaChi NVARCHAR(500),
-    LoaiKhachHang VARCHAR(50) DEFAULT 'Thường', -- Thường, VIP, Sỉ
+    LoaiKhachHang NVARCHAR(50) DEFAULT N'Thường', -- Thường, VIP, Sỉ
     TongChiTieu DECIMAL(18,2) DEFAULT 0,
     NgayTao DATETIME DEFAULT GETDATE()
 );
@@ -56,8 +64,8 @@ CREATE TABLE HoaDon (
     GiamGia DECIMAL(18,2) DEFAULT 0,
     ThueVAT DECIMAL(18,2) DEFAULT 0,
     ThanhTien DECIMAL(18,2) NOT NULL,
-    PhuongThucThanhToan VARCHAR(50), -- Tiền mặt, Chuyển khoản, Thẻ
-    TrangThai VARCHAR(50) DEFAULT 'Hoàn thành' -- Chờ xử lý, Hoàn thành, Đã hủy
+    PhuongThucThanhToan NVARCHAR(50), -- Tiền mặt, Chuyển khoản, Thẻ
+    TrangThai NVARCHAR(50) DEFAULT N'Hoàn thành' -- Chờ xử lý, Hoàn thành, Đã hủy
 );
 
 CREATE TABLE ChiTietHoaDon (
@@ -77,7 +85,7 @@ CREATE TABLE NguoiDung (
     HoTen NVARCHAR(200) NOT NULL,
     Email VARCHAR(100),
     SoDienThoai VARCHAR(20),
-    VaiTro VARCHAR(50) DEFAULT 'Nhân viên', -- Quản trị, Quản lý, Nhân viên
+    VaiTro NVARCHAR(50) DEFAULT N'Nhân viên', -- Quản trị, Quản lý, Nhân viên
     NgayTao DATETIME DEFAULT GETDATE(),
     TrangThai BIT DEFAULT 1 -- 1: Hoạt động, 0: Khóa
 );
@@ -152,41 +160,39 @@ INSERT INTO SanPham (MaSoSanPham, TenSanPham, MaDanhMuc, MaNCC, GiaNhap, GiaBan,
 ('MOUSE-LOG-G502', N'Chuột Logitech G502 Hero', 10, 8, 850000, 1099000, 40, 10, 100, N'Chuột gaming Logitech G502', 1);
 -- Thêm khách hàng
 INSERT INTO KhachHang (MaSoKhachHang, HoTen, SoDienThoai, Email, DiaChi, LoaiKhachHang, TongChiTieu, NgayTao) VALUES
-('KH001', N'Nguyễn Văn An', '0903123456', 'nguyenvanan@gmail.com', N'123 Nguyễn Trãi, Quận 1, TP.HCM', 'VIP', 25890000, '2024-01-15'),
-('KH002', N'Trần Thị Bích', '0918234567', 'tranthibich@yahoo.com', N'45 Lê Lợi, Quận 3, TP.HCM', 'Thường', 12450000, '2024-02-10'),
-('KH003', N'Lê Hoàng Nam', '0987654321', 'hoangnamle@gmail.com', N'78 Nguyễn Văn Linh, Quận 7, TP.HCM', 'VIP', 35670000, '2024-01-20'),
-('KH004', N'Phạm Minh Tuấn', '0934567890', 'minhtuan.pham@gmail.com', N'22 Cách Mạng Tháng 8, Quận 10, TP.HCM', 'Sỉ', 125000000, '2024-01-05'),
-('KH005', N'Hoàng Thị Hương', '0978123456', 'huonghoang@gmail.com', N'56 Võ Văn Tần, Quận 3, TP.HCM', 'Thường', 8900000, '2024-02-15'),
-('KH006', N'Vũ Đức Mạnh', '0945678901', 'ducmanh.vu@outlook.com', N'89 Lý Thường Kiệt, Quận 11, TP.HCM', 'VIP', 42150000, '2024-01-25'),
-('KH007', N'Đỗ Quang Huy', '0923456789', 'quanghuy.do@gmail.com', N'34 Nguyễn Thị Minh Khai, Quận 1, TP.HCM', 'Sỉ', 98700000, '2024-01-08'),
-('KH008', N'Bùi Thanh Hà', '0967890123', 'thanhha.bui@gmail.com', N'12 Trần Hưng Đạo, Quận 5, TP.HCM', 'Thường', 15600000, '2024-02-20'),
-('KH009', N'Nguyễn Trung Kiên', '0956789012', 'trungkien.nguyen@yahoo.com', N'67 Phạm Ngọc Thạch, Quận 3, TP.HCM', 'VIP', 31200000, '2024-01-30'),
-('KH010', N'Lý Thị Mai', '0912345678', 'thimai.ly@gmail.com', N'99 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM', 'Thường', 7200000, '2024-02-25');
+('KH001', N'Nguyễn Văn An', '0903123456', 'nguyenvanan@gmail.com', N'123 Nguyễn Trãi, Quận 1, TP.HCM', N'VIP', 25890000, '2024-01-15'),
+('KH002', N'Trần Thị Bích', '0918234567', 'tranthibich@yahoo.com', N'45 Lê Lợi, Quận 3, TP.HCM', N'Thường', 12450000, '2024-02-10'),
+('KH003', N'Lê Hoàng Nam', '0987654321', 'hoangnamle@gmail.com', N'78 Nguyễn Văn Linh, Quận 7, TP.HCM', N'VIP', 35670000, '2024-01-20'),
+('KH004', N'Phạm Minh Tuấn', '0934567890', 'minhtuan.pham@gmail.com', N'22 Cách Mạng Tháng 8, Quận 10, TP.HCM', N'Sỉ', 125000000, '2024-01-05'),
+('KH005', N'Hoàng Thị Hương', '0978123456', 'huonghoang@gmail.com', N'56 Võ Văn Tần, Quận 3, TP.HCM', N'Thường', 8900000, '2024-02-15'),
+('KH006', N'Vũ Đức Mạnh', '0945678901', 'ducmanh.vu@outlook.com', N'89 Lý Thường Kiệt, Quận 11, TP.HCM', N'VIP', 42150000, '2024-01-25'),
+('KH007', N'Đỗ Quang Huy', '0923456789', 'quanghuy.do@gmail.com', N'34 Nguyễn Thị Minh Khai, Quận 1, TP.HCM', N'Sỉ', 98700000, '2024-01-08'),
+('KH008', N'Bùi Thanh Hà', '0967890123', 'thanhha.bui@gmail.com', N'12 Trần Hưng Đạo, Quận 5, TP.HCM', N'Thường', 15600000, '2024-02-20'),
+('KH009', N'Nguyễn Trung Kiên', '0956789012', 'trungkien.nguyen@yahoo.com', N'67 Phạm Ngọc Thạch, Quận 3, TP.HCM', N'VIP', 31200000, '2024-01-30'),
+('KH010', N'Lý Thị Mai', '0912345678', 'thimai.ly@gmail.com', N'99 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM', N'Thường', 7200000, '2024-02-25');
 -- Thêm người dùng (mật khẩu đã mã hóa - mật khẩu gốc là "123456")
 INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, VaiTro, TrangThai) VALUES
-('admin', '$2a$11$KcZJq3g4bJzF7J8wQ6Y5Ee8X9Y0Z1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P', N'Nguyễn Văn Quản Trị', 'admin@linhkien.com', '0909111222', 'Quản trị', 1),
-('quanly1', '$2a$11$KcZJq3g4bJzF7J8wQ6Y5Ee8X9Y0Z1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P', N'Trần Thị Quản Lý', 'quanly@linhkien.com', '0918333444', 'Quản lý', 1),
-('nhanvien1', '$2a$11$KcZJq3g4bJzF7J8wQ6Y5Ee8X9Y0Z1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P', N'Lê Văn Nhân Viên', 'nhanvien1@linhkien.com', '0928555666', 'Nhân viên', 1),
-('nhanvien2', '$2a$11$KcZJq3g4bJzF7J8wQ6Y5Ee8X9Y0Z1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P', N'Phạm Thị Bán Hàng', 'nhanvien2@linhkien.com', '0938777888', 'Nhân viên', 1),
-('kho', '$2a$11$KcZJq3g4bJzF7J8wQ6Y5Ee8X9Y0Z1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P', N'Hoàng Văn Kho', 'kho@linhkien.com', '0948999000', 'Nhân viên', 1);
+('admin', 'admin', N'Nguyễn Văn Quản Trị', 'admin@linhkien.com', '0909111222', N'Quản trị', 1),
+('quanly1', 'quanly1', N'Trần Thị Quản Lý', 'quanly@linhkien.com', '0918333444', N'Quản lý', 1),
+('nhanvien1', 'nhanvien1', N'Lê Văn Nhân Viên', 'nhanvien1@linhkien.com', '0928555666', N'Nhân viên', 1);
 -- Thêm hóa đơn
 INSERT INTO HoaDon (SoHoaDon, MaKhachHang, MaNhanVien, NgayBan, TongTien, GiamGia, ThueVAT, ThanhTien, PhuongThucThanhToan, TrangThai) VALUES
-('HD2401001', 1, 3, '2024-01-10 09:30:00', 14280000, 500000, 1378000, 15158000, 'Tiền mặt', 'Hoàn thành'),
-('HD2401002', 4, 3, '2024-01-12 14:15:00', 35690000, 1000000, 3469000, 38159000, 'Chuyển khoản', 'Hoàn thành'),
-('HD2401003', 3, 4, '2024-01-15 10:45:00', 21450000, 0, 2145000, 23595000, 'Thẻ', 'Hoàn thành'),
-('HD2401004', 6, 3, '2024-01-18 16:20:00', 18900000, 300000, 1860000, 20460000, 'Tiền mặt', 'Hoàn thành'),
-('HD2401005', 2, 4, '2024-01-20 11:10:00', 12450000, 200000, 1225000, 13475000, 'Tiền mặt', 'Hoàn thành'),
-('HD2401006', 7, 3, '2024-01-22 13:45:00', 45200000, 1500000, 4370000, 48070000, 'Chuyển khoản', 'Hoàn thành'),
-('HD2401007', 9, 4, '2024-01-25 09:15:00', 31200000, 800000, 3040000, 33440000, 'Thẻ', 'Hoàn thành'),
-('HD2401008', 8, 3, '2024-01-28 15:30:00', 15600000, 100000, 1550000, 16150000, 'Tiền mặt', 'Hoàn thành'),
-('HD2402001', 5, 4, '2024-02-02 10:20:00', 8900000, 0, 890000, 9790000, 'Tiền mặt', 'Hoàn thành'),
-('HD2402002', 10, 3, '2024-02-05 14:40:00', 7200000, 100000, 710000, 7810000, 'Tiền mặt', 'Hoàn thành'),
-('HD2402003', 1, 4, '2024-02-08 11:30:00', 11600000, 400000, 1120000, 12320000, 'Thẻ', 'Hoàn thành'),
-('HD2402004', 3, 3, '2024-02-10 16:15:00', 14220000, 300000, 1392000, 15212000, 'Tiền mặt', 'Hoàn thành'),
-('HD2402005', 4, 4, '2024-02-12 09:45:00', 26750000, 1200000, 2555000, 28105000, 'Chuyển khoản', 'Hoàn thành'),
-('HD2402006', 6, 3, '2024-02-15 13:20:00', 23250000, 700000, 2255000, 24805000, 'Thẻ', 'Hoàn thành'),
-('HD2402007', 2, 4, '2024-02-18 10:50:00', 15200000, 500000, 1470000, 16170000, 'Tiền mặt', 'Đã hủy'),
-('HD2402008', 9, 3, '2024-02-20 15:10:00', 18700000, 300000, 1840000, 20240000, 'Tiền mặt', 'Hoàn thành');
+('HD2401001', 1, 3, '2024-01-10 09:30:00', 14280000, 500000, 1378000, 15158000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401002', 4, 3, '2024-01-12 14:15:00', 35690000, 1000000, 3469000, 38159000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2401003', 3, 4, '2024-01-15 10:45:00', 21450000, 0, 2145000, 23595000, N'Thẻ', N'Hoàn thành'),
+('HD2401004', 6, 3, '2024-01-18 16:20:00', 18900000, 300000, 1860000, 20460000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401005', 2, 4, '2024-01-20 11:10:00', 12450000, 200000, 1225000, 13475000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401006', 7, 3, '2024-01-22 13:45:00', 45200000, 1500000, 4370000, 48070000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2401007', 9, 4, '2024-01-25 09:15:00', 31200000, 800000, 3040000, 33440000, N'Thẻ', N'Hoàn thành'),
+('HD2401008', 8, 3, '2024-01-28 15:30:00', 15600000, 100000, 1550000, 16150000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402001', 5, 4, '2024-02-02 10:20:00', 8900000, 0, 890000, 9790000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402002', 10, 3, '2024-02-05 14:40:00', 7200000, 100000, 710000, 7810000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402003', 1, 4, '2024-02-08 11:30:00', 11600000, 400000, 1120000, 12320000, N'Thẻ', N'Hoàn thành'),
+('HD2402004', 3, 3, '2024-02-10 16:15:00', 14220000, 300000, 1392000, 15212000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402005', 4, 4, '2024-02-12 09:45:00', 26750000, 1200000, 2555000, 28105000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2402006', 6, 3, '2024-02-15 13:20:00', 23250000, 700000, 2255000, 24805000, N'Thẻ', N'Hoàn thành'),
+('HD2402007', 2, 4, '2024-02-18 10:50:00', 15200000, 500000, 1470000, 16170000, N'Tiền mặt', N'Đã hủy'),
+('HD2402008', 9, 3, '2024-02-20 15:10:00', 18700000, 300000, 1840000, 20240000, N'Tiền mặt', N'Hoàn thành');
 Go
 -- Thêm chi tiết hóa đơn
 -- HD2401001
