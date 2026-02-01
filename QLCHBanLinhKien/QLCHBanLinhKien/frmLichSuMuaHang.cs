@@ -134,7 +134,6 @@ namespace QLCHBanLinhKien
                 {
                     query += " AND h.MaKhachHang = @MaKhachHang";
                 }
-
                 query += " ORDER BY h.NgayBan DESC";
 
                 // Xây dựng mảng parameters

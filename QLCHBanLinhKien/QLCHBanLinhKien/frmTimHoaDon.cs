@@ -42,7 +42,7 @@ namespace QLCHBanLinhKien
 
                 // Câu SQL cơ bản - lấy hóa đơn trong khoảng thời gian
                 string sql = @"SELECT hd.MaHoaDon, hd.NgayBan, 
-                               ISNULL(kh.HoTen, N'Khách lẻ') as TenKH,  -- NULL thì hiển thị 'Khách lẻ'
+                               ISNULL(kh.HoTen, N'Khách lẻ') as TenKH,
                                nd.TenDangNhap as NhanVien, 
                                hd.TongTien, hd.GiamGia, hd.ThanhTien
                                FROM HoaDon hd
@@ -78,10 +78,10 @@ namespace QLCHBanLinhKien
                 }
 
                 // Thêm parameter tên khách hàng nếu có
-                if (!string.IsNullOrWhiteSpace(txtKhachHang.Text))
-                {
-                    cmd.Parameters.AddWithValue("@TenKH", "%" + txtKhachHang.Text.Trim() + "%");
-                }
+                // Thêm parameter cho khoảng thời gian
+                cmd.Parameters.AddWithValue("@TuNgay", dtpTuNgay.Value.Date);
+                // Đến cuối ngày (23:59:59) của ngày được chọn
+                cmd.Parameters.AddWithValue("@DenNgay", dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1));
 
                 // Thực thi query và fill vào DataTable
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

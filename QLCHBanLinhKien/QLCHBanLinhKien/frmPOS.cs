@@ -345,9 +345,9 @@ namespace QLCHBanLinhKien
 
         /// <summary>
         /// Xử lý thanh toán đơn hàng
-        /// 1. Tạo hóa đơn mới
-        /// 2. Thêm chi tiết hóa đơn
-        /// 3. Cập nhật tồn kho
+        /// 1. Ta đơn
+        /// 3. Cập nhạo hóa đơn mới
+        /// 2. Thêm chi tiết hóật tồn kho
         /// 4. Cập nhật tổng chi tiêu khách hàng (nếu có)
         /// </summary>
         private void btnThanhToan_Click(object sender, EventArgs e)
@@ -419,7 +419,7 @@ namespace QLCHBanLinhKien
                     new SqlParameter("@SL", soLuong),
                     new SqlParameter("@DonGia", donGia),
                     new SqlParameter("@ThanhTien", thanhTienItem)
-                };
+                };  
                 Functions.RunSQL(sqlCT, paramsCT);
                 
                 // Trừ số lượng tồn kho

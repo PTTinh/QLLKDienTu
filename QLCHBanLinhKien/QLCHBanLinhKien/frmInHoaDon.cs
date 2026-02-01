@@ -58,7 +58,7 @@ namespace QLCHBanLinhKien
             {
                  // Query lấy thông tin hóa đơn kèm tên khách hàng và nhân viên
                 string query = @"SELECT h.MaHoaDon, h.SoHoaDon, h.NgayBan, h.TongTien, h.GiamGia, h.ThanhTien, h.PhuongThucThanhToan,
-                                 ISNULL(k.HoTen, N'Khách lẻ') AS TenKhachHang,  -- Nếu NULL thì hiển thị 'Khách lẻ'
+                                 ISNULL(k.HoTen, N'Khách lẻ') AS TenKhachHang,
                                  ISNULL(k.SoDienThoai, '') AS SoDienThoai, 
                                  ISNULL(k.DiaChi, '') AS DiaChi,
                                  ISNULL(n.HoTen, '') AS TenNhanVien

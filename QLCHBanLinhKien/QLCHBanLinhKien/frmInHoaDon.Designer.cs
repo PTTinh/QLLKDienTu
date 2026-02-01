@@ -26,7 +26,7 @@ namespace QLCHBanLinhKien
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(901, 640);
+            this.reportViewer1.Size = new System.Drawing.Size(750, 640);
             this.reportViewer1.TabIndex = 0;
             // 
             // frmInHoaDon
@@ -34,7 +34,7 @@ namespace QLCHBanLinhKien
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(901, 640);
+            this.ClientSize = new System.Drawing.Size(750, 640);
             this.Controls.Add(this.reportViewer1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
