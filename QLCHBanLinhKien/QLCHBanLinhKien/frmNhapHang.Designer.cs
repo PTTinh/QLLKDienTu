@@ -53,7 +53,7 @@ namespace QLCHBanLinhKien
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(800, 50);
+            this.lblTitle.Size = new System.Drawing.Size(803, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "NHẬP HÀNG TỪ NHÀ CUNG CẤP";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,7 +68,7 @@ namespace QLCHBanLinhKien
             this.panelTop.Location = new System.Drawing.Point(0, 50);
             this.panelTop.Name = "panelTop";
             this.panelTop.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.panelTop.Size = new System.Drawing.Size(800, 50);
+            this.panelTop.Size = new System.Drawing.Size(803, 50);
             this.panelTop.TabIndex = 1;
             // 
             // lblNhaCungCap
@@ -77,7 +77,7 @@ namespace QLCHBanLinhKien
             this.lblNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNhaCungCap.Location = new System.Drawing.Point(20, 15);
             this.lblNhaCungCap.Name = "lblNhaCungCap";
-            this.lblNhaCungCap.Size = new System.Drawing.Size(90, 19);
+            this.lblNhaCungCap.Size = new System.Drawing.Size(96, 19);
             this.lblNhaCungCap.TabIndex = 0;
             this.lblNhaCungCap.Text = "Nhà cung cấp:";
             // 
@@ -96,7 +96,7 @@ namespace QLCHBanLinhKien
             this.lblNgayNhap.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNgayNhap.Location = new System.Drawing.Point(450, 15);
             this.lblNgayNhap.Name = "lblNgayNhap";
-            this.lblNgayNhap.Size = new System.Drawing.Size(75, 19);
+            this.lblNgayNhap.Size = new System.Drawing.Size(79, 19);
             this.lblNgayNhap.TabIndex = 2;
             this.lblNgayNhap.Text = "Ngày nhập:";
             // 
@@ -126,7 +126,7 @@ namespace QLCHBanLinhKien
             this.groupBoxSanPham.Location = new System.Drawing.Point(0, 100);
             this.groupBoxSanPham.Name = "groupBoxSanPham";
             this.groupBoxSanPham.Padding = new System.Windows.Forms.Padding(15);
-            this.groupBoxSanPham.Size = new System.Drawing.Size(800, 100);
+            this.groupBoxSanPham.Size = new System.Drawing.Size(803, 100);
             this.groupBoxSanPham.TabIndex = 2;
             this.groupBoxSanPham.TabStop = false;
             this.groupBoxSanPham.Text = "Thêm sản phẩm";
@@ -136,7 +136,7 @@ namespace QLCHBanLinhKien
             this.lblSanPham.AutoSize = true;
             this.lblSanPham.Location = new System.Drawing.Point(15, 35);
             this.lblSanPham.Name = "lblSanPham";
-            this.lblSanPham.Size = new System.Drawing.Size(71, 19);
+            this.lblSanPham.Size = new System.Drawing.Size(73, 19);
             this.lblSanPham.TabIndex = 0;
             this.lblSanPham.Text = "Sản phẩm:";
             // 
@@ -172,7 +172,7 @@ namespace QLCHBanLinhKien
             this.lblGiaNhap.AutoSize = true;
             this.lblGiaNhap.Location = new System.Drawing.Point(520, 35);
             this.lblGiaNhap.Name = "lblGiaNhap";
-            this.lblGiaNhap.Size = new System.Drawing.Size(63, 19);
+            this.lblGiaNhap.Size = new System.Drawing.Size(67, 19);
             this.lblGiaNhap.TabIndex = 4;
             this.lblGiaNhap.Text = "Giá nhập:";
             // 
@@ -189,7 +189,7 @@ namespace QLCHBanLinhKien
             this.lblTonHienTaiLabel.AutoSize = true;
             this.lblTonHienTaiLabel.Location = new System.Drawing.Point(15, 68);
             this.lblTonHienTaiLabel.Name = "lblTonHienTaiLabel";
-            this.lblTonHienTaiLabel.Size = new System.Drawing.Size(79, 19);
+            this.lblTonHienTaiLabel.Size = new System.Drawing.Size(84, 19);
             this.lblTonHienTaiLabel.TabIndex = 6;
             this.lblTonHienTaiLabel.Text = "Tồn hiện tại:";
             // 
@@ -200,7 +200,7 @@ namespace QLCHBanLinhKien
             this.lblTonHienTai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTonHienTai.Location = new System.Drawing.Point(100, 68);
             this.lblTonHienTai.Name = "lblTonHienTai";
-            this.lblTonHienTai.Size = new System.Drawing.Size(16, 19);
+            this.lblTonHienTai.Size = new System.Drawing.Size(17, 19);
             this.lblTonHienTai.TabIndex = 7;
             this.lblTonHienTai.Text = "0";
             // 
@@ -246,7 +246,7 @@ namespace QLCHBanLinhKien
             this.dgvChiTiet.ReadOnly = true;
             this.dgvChiTiet.RowHeadersWidth = 30;
             this.dgvChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTiet.Size = new System.Drawing.Size(800, 280);
+            this.dgvChiTiet.Size = new System.Drawing.Size(803, 280);
             this.dgvChiTiet.TabIndex = 3;
             // 
             // panelBottom
@@ -258,7 +258,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 480);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(800, 70);
+            this.panelBottom.Size = new System.Drawing.Size(803, 70);
             this.panelBottom.TabIndex = 4;
             // 
             // lblTongTienLabel
@@ -267,7 +267,7 @@ namespace QLCHBanLinhKien
             this.lblTongTienLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTongTienLabel.Location = new System.Drawing.Point(20, 23);
             this.lblTongTienLabel.Name = "lblTongTienLabel";
-            this.lblTongTienLabel.Size = new System.Drawing.Size(84, 21);
+            this.lblTongTienLabel.Size = new System.Drawing.Size(87, 21);
             this.lblTongTienLabel.TabIndex = 0;
             this.lblTongTienLabel.Text = "Tổng tiền:";
             // 
@@ -278,7 +278,7 @@ namespace QLCHBanLinhKien
             this.lblTongTien.ForeColor = System.Drawing.Color.Red;
             this.lblTongTien.Location = new System.Drawing.Point(110, 20);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(69, 25);
+            this.lblTongTien.Size = new System.Drawing.Size(70, 25);
             this.lblTongTien.TabIndex = 1;
             this.lblTongTien.Text = "0 VNĐ";
             // 
@@ -317,7 +317,7 @@ namespace QLCHBanLinhKien
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 550);
+            this.ClientSize = new System.Drawing.Size(803, 550);
             this.Controls.Add(this.dgvChiTiet);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.groupBoxSanPham);
@@ -336,6 +336,7 @@ namespace QLCHBanLinhKien
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

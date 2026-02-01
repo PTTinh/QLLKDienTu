@@ -95,46 +95,46 @@ namespace QLCHBanLinhKien
             // 
             this.mnuDashboard.Name = "mnuDashboard";
             this.mnuDashboard.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.mnuDashboard.Size = new System.Drawing.Size(180, 24);
+            this.mnuDashboard.Size = new System.Drawing.Size(189, 24);
             this.mnuDashboard.Text = "&Dashboard";
             this.mnuDashboard.Click += new System.EventHandler(this.mnuDashboard_Click);
             // 
             // mnuThongTinCaNhan
             // 
             this.mnuThongTinCaNhan.Name = "mnuThongTinCaNhan";
-            this.mnuThongTinCaNhan.Size = new System.Drawing.Size(180, 24);
+            this.mnuThongTinCaNhan.Size = new System.Drawing.Size(189, 24);
             this.mnuThongTinCaNhan.Text = "&Thông tin cá nhân";
             this.mnuThongTinCaNhan.Click += new System.EventHandler(this.mnuThongTinCaNhan_Click);
             // 
             // mnuCauHinh
             // 
             this.mnuCauHinh.Name = "mnuCauHinh";
-            this.mnuCauHinh.Size = new System.Drawing.Size(180, 24);
+            this.mnuCauHinh.Size = new System.Drawing.Size(189, 24);
             this.mnuCauHinh.Text = "&Cấu hình";
             this.mnuCauHinh.Click += new System.EventHandler(this.mnuCauHinh_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
             // 
             // mnuDangXuat
             // 
             this.mnuDangXuat.Name = "mnuDangXuat";
-            this.mnuDangXuat.Size = new System.Drawing.Size(180, 24);
+            this.mnuDangXuat.Size = new System.Drawing.Size(189, 24);
             this.mnuDangXuat.Text = "&Đăng xuất";
             this.mnuDangXuat.Click += new System.EventHandler(this.mnuDangXuat_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // mnuThoat
             // 
             this.mnuThoat.Name = "mnuThoat";
             this.mnuThoat.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuThoat.Size = new System.Drawing.Size(180, 24);
+            this.mnuThoat.Size = new System.Drawing.Size(189, 24);
             this.mnuThoat.Text = "&Thoát";
             this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 
@@ -149,6 +149,7 @@ namespace QLCHBanLinhKien
             this.mnuDanhMucMenu.Name = "mnuDanhMucMenu";
             this.mnuDanhMucMenu.Size = new System.Drawing.Size(84, 23);
             this.mnuDanhMucMenu.Text = "&Danh mục";
+            this.mnuDanhMucMenu.Click += new System.EventHandler(this.mnuDanhMucMenu_Click);
             // 
             // mnuSanPham
             // 
@@ -196,20 +197,21 @@ namespace QLCHBanLinhKien
             this.mnuNhapHang,
             this.mnuCapNhatSanPham});
             this.mnuKho.Name = "mnuKho";
-            this.mnuKho.Size = new System.Drawing.Size(74, 23);
+            this.mnuKho.Size = new System.Drawing.Size(80, 23);
             this.mnuKho.Text = "&Kho hàng";
+            this.mnuKho.Click += new System.EventHandler(this.mnuKho_Click);
             // 
             // mnuNhapHang
             // 
             this.mnuNhapHang.Name = "mnuNhapHang";
-            this.mnuNhapHang.Size = new System.Drawing.Size(200, 24);
+            this.mnuNhapHang.Size = new System.Drawing.Size(203, 24);
             this.mnuNhapHang.Text = "&Nhập hàng";
             this.mnuNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
             // 
             // mnuCapNhatSanPham
             // 
             this.mnuCapNhatSanPham.Name = "mnuCapNhatSanPham";
-            this.mnuCapNhatSanPham.Size = new System.Drawing.Size(200, 24);
+            this.mnuCapNhatSanPham.Size = new System.Drawing.Size(203, 24);
             this.mnuCapNhatSanPham.Text = "&Thêm sản phẩm mới";
             this.mnuCapNhatSanPham.Click += new System.EventHandler(this.mnuCapNhatSanPham_Click);
             // 
@@ -252,21 +254,21 @@ namespace QLCHBanLinhKien
             this.mnuTimSanPham,
             this.mnuTimKhachHang});
             this.mnuTimKiem.Name = "mnuTimKiem";
-            this.mnuTimKiem.Size = new System.Drawing.Size(74, 23);
+            this.mnuTimKiem.Size = new System.Drawing.Size(76, 23);
             this.mnuTimKiem.Text = "Tìm &kiếm";
             // 
             // mnuTimSanPham
             // 
             this.mnuTimSanPham.Name = "mnuTimSanPham";
             this.mnuTimSanPham.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.mnuTimSanPham.Size = new System.Drawing.Size(200, 24);
+            this.mnuTimSanPham.Size = new System.Drawing.Size(212, 24);
             this.mnuTimSanPham.Text = "Tìm &sản phẩm";
             this.mnuTimSanPham.Click += new System.EventHandler(this.mnuTimSanPham_Click);
             // 
             // mnuTimKhachHang
             // 
             this.mnuTimKhachHang.Name = "mnuTimKhachHang";
-            this.mnuTimKhachHang.Size = new System.Drawing.Size(200, 24);
+            this.mnuTimKhachHang.Size = new System.Drawing.Size(212, 24);
             this.mnuTimKhachHang.Text = "Tìm &khách hàng";
             this.mnuTimKhachHang.Click += new System.EventHandler(this.mnuTimKhachHang_Click);
             // 
@@ -286,28 +288,28 @@ namespace QLCHBanLinhKien
             // 
             this.mnuBaoCaoDoanhThu.Name = "mnuBaoCaoDoanhThu";
             this.mnuBaoCaoDoanhThu.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.mnuBaoCaoDoanhThu.Size = new System.Drawing.Size(230, 24);
+            this.mnuBaoCaoDoanhThu.Size = new System.Drawing.Size(227, 24);
             this.mnuBaoCaoDoanhThu.Text = "&Thống kê doanh thu";
             this.mnuBaoCaoDoanhThu.Click += new System.EventHandler(this.mnuBaoCaoDoanhThu_Click);
             // 
             // mnuThongKeNhanVien
             // 
             this.mnuThongKeNhanVien.Name = "mnuThongKeNhanVien";
-            this.mnuThongKeNhanVien.Size = new System.Drawing.Size(230, 24);
+            this.mnuThongKeNhanVien.Size = new System.Drawing.Size(227, 24);
             this.mnuThongKeNhanVien.Text = "Thống kê &nhân viên";
             this.mnuThongKeNhanVien.Click += new System.EventHandler(this.mnuThongKeNhanVien_Click);
             // 
             // mnuTopSanPham
             // 
             this.mnuTopSanPham.Name = "mnuTopSanPham";
-            this.mnuTopSanPham.Size = new System.Drawing.Size(230, 24);
+            this.mnuTopSanPham.Size = new System.Drawing.Size(227, 24);
             this.mnuTopSanPham.Text = "Top &sản phẩm bán chạy";
             this.mnuTopSanPham.Click += new System.EventHandler(this.mnuTopSanPham_Click);
             // 
             // mnuTopKhachHang
             // 
             this.mnuTopKhachHang.Name = "mnuTopKhachHang";
-            this.mnuTopKhachHang.Size = new System.Drawing.Size(230, 24);
+            this.mnuTopKhachHang.Size = new System.Drawing.Size(227, 24);
             this.mnuTopKhachHang.Text = "Top &khách hàng";
             this.mnuTopKhachHang.Click += new System.EventHandler(this.mnuTopKhachHang_Click);
             // 
@@ -315,7 +317,7 @@ namespace QLCHBanLinhKien
             // 
             this.mnuBaoCaoHangTon.Name = "mnuBaoCaoHangTon";
             this.mnuBaoCaoHangTon.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.mnuBaoCaoHangTon.Size = new System.Drawing.Size(230, 24);
+            this.mnuBaoCaoHangTon.Size = new System.Drawing.Size(227, 24);
             this.mnuBaoCaoHangTon.Text = "&Cảnh báo hàng tồn";
             this.mnuBaoCaoHangTon.Click += new System.EventHandler(this.mnuBaoCaoHangTon_Click);
             // 
@@ -347,7 +349,7 @@ namespace QLCHBanLinhKien
             this.panelDesktopPane.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(0, 27);
-            this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(900, 477);
             this.panelDesktopPane.TabIndex = 1;
@@ -387,7 +389,7 @@ namespace QLCHBanLinhKien
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMains";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý cửa hàng linh kiện điện tử";

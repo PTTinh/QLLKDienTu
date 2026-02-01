@@ -11,15 +11,25 @@ namespace QLCHBanLinhKien
             InitializeComponent();
         }
 
+
         private void frmMains_Load(object sender, EventArgs e)
         {
+
             Functions.Connect();
+            if (Functions.currentUserRole != "Quản trị")
+            {
+                this.mnuDanhMucMenu.Visible = false;
+                this.mnuKho.Visible = false;
+                this.mnuCauHinh.Visible = false;
+                OpenChildForm(new frmPOS());
+                return;
+            }
             lblUser.Text = "Người dùng: " + Functions.currentUser;
             lblRole.Text = "Vai trò: " + Functions.currentUserRole;
-            
-            // Mo Dashboard khi form load
             OpenChildForm(new frmDashboard());
+
         }
+
 
         private void OpenChildForm(Form childForm)
         {
@@ -33,7 +43,7 @@ namespace QLCHBanLinhKien
                     break;
                 }
             }
-            
+
             // Mo form con moi
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -46,7 +56,7 @@ namespace QLCHBanLinhKien
 
         private void mnuThoat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", 
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Functions.Disconnect();
@@ -56,7 +66,7 @@ namespace QLCHBanLinhKien
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", 
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Functions.Disconnect();
@@ -67,6 +77,7 @@ namespace QLCHBanLinhKien
             }
         }
 
+
         private void mnuDashboard_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmDashboard());
@@ -75,6 +86,7 @@ namespace QLCHBanLinhKien
         // Menu Danh muc
         private void mnuSanPham_Click(object sender, EventArgs e)
         {
+
             OpenChildForm(new frmQuanLySanPham());
         }
 
@@ -179,7 +191,7 @@ namespace QLCHBanLinhKien
         // Menu Tro giup
         private void mnuGioiThieu_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chương trình quản lý cửa hàng linh kiện điện tử\nPhiên bản: 1.0.0\nTác giả: Team DEV", 
+            MessageBox.Show("Chương trình quản lý cửa hàng linh kiện điện tử\nPhiên bản: 1.0.0\nTác giả: Team DEV",
                 "Giới thiệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -188,5 +200,14 @@ namespace QLCHBanLinhKien
             MessageBox.Show("Liên hệ: support@linhkien.vn", "Hướng dẫn", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void mnuDanhMucMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuKho_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

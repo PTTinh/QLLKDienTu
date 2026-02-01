@@ -10,7 +10,7 @@ namespace QLCHBanLinhKien
     {
         // Static property de truy cap tu cac form khac
         public static int MaNguoiDung { get; set; }
-        
+
         public frmLogin()
         {
             InitializeComponent();
@@ -26,20 +26,20 @@ namespace QLCHBanLinhKien
         {
             if (string.IsNullOrEmpty(txtTenDangNhap.Text))
             {
-                MessageBox.Show("Vui long nhap ten dang nhap!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTenDangNhap.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtMatKhau.Text))
             {
-                MessageBox.Show("Vui long nhap mat khau!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMatKhau.Focus();
                 return;
             }
 
             // Su dung parameterized query de tranh SQL Injection
-            string sql = "SELECT MaNguoiDung, HoTen, VaiTro FROM NguoiDung WHERE TenDangNhap = @TenDangNhap AND MatKhau = @MatKhau AND TrangThai = 1";
+            string sql = "SELECT MaNguoiDung, HoTen, VaiTro, TrangThai FROM NguoiDung WHERE TenDangNhap = @TenDangNhap AND MatKhau = @MatKhau";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenDangNhap", txtTenDangNhap.Text),
                 new SqlParameter("@MatKhau", txtMatKhau.Text)
@@ -49,13 +49,18 @@ namespace QLCHBanLinhKien
 
             if (dt.Rows.Count > 0)
             {
+                if (dt.Rows[0]["TrangThai"].ToString() == "False")
+                {
+                    MessageBox.Show("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 Functions.currentUserId = Convert.ToInt32(dt.Rows[0]["MaNguoiDung"]);
                 Functions.currentUser = dt.Rows[0]["HoTen"].ToString();
                 Functions.currentUserRole = dt.Rows[0]["VaiTro"].ToString();
-                MaNguoiDung = Functions.currentUserId; // Set static property
+                MaNguoiDung = Functions.currentUserId;
 
-                MessageBox.Show($"Dang nhap thanh cong!\nXin chao {Functions.currentUser}", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                MessageBox.Show($"Đăng nhập thành công!\nXin chào {Functions.currentUser}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.Hide();
                 frmMains frmMain = new frmMains();
                 frmMain.ShowDialog();
@@ -63,7 +68,7 @@ namespace QLCHBanLinhKien
             }
             else
             {
-                MessageBox.Show("Ten dang nhap hoac mat khau khong dung!", "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMatKhau.Clear();
                 txtTenDangNhap.Focus();
             }
