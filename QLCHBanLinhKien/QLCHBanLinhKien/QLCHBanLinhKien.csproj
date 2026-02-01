@@ -352,6 +352,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="rdlcInHoaDon.rdlc" />
     <Content Include="Reports\rptCanhBaoHangTon.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
