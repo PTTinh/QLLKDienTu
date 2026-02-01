@@ -13,6 +13,7 @@ namespace QLCHBanLinhKien
         public frmTimKhachHang()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void frmTimKhachHang_Load(object sender, EventArgs e)
@@ -91,6 +92,12 @@ namespace QLCHBanLinhKien
                 DataTable dt = Functions.GetDataTable(query, parameters);
                 dgvKhachHang.DataSource = dt;
                 lblSoKetQua.Text = $"Tìm thấy {dt.Rows.Count} khách hàng";
+                cmbLoaiKH.Items.Clear();
+                cmbLoaiKH.Items.Add("-- Tất cả --");
+                cmbLoaiKH.Items.Add("Thường");
+                cmbLoaiKH.Items.Add("VIP");
+                cmbLoaiKH.Items.Add("Sỉ");
+                cmbLoaiKH.SelectedIndex = 0;
             }
             catch (Exception ex)
             {

@@ -16,16 +16,21 @@ namespace QLCHBanLinhKien
         {
 
             Functions.Connect();
+            lblUser.Text = "Người dùng: " + Functions.currentUser;
+            lblRole.Text = "Vai trò: " + Functions.currentUserRole;
             if (Functions.currentUserRole != "Quản trị")
             {
-                this.mnuDanhMucMenu.Visible = false;
+                this.mnuDanhMuc.Visible = false;
+                this.mnuNguoiDung.Visible = false;
+                this.mnuNhaCungCap.Visible = false;
+                this.mnuNguoiDung.Visible = false;
+                this.mnuSanPham.Visible = false;
                 this.mnuKho.Visible = false;
                 this.mnuCauHinh.Visible = false;
+                this.mnuBaoCao.Visible = false;
                 OpenChildForm(new frmPOS());
                 return;
             }
-            lblUser.Text = "Người dùng: " + Functions.currentUser;
-            lblRole.Text = "Vai trò: " + Functions.currentUserRole;
             OpenChildForm(new frmDashboard());
 
         }

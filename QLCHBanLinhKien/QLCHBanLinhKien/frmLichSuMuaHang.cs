@@ -22,6 +22,7 @@ namespace QLCHBanLinhKien
         public frmLichSuMuaHang()
         {
             InitializeComponent();
+            LoadData();
         }
 
         /// <summary>

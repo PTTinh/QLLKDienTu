@@ -177,7 +177,7 @@ namespace QLCHBanLinhKien
         private void LoadKhachHang()
         {
             cboKhachHang.Items.Clear();
-            cboKhachHang.Items.Add("-- Khach le --"); // Option mặc định cho khách vãng lai
+            cboKhachHang.Items.Add("-- Chon khach hang --"); // Placeholder bắt buộc chọn
             
             // Lấy danh sách khách hàng từ database
             string sql = "SELECT MaKhachHang, HoTen, SoDienThoai FROM KhachHang ORDER BY HoTen";
@@ -195,7 +195,7 @@ namespace QLCHBanLinhKien
                 cboKhachHang.Items.Add(new ComboBoxItem(Convert.ToInt32(row["MaKhachHang"]), display));
             }
             
-            cboKhachHang.SelectedIndex = 0; // Chọn "Khách lẻ" mặc định
+            cboKhachHang.SelectedIndex = 0; // Chọn placeholder
         }
 
         /// <summary>
@@ -205,8 +205,8 @@ namespace QLCHBanLinhKien
         private void ResetForm()
         {
             dtGioHang.Rows.Clear();        // Xóa tất cả sản phẩm trong giỏ
-            selectedKhachHangId = 0;        // Reset về khách lẻ
-            cboKhachHang.SelectedIndex = 0; // Chọn "Khách lẻ"
+            selectedKhachHangId = 0;        // Reset khách hàng
+            cboKhachHang.SelectedIndex = 0; // Chọn placeholder
             txtGhiChu.Text = "";            // Xóa ghi chú
             numGiamGia.Value = 0;           // Reset giảm giá về 0
             TinhTongTien();                 // Cập nhật hiển thị tổng tiền
@@ -345,10 +345,10 @@ namespace QLCHBanLinhKien
 
         /// <summary>
         /// Xử lý thanh toán đơn hàng
-        /// 1. Ta đơn
-        /// 3. Cập nhạo hóa đơn mới
-        /// 2. Thêm chi tiết hóật tồn kho
-        /// 4. Cập nhật tổng chi tiêu khách hàng (nếu có)
+        /// 1. Tạo hóa đơn mới
+        /// 2. Thêm chi tiết hóa đơn
+        /// 3. Cập nhật tồn kho
+        /// 4. Cập nhật tổng chi tiêu khách hàng
         /// </summary>
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -359,11 +359,16 @@ namespace QLCHBanLinhKien
                 return;
             }
             
-            // Lấy mã khách hàng đã chọn
-            if (cboKhachHang.SelectedIndex > 0)
+            // Kiểm tra đã chọn khách hàng chưa (bắt buộc)
+            if (cboKhachHang.SelectedIndex <= 0)
             {
-                selectedKhachHangId = ((ComboBoxItem)cboKhachHang.SelectedItem).Value;
+                MessageBox.Show("Vui long chon khach hang!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboKhachHang.Focus();
+                return;
             }
+            
+            // Lấy mã khách hàng đã chọn
+            selectedKhachHangId = ((ComboBoxItem)cboKhachHang.SelectedItem).Value;
             
             // === BƯỚC 1: Tính toán tổng tiền ===
             decimal tongTien = 0;
@@ -385,7 +390,7 @@ namespace QLCHBanLinhKien
             
             SqlParameter[] paramsHD = {
                 new SqlParameter("@MaHD", maHD),
-                new SqlParameter("@MaKH", selectedKhachHangId > 0 ? (object)selectedKhachHangId : DBNull.Value), // NULL nếu khách lẻ
+                new SqlParameter("@MaKH", selectedKhachHangId), // Luôn có khách hàng (bắt buộc)
                 new SqlParameter("@TongTien", tongTien),
                 new SqlParameter("@GiamGia", giamGia),
                 new SqlParameter("@ThanhTien", thanhToan),
@@ -431,16 +436,13 @@ namespace QLCHBanLinhKien
                 Functions.RunSQL(sqlCapNhat, paramsCapNhat);
             }
             
-            // === BƯỚC 5: Cập nhật tổng chi tiêu khách hàng (nếu không phải khách lẻ) ===
-            if (selectedKhachHangId > 0)
-            {
-                string sqlCapNhatKH = "UPDATE KhachHang SET TongChiTieu = TongChiTieu + @TongTien WHERE MaKhachHang = @MaKH";
-                SqlParameter[] paramsKH = {
-                    new SqlParameter("@TongTien", thanhToan),
-                    new SqlParameter("@MaKH", selectedKhachHangId)
-                };
-                Functions.RunSQL(sqlCapNhatKH, paramsKH);
-            }
+            // === BƯỚC 5: Cập nhật tổng chi tiêu khách hàng ===
+            string sqlCapNhatKH = "UPDATE KhachHang SET TongChiTieu = TongChiTieu + @TongTien WHERE MaKhachHang = @MaKH";
+            SqlParameter[] paramsKH = {
+                new SqlParameter("@TongTien", thanhToan),
+                new SqlParameter("@MaKH", selectedKhachHangId)
+            };
+            Functions.RunSQL(sqlCapNhatKH, paramsKH);
             
             // Thông báo thành công
             MessageBox.Show("Thanh toan thanh cong!\nMa hoa don: " + maHD, "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -506,7 +508,7 @@ namespace QLCHBanLinhKien
             }
             else
             {
-                selectedKhachHangId = 0; // Khách lẻ
+                selectedKhachHangId = 0; // Chưa chọn khách hàng
             }
         }
     }
