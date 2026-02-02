@@ -42,8 +42,8 @@ namespace QLCHBanLinhKien
 
                 // Câu SQL cơ bản - lấy hóa đơn trong khoảng thời gian
                 string sql = @"SELECT hd.MaHoaDon, hd.NgayBan, 
-                               ISNULL(kh.HoTen, N'Khách lẻ') as TenKH,
-                               nd.TenDangNhap as NhanVien, 
+                               kh.HoTen as TenKH,
+                               nd.HoTen as NhanVien, 
                                hd.TongTien, hd.GiamGia, hd.ThanhTien
                                FROM HoaDon hd
                                LEFT JOIN KhachHang kh ON hd.MaKhachHang = kh.MaKhachHang

@@ -18,6 +18,7 @@ namespace QLCHBanLinhKien
         private void InitializeComponent()
         {
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblPhuongThuc = new System.Windows.Forms.Label();
             this.lblGhiChu = new System.Windows.Forms.Label();
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@ namespace QLCHBanLinhKien
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.lblPhuongThuc);
             this.pnlTop.Controls.Add(this.lblGhiChu);
             this.pnlTop.Controls.Add(this.lblNhanVien);
             this.pnlTop.Controls.Add(this.label8);
@@ -58,22 +60,35 @@ namespace QLCHBanLinhKien
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(933, 98);
+            this.pnlTop.Size = new System.Drawing.Size(933, 135);
             this.pnlTop.TabIndex = 0;
+            // 
+            // lblPhuongThuc
+            // 
+            this.lblPhuongThuc.AutoSize = true;
+            this.lblPhuongThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblPhuongThuc.Location = new System.Drawing.Point(19, 98);
+            this.lblPhuongThuc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhuongThuc.Name = "lblPhuongThuc";
+            this.lblPhuongThuc.Size = new System.Drawing.Size(96, 17);
+            this.lblPhuongThuc.TabIndex = 14;
+            this.lblPhuongThuc.Text = "Thanh toán:";
             // 
             // lblGhiChu
             // 
             this.lblGhiChu.AutoSize = true;
-            this.lblGhiChu.Location = new System.Drawing.Point(573, 135);
+            this.lblGhiChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblGhiChu.ForeColor = System.Drawing.Color.Blue;
+            this.lblGhiChu.Location = new System.Drawing.Point(133, 98);
             this.lblGhiChu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(0, 16);
+            this.lblGhiChu.Size = new System.Drawing.Size(0, 17);
             this.lblGhiChu.TabIndex = 13;
             // 
             // lblNhanVien
             // 
             this.lblNhanVien.AutoSize = true;
-            this.lblNhanVien.Location = new System.Drawing.Point(573, 98);
+            this.lblNhanVien.Location = new System.Drawing.Point(573, 62);
             this.lblNhanVien.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNhanVien.Name = "lblNhanVien";
             this.lblNhanVien.Size = new System.Drawing.Size(0, 16);
@@ -83,7 +98,7 @@ namespace QLCHBanLinhKien
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(487, 62);
+            this.label8.Location = new System.Drawing.Point(493, 62);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 17);
@@ -269,13 +284,13 @@ namespace QLCHBanLinhKien
             this.dgvChiTiet.BackgroundColor = System.Drawing.Color.White;
             this.dgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvChiTiet.Location = new System.Drawing.Point(0, 98);
+            this.dgvChiTiet.Location = new System.Drawing.Point(0, 135);
             this.dgvChiTiet.Margin = new System.Windows.Forms.Padding(4);
             this.dgvChiTiet.Name = "dgvChiTiet";
             this.dgvChiTiet.ReadOnly = true;
             this.dgvChiTiet.RowHeadersWidth = 51;
             this.dgvChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTiet.Size = new System.Drawing.Size(933, 382);
+            this.dgvChiTiet.Size = new System.Drawing.Size(933, 345);
             this.dgvChiTiet.TabIndex = 2;
             // 
             // frmChiTietHoaDon
@@ -315,6 +330,7 @@ namespace QLCHBanLinhKien
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblNhanVien;
         private System.Windows.Forms.Label lblGhiChu;
+        private System.Windows.Forms.Label lblPhuongThuc;
         private System.Windows.Forms.Panel pnlBottom;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTongTien;

@@ -34,6 +34,8 @@ namespace QLCHBanLinhKien
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.lblThanhToan = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.cboPhuongThucThanhToan = new System.Windows.Forms.ComboBox();
+            this.lblPhuongThuc = new System.Windows.Forms.Label();
             this.numGiamGia = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.lblTongTien = new System.Windows.Forms.Label();
@@ -180,7 +182,7 @@ namespace QLCHBanLinhKien
             this.cboDanhMuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDanhMuc.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboDanhMuc.FormattingEnabled = true;
-            this.cboDanhMuc.Location = new System.Drawing.Point(100, 12);
+            this.cboDanhMuc.Location = new System.Drawing.Point(109, 12);
             this.cboDanhMuc.Name = "cboDanhMuc";
             this.cboDanhMuc.Size = new System.Drawing.Size(160, 31);
             this.cboDanhMuc.TabIndex = 1;
@@ -203,7 +205,7 @@ namespace QLCHBanLinhKien
             this.panelGioHang.Location = new System.Drawing.Point(0, 130);
             this.panelGioHang.Name = "panelGioHang";
             this.panelGioHang.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
-            this.panelGioHang.Size = new System.Drawing.Size(546, 290);
+            this.panelGioHang.Size = new System.Drawing.Size(546, 260);
             this.panelGioHang.TabIndex = 2;
             // 
             // dgvGioHang
@@ -218,7 +220,7 @@ namespace QLCHBanLinhKien
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 51;
             this.dgvGioHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGioHang.Size = new System.Drawing.Size(526, 280);
+            this.dgvGioHang.Size = new System.Drawing.Size(526, 250);
             this.dgvGioHang.TabIndex = 0;
             this.dgvGioHang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGioHang_CellEndEdit);
             // 
@@ -228,14 +230,16 @@ namespace QLCHBanLinhKien
             this.panelThanhToan.Controls.Add(this.btnThanhToan);
             this.panelThanhToan.Controls.Add(this.lblThanhToan);
             this.panelThanhToan.Controls.Add(this.label8);
+            this.panelThanhToan.Controls.Add(this.cboPhuongThucThanhToan);
+            this.panelThanhToan.Controls.Add(this.lblPhuongThuc);
             this.panelThanhToan.Controls.Add(this.numGiamGia);
             this.panelThanhToan.Controls.Add(this.label7);
             this.panelThanhToan.Controls.Add(this.lblTongTien);
             this.panelThanhToan.Controls.Add(this.label5);
             this.panelThanhToan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelThanhToan.Location = new System.Drawing.Point(0, 420);
+            this.panelThanhToan.Location = new System.Drawing.Point(0, 390);
             this.panelThanhToan.Name = "panelThanhToan";
-            this.panelThanhToan.Size = new System.Drawing.Size(546, 180);
+            this.panelThanhToan.Size = new System.Drawing.Size(546, 210);
             this.panelThanhToan.TabIndex = 1;
             // 
             // btnThanhToan
@@ -243,7 +247,7 @@ namespace QLCHBanLinhKien
             this.btnThanhToan.BackColor = System.Drawing.Color.DarkGreen;
             this.btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnThanhToan.ForeColor = System.Drawing.Color.White;
-            this.btnThanhToan.Location = new System.Drawing.Point(10, 120);
+            this.btnThanhToan.Location = new System.Drawing.Point(10, 150);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(526, 50);
             this.btnThanhToan.TabIndex = 6;
@@ -255,7 +259,7 @@ namespace QLCHBanLinhKien
             // 
             this.lblThanhToan.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblThanhToan.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblThanhToan.Location = new System.Drawing.Point(200, 75);
+            this.lblThanhToan.Location = new System.Drawing.Point(200, 105);
             this.lblThanhToan.Name = "lblThanhToan";
             this.lblThanhToan.Size = new System.Drawing.Size(336, 35);
             this.lblThanhToan.TabIndex = 5;
@@ -266,11 +270,35 @@ namespace QLCHBanLinhKien
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(10, 80);
+            this.label8.Location = new System.Drawing.Point(10, 110);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(151, 28);
             this.label8.TabIndex = 4;
             this.label8.Text = "THANH TOÁN:";
+            // 
+            // cboPhuongThucThanhToan
+            // 
+            this.cboPhuongThucThanhToan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPhuongThucThanhToan.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cboPhuongThucThanhToan.FormattingEnabled = true;
+            this.cboPhuongThucThanhToan.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Chuyển khoản",
+            "Thẻ"});
+            this.cboPhuongThucThanhToan.Location = new System.Drawing.Point(140, 58);
+            this.cboPhuongThucThanhToan.Name = "cboPhuongThucThanhToan";
+            this.cboPhuongThucThanhToan.Size = new System.Drawing.Size(150, 33);
+            this.cboPhuongThucThanhToan.TabIndex = 8;
+            // 
+            // lblPhuongThuc
+            // 
+            this.lblPhuongThuc.AutoSize = true;
+            this.lblPhuongThuc.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblPhuongThuc.Location = new System.Drawing.Point(10, 55);
+            this.lblPhuongThuc.Name = "lblPhuongThuc";
+            this.lblPhuongThuc.Size = new System.Drawing.Size(112, 25);
+            this.lblPhuongThuc.TabIndex = 7;
+            this.lblPhuongThuc.Text = "Thanh toán:";
             // 
             // numGiamGia
             // 
@@ -280,14 +308,14 @@ namespace QLCHBanLinhKien
             0,
             0,
             0});
-            this.numGiamGia.Location = new System.Drawing.Point(400, 40);
+            this.numGiamGia.Location = new System.Drawing.Point(449, 55);
             this.numGiamGia.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.numGiamGia.Name = "numGiamGia";
-            this.numGiamGia.Size = new System.Drawing.Size(136, 32);
+            this.numGiamGia.Size = new System.Drawing.Size(84, 32);
             this.numGiamGia.TabIndex = 3;
             this.numGiamGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numGiamGia.ThousandsSeparator = true;
@@ -297,11 +325,11 @@ namespace QLCHBanLinhKien
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label7.Location = new System.Drawing.Point(310, 43);
+            this.label7.Location = new System.Drawing.Point(296, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 25);
+            this.label7.Size = new System.Drawing.Size(147, 25);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Giảm giá:";
+            this.label7.Text = "Giảm giá (VND):";
             // 
             // lblTongTien
             // 
@@ -341,9 +369,9 @@ namespace QLCHBanLinhKien
             // txtGhiChu
             // 
             this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtGhiChu.Location = new System.Drawing.Point(100, 85);
+            this.txtGhiChu.Location = new System.Drawing.Point(121, 85);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(435, 30);
+            this.txtGhiChu.Size = new System.Drawing.Size(319, 30);
             this.txtGhiChu.TabIndex = 6;
             // 
             // label6
@@ -363,7 +391,7 @@ namespace QLCHBanLinhKien
             this.cboKhachHang.FormattingEnabled = true;
             this.cboKhachHang.Location = new System.Drawing.Point(121, 50);
             this.cboKhachHang.Name = "cboKhachHang";
-            this.cboKhachHang.Size = new System.Drawing.Size(250, 31);
+            this.cboKhachHang.Size = new System.Drawing.Size(319, 31);
             this.cboKhachHang.TabIndex = 4;
             this.cboKhachHang.SelectedIndexChanged += new System.EventHandler(this.cboKhachHang_SelectedIndexChanged);
             // 
@@ -381,7 +409,7 @@ namespace QLCHBanLinhKien
             // 
             this.btnXoaGioHang.BackColor = System.Drawing.Color.DarkRed;
             this.btnXoaGioHang.ForeColor = System.Drawing.Color.White;
-            this.btnXoaGioHang.Location = new System.Drawing.Point(445, 10);
+            this.btnXoaGioHang.Location = new System.Drawing.Point(449, 85);
             this.btnXoaGioHang.Name = "btnXoaGioHang";
             this.btnXoaGioHang.Size = new System.Drawing.Size(90, 30);
             this.btnXoaGioHang.TabIndex = 2;
@@ -393,9 +421,9 @@ namespace QLCHBanLinhKien
             // 
             this.btnXoaKhoiGio.BackColor = System.Drawing.Color.IndianRed;
             this.btnXoaKhoiGio.ForeColor = System.Drawing.Color.White;
-            this.btnXoaKhoiGio.Location = new System.Drawing.Point(360, 10);
+            this.btnXoaKhoiGio.Location = new System.Drawing.Point(449, 51);
             this.btnXoaKhoiGio.Name = "btnXoaKhoiGio";
-            this.btnXoaKhoiGio.Size = new System.Drawing.Size(80, 30);
+            this.btnXoaKhoiGio.Size = new System.Drawing.Size(87, 30);
             this.btnXoaKhoiGio.TabIndex = 1;
             this.btnXoaKhoiGio.Text = "Xóa dòng";
             this.btnXoaKhoiGio.UseVisualStyleBackColor = false;
@@ -474,5 +502,7 @@ namespace QLCHBanLinhKien
         private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPhuongThuc;
+        private System.Windows.Forms.ComboBox cboPhuongThucThanhToan;
     }
 }

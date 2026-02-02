@@ -47,8 +47,8 @@ namespace QLCHBanLinhKien
 
                 // Query lấy thông tin hóa đơn kèm khách hàng và nhân viên
                 string sql = @"SELECT hd.MaHoaDon, hd.SoHoaDon, hd.NgayBan, 
-                               ISNULL(kh.HoTen, N'Khách lẻ') as TenKH, 
-                               ISNULL(nd.HoTen, N'') as NhanVien, 
+                               kh.HoTen as TenKH, 
+                               nd.HoTen as NhanVien, 
                                hd.TongTien, hd.GiamGia, hd.ThanhTien, hd.PhuongThucThanhToan
                                FROM HoaDon hd
                                LEFT JOIN KhachHang kh ON hd.MaKhachHang = kh.MaKhachHang
@@ -66,11 +66,9 @@ namespace QLCHBanLinhKien
                     lblMaHD.Text = reader["SoHoaDon"].ToString();
                     lblNgayBan.Text = Convert.ToDateTime(reader["NgayBan"]).ToString("dd/MM/yyyy HH:mm");
                     
-                    // Xử lý tên khách hàng - nếu rỗng thì hiển thị "Khách lẻ"
-                    string tenKH = reader["TenKH"].ToString();
-                    lblKhachHang.Text = string.IsNullOrEmpty(tenKH) ? "Khách lẻ" : tenKH;
-                    
-                    lblNhanVien.Text = reader["NhanVien"].ToString();
+                    lblKhachHang.Text = reader["TenKH"].ToString() ?? "";
+
+                    lblNhanVien.Text = reader["NhanVien"].ToString() ?? "";
                     
                     // Format hiển thị số tiền
                     lblTongTien.Text = Convert.ToDecimal(reader["TongTien"]).ToString("N0") + " VND";

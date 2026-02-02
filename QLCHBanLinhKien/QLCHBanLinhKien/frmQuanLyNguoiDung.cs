@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -48,9 +48,8 @@ namespace QLCHBanLinhKien
         private void LoadVaiTro()
         {
             cboVaiTro.Items.Clear();
-            cboVaiTro.Items.Add("Admin");
-            cboVaiTro.Items.Add("NhanVien");
-            cboVaiTro.Items.Add("QuanLy");
+            cboVaiTro.Items.Add("Quản trị");
+            cboVaiTro.Items.Add("Nhân viên");
             cboVaiTro.SelectedIndex = 1;
         }
 

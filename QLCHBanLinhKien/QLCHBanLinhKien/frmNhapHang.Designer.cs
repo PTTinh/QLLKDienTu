@@ -77,7 +77,7 @@ namespace QLCHBanLinhKien
             this.lblNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNhaCungCap.Location = new System.Drawing.Point(20, 15);
             this.lblNhaCungCap.Name = "lblNhaCungCap";
-            this.lblNhaCungCap.Size = new System.Drawing.Size(96, 19);
+            this.lblNhaCungCap.Size = new System.Drawing.Size(121, 23);
             this.lblNhaCungCap.TabIndex = 0;
             this.lblNhaCungCap.Text = "Nhà cung cấp:";
             // 
@@ -85,9 +85,9 @@ namespace QLCHBanLinhKien
             // 
             this.cmbNhaCungCap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbNhaCungCap.Location = new System.Drawing.Point(120, 12);
+            this.cmbNhaCungCap.Location = new System.Drawing.Point(140, 12);
             this.cmbNhaCungCap.Name = "cmbNhaCungCap";
-            this.cmbNhaCungCap.Size = new System.Drawing.Size(300, 25);
+            this.cmbNhaCungCap.Size = new System.Drawing.Size(300, 31);
             this.cmbNhaCungCap.TabIndex = 1;
             // 
             // lblNgayNhap
@@ -96,7 +96,7 @@ namespace QLCHBanLinhKien
             this.lblNgayNhap.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNgayNhap.Location = new System.Drawing.Point(450, 15);
             this.lblNgayNhap.Name = "lblNgayNhap";
-            this.lblNgayNhap.Size = new System.Drawing.Size(79, 19);
+            this.lblNgayNhap.Size = new System.Drawing.Size(98, 23);
             this.lblNgayNhap.TabIndex = 2;
             this.lblNgayNhap.Text = "Ngày nhập:";
             // 
@@ -104,9 +104,9 @@ namespace QLCHBanLinhKien
             // 
             this.dtpNgayNhap.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpNgayNhap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayNhap.Location = new System.Drawing.Point(535, 12);
+            this.dtpNgayNhap.Location = new System.Drawing.Point(554, 9);
             this.dtpNgayNhap.Name = "dtpNgayNhap";
-            this.dtpNgayNhap.Size = new System.Drawing.Size(120, 25);
+            this.dtpNgayNhap.Size = new System.Drawing.Size(120, 30);
             this.dtpNgayNhap.TabIndex = 3;
             // 
             // groupBoxSanPham
@@ -136,16 +136,16 @@ namespace QLCHBanLinhKien
             this.lblSanPham.AutoSize = true;
             this.lblSanPham.Location = new System.Drawing.Point(15, 35);
             this.lblSanPham.Name = "lblSanPham";
-            this.lblSanPham.Size = new System.Drawing.Size(73, 19);
+            this.lblSanPham.Size = new System.Drawing.Size(91, 23);
             this.lblSanPham.TabIndex = 0;
             this.lblSanPham.Text = "Sản phẩm:";
             // 
             // cmbSanPham
             // 
             this.cmbSanPham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSanPham.Location = new System.Drawing.Point(95, 32);
+            this.cmbSanPham.Location = new System.Drawing.Point(103, 32);
             this.cmbSanPham.Name = "cmbSanPham";
-            this.cmbSanPham.Size = new System.Drawing.Size(250, 25);
+            this.cmbSanPham.Size = new System.Drawing.Size(250, 31);
             this.cmbSanPham.TabIndex = 1;
             this.cmbSanPham.SelectedIndexChanged += new System.EventHandler(this.cmbSanPham_SelectedIndexChanged);
             // 
@@ -154,15 +154,15 @@ namespace QLCHBanLinhKien
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Location = new System.Drawing.Point(360, 35);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(66, 19);
+            this.lblSoLuong.Size = new System.Drawing.Size(82, 23);
             this.lblSoLuong.TabIndex = 2;
             this.lblSoLuong.Text = "Số lượng:";
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(435, 32);
+            this.txtSoLuong.Location = new System.Drawing.Point(442, 32);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(70, 25);
+            this.txtSoLuong.Size = new System.Drawing.Size(70, 30);
             this.txtSoLuong.TabIndex = 3;
             this.txtSoLuong.Text = "1";
             this.txtSoLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -172,15 +172,15 @@ namespace QLCHBanLinhKien
             this.lblGiaNhap.AutoSize = true;
             this.lblGiaNhap.Location = new System.Drawing.Point(520, 35);
             this.lblGiaNhap.Name = "lblGiaNhap";
-            this.lblGiaNhap.Size = new System.Drawing.Size(67, 19);
+            this.lblGiaNhap.Size = new System.Drawing.Size(83, 23);
             this.lblGiaNhap.TabIndex = 4;
             this.lblGiaNhap.Text = "Giá nhập:";
             // 
             // txtGiaNhap
             // 
-            this.txtGiaNhap.Location = new System.Drawing.Point(590, 32);
+            this.txtGiaNhap.Location = new System.Drawing.Point(600, 32);
             this.txtGiaNhap.Name = "txtGiaNhap";
-            this.txtGiaNhap.Size = new System.Drawing.Size(100, 25);
+            this.txtGiaNhap.Size = new System.Drawing.Size(94, 30);
             this.txtGiaNhap.TabIndex = 5;
             this.txtGiaNhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -189,7 +189,7 @@ namespace QLCHBanLinhKien
             this.lblTonHienTaiLabel.AutoSize = true;
             this.lblTonHienTaiLabel.Location = new System.Drawing.Point(15, 68);
             this.lblTonHienTaiLabel.Name = "lblTonHienTaiLabel";
-            this.lblTonHienTaiLabel.Size = new System.Drawing.Size(84, 19);
+            this.lblTonHienTaiLabel.Size = new System.Drawing.Size(105, 23);
             this.lblTonHienTaiLabel.TabIndex = 6;
             this.lblTonHienTaiLabel.Text = "Tồn hiện tại:";
             // 
@@ -200,7 +200,7 @@ namespace QLCHBanLinhKien
             this.lblTonHienTai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.lblTonHienTai.Location = new System.Drawing.Point(100, 68);
             this.lblTonHienTai.Name = "lblTonHienTai";
-            this.lblTonHienTai.Size = new System.Drawing.Size(17, 19);
+            this.lblTonHienTai.Size = new System.Drawing.Size(20, 23);
             this.lblTonHienTai.TabIndex = 7;
             this.lblTonHienTai.Text = "0";
             // 
@@ -267,7 +267,7 @@ namespace QLCHBanLinhKien
             this.lblTongTienLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTongTienLabel.Location = new System.Drawing.Point(20, 23);
             this.lblTongTienLabel.Name = "lblTongTienLabel";
-            this.lblTongTienLabel.Size = new System.Drawing.Size(87, 21);
+            this.lblTongTienLabel.Size = new System.Drawing.Size(108, 28);
             this.lblTongTienLabel.TabIndex = 0;
             this.lblTongTienLabel.Text = "Tổng tiền:";
             // 
@@ -278,7 +278,7 @@ namespace QLCHBanLinhKien
             this.lblTongTien.ForeColor = System.Drawing.Color.Red;
             this.lblTongTien.Location = new System.Drawing.Point(110, 20);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(70, 25);
+            this.lblTongTien.Size = new System.Drawing.Size(88, 32);
             this.lblTongTien.TabIndex = 1;
             this.lblTongTien.Text = "0 VNĐ";
             // 
@@ -314,7 +314,7 @@ namespace QLCHBanLinhKien
             // 
             // frmNhapHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(803, 550);

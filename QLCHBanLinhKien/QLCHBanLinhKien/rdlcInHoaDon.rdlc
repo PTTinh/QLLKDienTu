@@ -917,7 +917,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Thanh toán:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -1063,11 +1063,37 @@
             <ZIndex>25</ZIndex>
             <Style />
           </Textbox>
+          <Textbox Name="txtPhuongThuc">
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!PhuongThucThanhToan.Value, "HoaDonDataSet")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#0066cc</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.8cm</Top>
+            <Left>15.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.5cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style />
+          </Textbox>
         </ReportItems>
         <Height>14cm</Height>
         <Style />
       </Body>
-      <Width>19cm</Width>
+      <Width>21.51883cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

@@ -209,6 +209,7 @@ namespace QLCHBanLinhKien
             cboKhachHang.SelectedIndex = 0; // Chọn placeholder
             txtGhiChu.Text = "";            // Xóa ghi chú
             numGiamGia.Value = 0;           // Reset giảm giá về 0
+            cboPhuongThucThanhToan.SelectedIndex = 0; // Reset phương thức thanh toán về Tiền mặt
             TinhTongTien();                 // Cập nhật hiển thị tổng tiền
         }
 
@@ -383,9 +384,12 @@ namespace QLCHBanLinhKien
             // === BƯỚC 2: Tạo mã hóa đơn theo format: HD + yyyyMMddHHmmss ===
             string maHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss");
             
+            // Lấy phương thức thanh toán
+            string phuongThucThanhToan = cboPhuongThucThanhToan.SelectedItem?.ToString() ?? "Tiền mặt";
+            
             // === BƯỚC 3: Insert hóa đơn vào database ===
-            string sqlHoaDon = @"INSERT INTO HoaDon (SoHoaDon, NgayBan, MaKhachHang, TongTien, GiamGia, ThanhTien, MaNhanVien)
-                                VALUES (@MaHD, GETDATE(), @MaKH, @TongTien, @GiamGia, @ThanhTien, @MaNV);
+            string sqlHoaDon = @"INSERT INTO HoaDon (SoHoaDon, NgayBan, MaKhachHang, TongTien, GiamGia, ThanhTien, MaNhanVien, PhuongThucThanhToan)
+                                VALUES (@MaHD, GETDATE(), @MaKH, @TongTien, @GiamGia, @ThanhTien, @MaNV, @PhuongThuc);
                                 SELECT SCOPE_IDENTITY();"; // Lấy ID vừa insert
             
             SqlParameter[] paramsHD = {
@@ -394,7 +398,8 @@ namespace QLCHBanLinhKien
                 new SqlParameter("@TongTien", tongTien),
                 new SqlParameter("@GiamGia", giamGia),
                 new SqlParameter("@ThanhTien", thanhToan),
-                new SqlParameter("@MaNV", frmLogin.MaNguoiDung) // Mã nhân viên đang đăng nhập
+                new SqlParameter("@MaNV", frmLogin.MaNguoiDung), // Mã nhân viên đang đăng nhập
+                new SqlParameter("@PhuongThuc", phuongThucThanhToan)
             };
             
             // Thực thi và lấy MaHoaDon vừa tạo
