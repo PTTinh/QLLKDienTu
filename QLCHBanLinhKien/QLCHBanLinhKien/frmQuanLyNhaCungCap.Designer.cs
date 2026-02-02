@@ -59,7 +59,7 @@ namespace QLCHBanLinhKien
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(2);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(750, 41);
             this.panelTop.TabIndex = 0;
@@ -83,9 +83,9 @@ namespace QLCHBanLinhKien
             this.panelLeft.Controls.Add(this.panelButtons);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 41);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panelLeft.Padding = new System.Windows.Forms.Padding(8);
             this.panelLeft.Size = new System.Drawing.Size(240, 365);
             this.panelLeft.TabIndex = 1;
             // 
@@ -106,9 +106,9 @@ namespace QLCHBanLinhKien
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(224, 308);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -117,7 +117,7 @@ namespace QLCHBanLinhKien
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(75, 219);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(136, 58);
@@ -136,7 +136,7 @@ namespace QLCHBanLinhKien
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(75, 187);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(136, 25);
             this.txtEmail.TabIndex = 9;
@@ -154,7 +154,7 @@ namespace QLCHBanLinhKien
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(75, 154);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(136, 25);
             this.txtSDT.TabIndex = 7;
@@ -172,7 +172,7 @@ namespace QLCHBanLinhKien
             // txtNguoiLienHe
             // 
             this.txtNguoiLienHe.Location = new System.Drawing.Point(75, 122);
-            this.txtNguoiLienHe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNguoiLienHe.Margin = new System.Windows.Forms.Padding(2);
             this.txtNguoiLienHe.Name = "txtNguoiLienHe";
             this.txtNguoiLienHe.Size = new System.Drawing.Size(136, 25);
             this.txtNguoiLienHe.TabIndex = 5;
@@ -190,7 +190,7 @@ namespace QLCHBanLinhKien
             // txtTenNCC
             // 
             this.txtTenNCC.Location = new System.Drawing.Point(75, 57);
-            this.txtTenNCC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenNCC.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenNCC.Multiline = true;
             this.txtTenNCC.Name = "txtTenNCC";
             this.txtTenNCC.Size = new System.Drawing.Size(136, 58);
@@ -209,7 +209,7 @@ namespace QLCHBanLinhKien
             // txtMaNCC
             // 
             this.txtMaNCC.Location = new System.Drawing.Point(75, 24);
-            this.txtMaNCC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaNCC.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaNCC.Name = "txtMaNCC";
             this.txtMaNCC.Size = new System.Drawing.Size(136, 25);
             this.txtMaNCC.TabIndex = 1;
@@ -232,17 +232,17 @@ namespace QLCHBanLinhKien
             this.panelButtons.Controls.Add(this.btnThem);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtons.Location = new System.Drawing.Point(8, 316);
-            this.panelButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(2);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(224, 41);
             this.panelButtons.TabIndex = 1;
             // 
             // btnLamMoi
             // 
-            this.btnLamMoi.Location = new System.Drawing.Point(169, 8);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoi.Location = new System.Drawing.Point(168, 8);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(52, 24);
+            this.btnLamMoi.Size = new System.Drawing.Size(54, 24);
             this.btnLamMoi.TabIndex = 3;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@ namespace QLCHBanLinhKien
             this.btnXoa.BackColor = System.Drawing.Color.IndianRed;
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Location = new System.Drawing.Point(112, 8);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(52, 24);
             this.btnXoa.TabIndex = 2;
@@ -266,7 +266,7 @@ namespace QLCHBanLinhKien
             this.btnSua.BackColor = System.Drawing.Color.Orange;
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(58, 8);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(52, 24);
             this.btnSua.TabIndex = 1;
@@ -279,7 +279,7 @@ namespace QLCHBanLinhKien
             this.btnThem.BackColor = System.Drawing.Color.SeaGreen;
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.Location = new System.Drawing.Point(3, 8);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(52, 24);
             this.btnThem.TabIndex = 0;
@@ -293,9 +293,9 @@ namespace QLCHBanLinhKien
             this.panelRight.Controls.Add(this.panelSearch);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRight.Location = new System.Drawing.Point(240, 41);
-            this.panelRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(2);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panelRight.Padding = new System.Windows.Forms.Padding(8);
             this.panelRight.Size = new System.Drawing.Size(510, 365);
             this.panelRight.TabIndex = 2;
             // 
@@ -308,7 +308,7 @@ namespace QLCHBanLinhKien
             this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNhaCungCap.Location = new System.Drawing.Point(8, 40);
-            this.dgvNhaCungCap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvNhaCungCap.Margin = new System.Windows.Forms.Padding(2);
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.ReadOnly = true;
             this.dgvNhaCungCap.RowHeadersWidth = 51;
@@ -324,7 +324,7 @@ namespace QLCHBanLinhKien
             this.panelSearch.Controls.Add(this.label7);
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(8, 8);
-            this.panelSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(2);
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(494, 32);
             this.panelSearch.TabIndex = 0;
@@ -344,7 +344,7 @@ namespace QLCHBanLinhKien
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTimKiem.Location = new System.Drawing.Point(75, 4);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(226, 25);
             this.txtTimKiem.TabIndex = 1;
@@ -369,7 +369,7 @@ namespace QLCHBanLinhKien
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelTop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmQuanLyNhaCungCap";
             this.Text = "Quản lý nhà cung cấp";
             this.Load += new System.EventHandler(this.frmQuanLyNhaCungCap_Load);

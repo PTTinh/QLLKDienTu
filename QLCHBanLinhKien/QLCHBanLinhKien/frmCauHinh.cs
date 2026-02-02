@@ -9,12 +9,10 @@ namespace QLCHBanLinhKien
 {
     public partial class frmCauHinh : Form
     {
-        private string configFilePath;
 
         public frmCauHinh()
         {
             InitializeComponent();
-            configFilePath = Path.Combine(Application.StartupPath, "config.ini");
         }
 
         private void frmCauHinh_Load(object sender, EventArgs e)
@@ -49,38 +47,6 @@ namespace QLCHBanLinhKien
 
             txtUsername.Enabled = !chkWindowsAuth.Checked;
             txtPassword.Enabled = !chkWindowsAuth.Checked;
-
-            // Load thông tin cửa hàng từ config file
-            if (File.Exists(configFilePath))
-            {
-                try
-                {
-                    string[] lines = File.ReadAllLines(configFilePath);
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("TenCuaHang="))
-                            txtTenCuaHang.Text = line.Substring(11);
-                        else if (line.StartsWith("DiaChi="))
-                            txtDiaChi.Text = line.Substring(7);
-                        else if (line.StartsWith("DienThoai="))
-                            txtDienThoai.Text = line.Substring(10);
-                        else if (line.StartsWith("Email="))
-                            txtEmail.Text = line.Substring(6);
-                        else if (line.StartsWith("ThueSuat="))
-                            numThueSuat.Value = Convert.ToDecimal(line.Substring(9));
-                    }
-                }
-                catch { }
-            }
-            else
-            {
-                // Default values
-                txtTenCuaHang.Text = "Cửa hàng Linh kiện Điện tử";
-                txtDiaChi.Text = "123 Đường ABC, Quận XYZ, TP. HCM";
-                txtDienThoai.Text = "0123 456 789";
-                txtEmail.Text = "contact@linhkien.com";
-                numThueSuat.Value = 10;
-            }
         }
 
         private void LoadThongTinHeThong()
@@ -188,119 +154,6 @@ namespace QLCHBanLinhKien
             }
         }
 
-        private void btnLuuCuaHang_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Lưu thông tin cửa hàng vào file config
-                string[] lines = new string[]
-                {
-                    "TenCuaHang=" + txtTenCuaHang.Text,
-                    "DiaChi=" + txtDiaChi.Text,
-                    "DienThoai=" + txtDienThoai.Text,
-                    "Email=" + txtEmail.Text,
-                    "ThueSuat=" + numThueSuat.Value.ToString()
-                };
-
-                File.WriteAllLines(configFilePath, lines);
-                MessageBox.Show("Đã lưu thông tin cửa hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSaoLuu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "SQL Backup Files|*.bak";
-                sfd.FileName = $"Backup_{txtDatabase.Text}_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    string query = $"BACKUP DATABASE [{txtDatabase.Text}] TO DISK = '{sfd.FileName}'";
-                    Functions.RunSQL(query);
-                    MessageBox.Show("Sao lưu database thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi sao lưu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnPhucHoi_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "SQL Backup Files|*.bak";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show(
-                        "Bạn có chắc muốn phục hồi database từ file backup?\nDữ liệu hiện tại sẽ bị ghi đè!",
-                        "Xác nhận",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        // Đóng tất cả kết nối đến database
-                        Functions.Disconnect();
-
-                        // Tạo kết nối mới đến master database để thực hiện restore
-                        string masterConnStr;
-                        if (chkWindowsAuth.Checked)
-                            masterConnStr = $"Data Source={txtServer.Text};Initial Catalog=master;Integrated Security=True";
-                        else
-                            masterConnStr = $"Data Source={txtServer.Text};Initial Catalog=master;User ID={txtUsername.Text};Password={txtPassword.Text}";
-
-                        using (SqlConnection masterConn = new SqlConnection(masterConnStr))
-                        {
-                            masterConn.Open();
-
-                            // Đặt database vào single user mode
-                            string setSingle = $"ALTER DATABASE [{txtDatabase.Text}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
-                            using (SqlCommand cmd = new SqlCommand(setSingle, masterConn))
-                            {
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            // Restore database
-                            string restore = $"RESTORE DATABASE [{txtDatabase.Text}] FROM DISK = '{ofd.FileName}' WITH REPLACE";
-                            using (SqlCommand cmd = new SqlCommand(restore, masterConn))
-                            {
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            // Đặt lại multi user mode
-                            string setMulti = $"ALTER DATABASE [{txtDatabase.Text}] SET MULTI_USER";
-                            using (SqlCommand cmd = new SqlCommand(setMulti, masterConn))
-                            {
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            masterConn.Close();
-                        }
-
-                        // Kết nối lại
-                        Functions.Connect();
-
-                        MessageBox.Show("Phục hồi database thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi phục hồi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Thử kết nối lại
-                try { Functions.Connect(); } catch { }
-            }
-        }
 
         private void btnDong_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -155,7 +155,12 @@ namespace QLCHBanLinhKien
                 MessageBox.Show("Vui long chon khach hang can xoa!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+            if (Functions.currentUserRole != "Quản trị")
+            {
+                MessageBox.Show("Ban khong co quyen xoa danh muc!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (MessageBox.Show("Ban co chac chan muon xoa khach hang nay?", "Xac nhan",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

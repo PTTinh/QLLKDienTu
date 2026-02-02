@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -128,7 +128,12 @@ namespace QLCHBanLinhKien
                 MessageBox.Show("Vui long chon nha cung cap can xoa!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+            if (Functions.currentUserRole != "Quản trị")
+            {
+                MessageBox.Show("Ban khong co quyen xoa danh muc!", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Kiem tra co san pham nao thuoc NCC khong
             string checkSql = "SELECT COUNT(*) FROM SanPham WHERE MaNCC = @MaNCC";
             SqlParameter[] checkParams = { new SqlParameter("@MaNCC", selectedId) };

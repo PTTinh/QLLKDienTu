@@ -68,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\ExcelExporter.cs" />
     <Compile Include="Class\Functions.cs" />
     <Compile Include="frmCanhBaoHangTon.cs">
       <SubType>Form</SubType>

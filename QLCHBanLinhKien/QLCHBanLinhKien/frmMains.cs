@@ -20,14 +20,10 @@ namespace QLCHBanLinhKien
             lblRole.Text = "Vai trò: " + Functions.currentUserRole;
             if (Functions.currentUserRole != "Quản trị")
             {
-                this.mnuDanhMuc.Visible = false;
+                this.mnuBaoCaoDoanhThu.Visible = false;
+                this.mnuThongKeNhanVien.Visible = false;
                 this.mnuNguoiDung.Visible = false;
-                this.mnuNhaCungCap.Visible = false;
-                this.mnuNguoiDung.Visible = false;
-                this.mnuSanPham.Visible = false;
-                this.mnuKho.Visible = false;
                 this.mnuCauHinh.Visible = false;
-                this.mnuBaoCao.Visible = false;
                 OpenChildForm(new frmPOS());
                 return;
             }
@@ -196,7 +192,7 @@ namespace QLCHBanLinhKien
         // Menu Tro giup
         private void mnuGioiThieu_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chương trình quản lý cửa hàng linh kiện điện tử\nPhiên bản: 1.0.0\nTác giả: Team DEV",
+            MessageBox.Show("Chương trình quản lý cửa hàng linh kiện điện tử\nPhiên bản: 1.0.0\nTác giả: 5 AE SIÊU NHÂN",
                 "Giới thiệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
