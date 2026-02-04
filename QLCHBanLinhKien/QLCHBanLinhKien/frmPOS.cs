@@ -441,6 +441,7 @@ namespace QLCHBanLinhKien
                 Functions.RunSQL(sqlCapNhat, paramsCapNhat);
             }
             
+
             // === BƯỚC 5: Cập nhật tổng chi tiêu khách hàng ===
             string sqlCapNhatKH = "UPDATE KhachHang SET TongChiTieu = TongChiTieu + @TongTien WHERE MaKhachHang = @MaKH";
             SqlParameter[] paramsKH = {

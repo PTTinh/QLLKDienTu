@@ -27,8 +27,8 @@ namespace QLCHBanLinhKien
             {
                 string query = "SELECT MaNCC, TenNCC FROM NhaCungCap ORDER BY TenNCC";
                 DataTable dt = Functions.GetDataTable(query);
-                
                 cmbNhaCungCap.DataSource = dt;
+                
                 cmbNhaCungCap.DisplayMember = "TenNCC";
                 cmbNhaCungCap.ValueMember = "MaNCC";
                 cmbNhaCungCap.SelectedIndex = -1;

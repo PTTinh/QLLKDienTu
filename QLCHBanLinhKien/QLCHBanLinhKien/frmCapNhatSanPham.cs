@@ -39,7 +39,6 @@ namespace QLCHBanLinhKien
             {
                 lblTitle.Text = "THÊM SẢN PHẨM MỚI";
                 this.Text = "Thêm sản phẩm mới";
-                txtMaSoSanPham.Text = GenerateMaSo();
             }
         }
 
@@ -110,11 +109,6 @@ namespace QLCHBanLinhKien
             {
                 MessageBox.Show("Lỗi tải sản phẩm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private string GenerateMaSo()
-        {
-            return "SP" + DateTime.Now.ToString("yyMMddHHmmss");
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

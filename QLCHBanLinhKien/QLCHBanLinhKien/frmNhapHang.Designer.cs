@@ -75,7 +75,7 @@ namespace QLCHBanLinhKien
             // 
             this.lblNhaCungCap.AutoSize = true;
             this.lblNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNhaCungCap.Location = new System.Drawing.Point(20, 15);
+            this.lblNhaCungCap.Location = new System.Drawing.Point(15, 10);
             this.lblNhaCungCap.Name = "lblNhaCungCap";
             this.lblNhaCungCap.Size = new System.Drawing.Size(121, 23);
             this.lblNhaCungCap.TabIndex = 0;
@@ -143,7 +143,7 @@ namespace QLCHBanLinhKien
             // cmbSanPham
             // 
             this.cmbSanPham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSanPham.Location = new System.Drawing.Point(103, 32);
+            this.cmbSanPham.Location = new System.Drawing.Point(106, 35);
             this.cmbSanPham.Name = "cmbSanPham";
             this.cmbSanPham.Size = new System.Drawing.Size(250, 31);
             this.cmbSanPham.TabIndex = 1;

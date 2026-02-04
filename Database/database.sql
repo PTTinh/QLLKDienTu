@@ -9,6 +9,17 @@ GO
 USE QLCHLinhKienDienTu;
 GO
 -- Table definitions
+CREATE TABLE NguoiDung (
+    MaNguoiDung INT PRIMARY KEY IDENTITY(1,1),
+    TenDangNhap VARCHAR(100) UNIQUE NOT NULL,
+    MatKhau VARCHAR(255) NOT NULL,
+    HoTen NVARCHAR(200) NOT NULL,
+    Email VARCHAR(100),
+    SoDienThoai VARCHAR(20),
+    VaiTro NVARCHAR(50) DEFAULT N'Nhân viên', -- Quản trị, Quản lý, Nhân viên
+    NgayTao DATETIME DEFAULT GETDATE(),
+    TrangThai BIT DEFAULT 1 -- 1: Hoạt động, 0: Khóa
+);
 CREATE TABLE DanhMuc (
     MaDanhMuc INT PRIMARY KEY IDENTITY(1,1),
     TenDanhMuc NVARCHAR(100) NOT NULL,
@@ -58,14 +69,14 @@ CREATE TABLE HoaDon (
     MaHoaDon INT PRIMARY KEY IDENTITY(1,1),
     SoHoaDon VARCHAR(50) UNIQUE NOT NULL,
     MaKhachHang INT FOREIGN KEY REFERENCES KhachHang(MaKhachHang),
-    MaNhanVien INT,
+    MaNhanVien INT FOREIGN KEY REFERENCES NguoiDung(MaNguoiDung), -- Bổ sung ở đây
     NgayBan DATETIME DEFAULT GETDATE(),
     TongTien DECIMAL(18,2) NOT NULL,
     GiamGia DECIMAL(18,2) DEFAULT 0,
     ThueVAT DECIMAL(18,2) DEFAULT 0,
     ThanhTien DECIMAL(18,2) NOT NULL,
-    PhuongThucThanhToan NVARCHAR(50), -- Tiền mặt, Chuyển khoản, Thẻ
-    TrangThai NVARCHAR(50) DEFAULT N'Hoàn thành' -- Chờ xử lý, Hoàn thành, Đã hủy
+    PhuongThucThanhToan NVARCHAR(50),
+    TrangThai NVARCHAR(50) DEFAULT N'Hoàn thành'
 );
 
 CREATE TABLE ChiTietHoaDon (
@@ -77,19 +88,11 @@ CREATE TABLE ChiTietHoaDon (
     GiamGia DECIMAL(18,2) DEFAULT 0,
     ThanhTien DECIMAL(18,2) NOT NULL
 );
-
-CREATE TABLE NguoiDung (
-    MaNguoiDung INT PRIMARY KEY IDENTITY(1,1),
-    TenDangNhap VARCHAR(100) UNIQUE NOT NULL,
-    MatKhau VARCHAR(255) NOT NULL,
-    HoTen NVARCHAR(200) NOT NULL,
-    Email VARCHAR(100),
-    SoDienThoai VARCHAR(20),
-    VaiTro NVARCHAR(50) DEFAULT N'Nhân viên', -- Quản trị, Quản lý, Nhân viên
-    NgayTao DATETIME DEFAULT GETDATE(),
-    TrangThai BIT DEFAULT 1 -- 1: Hoạt động, 0: Khóa
-);
-
+-- Thêm người dùng (mật khẩu đã mã hóa - mật khẩu gốc là "123456")
+INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, VaiTro, TrangThai) VALUES
+('admin', 'admin', N'Nguyễn Văn Quản Trị', 'admin@linhkien.com', '0909111222', N'Quản trị', 1),
+('quanly1', 'quanly1', N'Trần Thị Quản Lý', 'quanly@linhkien.com', '0918333444', N'Quản lý', 1),
+('nhanvien1', 'nhanvien1', N'Lê Văn Nhân Viên', 'nhanvien1@linhkien.com', '0928555666', N'Nhân viên', 1);
 -- Thêm danh mục
 INSERT INTO DanhMuc (TenDanhMuc, MoTa, NgayTao) VALUES
 (N'CPU - Bộ vi xử lý', N'Các loại CPU Intel, AMD cho desktop và laptop', '2024-01-01'),
@@ -170,29 +173,24 @@ INSERT INTO KhachHang (MaSoKhachHang, HoTen, SoDienThoai, Email, DiaChi, LoaiKha
 ('KH008', N'Bùi Thanh Hà', '0967890123', 'thanhha.bui@gmail.com', N'12 Trần Hưng Đạo, Quận 5, TP.HCM', N'Thường', 15600000, '2024-02-20'),
 ('KH009', N'Nguyễn Trung Kiên', '0956789012', 'trungkien.nguyen@yahoo.com', N'67 Phạm Ngọc Thạch, Quận 3, TP.HCM', N'VIP', 31200000, '2024-01-30'),
 ('KH010', N'Lý Thị Mai', '0912345678', 'thimai.ly@gmail.com', N'99 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM', N'Thường', 7200000, '2024-02-25');
--- Thêm người dùng (mật khẩu đã mã hóa - mật khẩu gốc là "123456")
-INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, VaiTro, TrangThai) VALUES
-('admin', 'admin', N'Nguyễn Văn Quản Trị', 'admin@linhkien.com', '0909111222', N'Quản trị', 1),
-('quanly1', 'quanly1', N'Trần Thị Quản Lý', 'quanly@linhkien.com', '0918333444', N'Quản lý', 1),
-('nhanvien1', 'nhanvien1', N'Lê Văn Nhân Viên', 'nhanvien1@linhkien.com', '0928555666', N'Nhân viên', 1);
 -- Thêm hóa đơn
 INSERT INTO HoaDon (SoHoaDon, MaKhachHang, MaNhanVien, NgayBan, TongTien, GiamGia, ThueVAT, ThanhTien, PhuongThucThanhToan, TrangThai) VALUES
-('HD2401001', 1, 3, '2024-01-10 09:30:00', 14280000, 500000, 1378000, 15158000, N'Tiền mặt', N'Hoàn thành'),
-('HD2401002', 4, 3, '2024-01-12 14:15:00', 35690000, 1000000, 3469000, 38159000, N'Chuyển khoản', N'Hoàn thành'),
-('HD2401003', 3, 4, '2024-01-15 10:45:00', 21450000, 0, 2145000, 23595000, N'Thẻ', N'Hoàn thành'),
-('HD2401004', 6, 3, '2024-01-18 16:20:00', 18900000, 300000, 1860000, 20460000, N'Tiền mặt', N'Hoàn thành'),
-('HD2401005', 2, 4, '2024-01-20 11:10:00', 12450000, 200000, 1225000, 13475000, N'Tiền mặt', N'Hoàn thành'),
-('HD2401006', 7, 3, '2024-01-22 13:45:00', 45200000, 1500000, 4370000, 48070000, N'Chuyển khoản', N'Hoàn thành'),
-('HD2401007', 9, 4, '2024-01-25 09:15:00', 31200000, 800000, 3040000, 33440000, N'Thẻ', N'Hoàn thành'),
-('HD2401008', 8, 3, '2024-01-28 15:30:00', 15600000, 100000, 1550000, 16150000, N'Tiền mặt', N'Hoàn thành'),
-('HD2402001', 5, 4, '2024-02-02 10:20:00', 8900000, 0, 890000, 9790000, N'Tiền mặt', N'Hoàn thành'),
-('HD2402002', 10, 3, '2024-02-05 14:40:00', 7200000, 100000, 710000, 7810000, N'Tiền mặt', N'Hoàn thành'),
-('HD2402003', 1, 4, '2024-02-08 11:30:00', 11600000, 400000, 1120000, 12320000, N'Thẻ', N'Hoàn thành'),
-('HD2402004', 3, 3, '2024-02-10 16:15:00', 14220000, 300000, 1392000, 15212000, N'Tiền mặt', N'Hoàn thành'),
-('HD2402005', 4, 4, '2024-02-12 09:45:00', 26750000, 1200000, 2555000, 28105000, N'Chuyển khoản', N'Hoàn thành'),
-('HD2402006', 6, 3, '2024-02-15 13:20:00', 23250000, 700000, 2255000, 24805000, N'Thẻ', N'Hoàn thành'),
-('HD2402007', 2, 4, '2024-02-18 10:50:00', 15200000, 500000, 1470000, 16170000, N'Tiền mặt', N'Đã hủy'),
-('HD2402008', 9, 3, '2024-02-20 15:10:00', 18700000, 300000, 1840000, 20240000, N'Tiền mặt', N'Hoàn thành');
+('HD2401001', 1, 1, '2024-01-10 09:30:00', 14280000, 500000, 1378000, 15158000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401002', 4, 1, '2024-01-12 14:15:00', 35690000, 1000000, 3469000, 38159000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2401003', 3, 1, '2024-01-15 10:45:00', 21450000, 0, 2145000, 23595000, N'Thẻ', N'Hoàn thành'),
+('HD2401004', 6, 1, '2024-01-18 16:20:00', 18900000, 300000, 1860000, 20460000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401005', 2, 1, '2024-01-20 11:10:00', 12450000, 200000, 1225000, 13475000, N'Tiền mặt', N'Hoàn thành'),
+('HD2401006', 7, 1, '2024-01-22 13:45:00', 45200000, 1500000, 4370000, 48070000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2401007', 9, 1, '2024-01-25 09:15:00', 31200000, 800000, 3040000, 33440000, N'Thẻ', N'Hoàn thành'),
+('HD2401008', 8, 1, '2024-01-28 15:30:00', 15600000, 100000, 1550000, 16150000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402001', 5, 1, '2024-02-02 10:20:00', 8900000, 0, 890000, 9790000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402002', 10, 1, '2024-02-05 14:40:00', 7200000, 100000, 710000, 7810000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402003', 1, 1, '2024-02-08 11:30:00', 11600000, 400000, 1120000, 12320000, N'Thẻ', N'Hoàn thành'),
+('HD2402004', 3, 1, '2024-02-10 16:15:00', 14220000, 300000, 1392000, 15212000, N'Tiền mặt', N'Hoàn thành'),
+('HD2402005', 4, 1, '2024-02-12 09:45:00', 26750000, 1200000, 2555000, 28105000, N'Chuyển khoản', N'Hoàn thành'),
+('HD2402006', 6, 1, '2024-02-15 13:20:00', 23250000, 700000, 2255000, 24805000, N'Thẻ', N'Hoàn thành'),
+('HD2402007', 2, 1, '2024-02-18 10:50:00', 15200000, 500000, 1470000, 16170000, N'Tiền mặt', N'Đã hủy'),
+('HD2402008', 9, 1, '2024-02-20 15:10:00', 18700000, 300000, 1840000, 20240000, N'Tiền mặt', N'Hoàn thành');
 Go
 -- Thêm chi tiết hóa đơn
 -- HD2401001
